@@ -13,7 +13,7 @@ const NavBar = () => {
                     <input type="search" placeholder="Search for Creators, Ispiration, and people" />
                 </div>
                 <div class="create">
-                    <label class="btn btn-primary" for="create-post">Create</label>
+                    <a class="btn btn-primary" href='/Form'>Create</a>
                 </div>
                 <div class="profile-picture">
                     <img src={img} alt='' />

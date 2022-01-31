@@ -327,7 +327,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     background: var(--color-white);
     padding: 0.4rem var(--card-padding);
     border-radius: var(--border-radius);
