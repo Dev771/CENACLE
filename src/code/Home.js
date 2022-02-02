@@ -1,18 +1,22 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 
-import Theme from '../components/Theme/Theme';
 import BodyLeft from '../components/HomeBody/Left';
 import MainBody from '../components/HomeBody/MainBody';
 import BodyRight from '../components/HomeBody/Right';
 
 const Home = () => {
+
+
+    
+
     return (
         <div>                    
             {/* <!-- *********** MAIN (For left, middle and right)************--> */}
             <main>
                 <div class="container">
                     {/* <!--*****************Left******************--> */}
-                    <BodyLeft />
+                    <BodyLeft/>
+                    
                     {/* <!--*******************************End of left***************************--> */}
 
                     {/* <!--*****************Middle******************--> */}
@@ -25,7 +29,7 @@ const Home = () => {
                 </div>  
             </main> 
             {/* <!---########      ###############THEME CUSTOMIZATION###############--> */}
-            <Theme />
+           
         </div>
     )
 }

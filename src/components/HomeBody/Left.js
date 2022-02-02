@@ -1,6 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Theme from '../Theme/Theme';
+
 
 const Left = () => {
+
+    const [active , setactive ] = useState(false);
+   
+
+    const handleclick = () => { 
+        // alert(active);
+        // setactive(true);
+        document.getElementById("profile")
+        // alert(active);
+
+    }
+    useEffect(() => {
+        if (active) {alert(1)}
+    
+ 
+    }, [] );
+
     return (
         <div>
             <div class="left">
@@ -77,17 +96,24 @@ const Left = () => {
                     <a class="menu-item">
                         <span></span><i class="uil uil-chart-line"></i><h3>Analytics</h3>
                     </a>
-                    <a class="menu-item" id="theme">
+                    {/* <button class="menu-item" id="theme" type="button" onClick={ () => {alert(1)}}>
                         <span></span><i class="uil uil-palette"></i><h3>Themes</h3>
-                    </a>
+                    </button> */}
+                    <input type="button" value="theme" class="menu-item" id="theme" onClick={handleclick}>
+                    </input>
                     <a class="menu-item">
                         <span></span><i class="uil uil-setting"></i><h3>Settings</h3>
                     </a>
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
                 <label for="create-post" class="btn btn-primary">Create Post</label>
-            </div>  
+            </div> 
+            {active ? (  <Theme 
+                active={active}
+            />) : (<></>)} 
+          
         </div>
+
     )
 }
 
