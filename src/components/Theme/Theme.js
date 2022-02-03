@@ -1,16 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './stylet.css';
 
-const Theme = (active) => {
+const Theme = (active,setactive) => {
+
+    const [close, setclose] = useState(true);
+
+    const handleClick = () => {
+        // alert(1);
+        setclose(!close);
+       
+
+    }
 
     return (
-            <div class="customize-theme" style={active ? {diplay:"grid"} : {diplay : "none"}}>
+            <div class="customize-theme" style={close ? {diplay:"grid"} : {diplay : "none"}}>
                 <div class="card">
                     <h2>Customize your view</h2>
                     <p class="text muted">Manage your font size , color, and background.</p>
-                    <button>
-                        helllo
-                        </button>
+                    <input type="button" value="close" onClick={handleClick}>
+                        </input>
                     {/* <!---------------------------FONT SIZES-----------------> */}
                     <div class="font-size">
                         <h4>Font Size</h4>

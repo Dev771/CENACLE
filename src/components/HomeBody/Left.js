@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
 import Theme from '../Theme/Theme';
 
@@ -9,16 +10,16 @@ const Left = () => {
 
     const handleclick = () => { 
         // alert(active);
-        // setactive(true);
-        document.getElementById("profile")
+        setactive(!active);
+        // document.getElementById("profile")
         // alert(active);
 
     }
-    useEffect(() => {
-        if (active) {alert(1)}
+    // useEffect(() => {
+    //     if (active) {alert(1)}
     
  
-    }, [] );
+    // }, [] );
 
     return (
         <div>
@@ -99,8 +100,11 @@ const Left = () => {
                     {/* <button class="menu-item" id="theme" type="button" onClick={ () => {alert(1)}}>
                         <span></span><i class="uil uil-palette"></i><h3>Themes</h3>
                     </button> */}
-                    <input type="button" value="theme" class="menu-item" id="theme" onClick={handleclick}>
-                    </input>
+                    {/* <input type="button" value="theme" class="menu-item" id="theme" onClick={handleclick}>
+                    </input> */}
+                    <a type="button" value="theme" class="menu-item" id="theme" onClick={handleclick}>
+                    <span></span><i class="uil uil-chart-line"></i><h3>Theme</h3>
+                    </a>
                     <a class="menu-item">
                         <span></span><i class="uil uil-setting"></i><h3>Settings</h3>
                     </a>
@@ -108,9 +112,16 @@ const Left = () => {
                 {/* <!--*******************End of Sidebar********************--> */}
                 <label for="create-post" class="btn btn-primary">Create Post</label>
             </div> 
-            {active ? (  <Theme 
-                active={active}
-            />) : (<></>)} 
+            {active ? ( 
+                <>
+                    <Theme 
+                    active={active}
+                    setactive={setactive}
+                    />
+                    <input type="button" value="X" className='close' onClick={handleclick}>
+                    
+                    </input>
+                </> ) : (<></>)} 
           
         </div>
 
