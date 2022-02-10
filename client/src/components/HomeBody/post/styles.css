@@ -1,0 +1,24 @@
+.middle > .feeds > .feed > .photo {
+    position: relative;
+}
+
+.middle > .feeds > .feed > .photo > .mute {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.interaction-buttons {
+    display: flex;
+}
+
+.interaction-buttons > .Vote {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.interaction-buttons > .Vote > * {
+    cursor: pointer;
+}

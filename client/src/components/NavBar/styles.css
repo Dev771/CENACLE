@@ -1,0 +1,39 @@
+.Profile-1 {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(121, 123, 124, .3);
+    width: fit-content;
+    /* padding: .5em; */
+    border-radius: 2px;
+    gap: 10px;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.Profile-1 > div {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.Profile-1 > div >img {
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.userstate {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    transform: translate(25%, 25%);
+    background-color: rgb(194, 12, 12);
+    /* cursor: pointer; */
+}
+
+.Profile-1 > label {
+    cursor: pointer;
+}
