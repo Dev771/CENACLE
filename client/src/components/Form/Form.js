@@ -25,18 +25,22 @@ const Form = () => {
     }, [dispatch]);
     
     const clear = () => {
-        setPostData({title: '', LocImage: '', tags_name: '', tags_type: '', creator: '', creatorEmail: '', post_Type: activebutton, post_Texts: '' });
+        setPostData({title: '', tags_name: '', tags_type: '', creator: '', creatorEmail: '', post_Type: activebutton, post_Texts: '' });
     }
 
     const handleSubmit = (e) =>  {
         e.preventDefault();
-
+        console.log(postData.LocImage);
         dispatch(createPost({...postData, creator: user?.result?.name, creatorEmail: user?.result?.email, post_Type: activebutton}, navigate));
         clear();
     }
 
     const handleChange = (e) => {
         setPostData({ ...postData, [e.target.name]: e.target.value});
+    }
+
+    const handleChangeImage = (e) => {
+        setPostData({ ...postData, LocImage: e.target.files[0]});
     }
 
     return (
@@ -84,7 +88,7 @@ const Form = () => {
                         <div>
                             {activebutton === 'Post' ? (
                                 <>
-                                    <input type='text' required placeholder='Enter Title' onChange={handleChange}  />
+                                    <input name='title' type='text' required placeholder='Enter Title' onChange={handleChange}  />
                                     <div className='editablediv'>
                                         <div contentEditable ></div>
                                     </div>
@@ -92,7 +96,8 @@ const Form = () => {
                             ) : activebutton === 'Images' ? (
                                 <>
                                     <input name='title' type='text' required placeholder='Enter Title' onChange={handleChange} />
-                                    <FileBase name='LocImage' type='file' multiple={false} onDone={({base64}) => setPostData({ ...postData, LocImage: base64 })}  />
+                                    <input type='file' onChange={handleChangeImage} name='LocImage' accept="image/*, video/*" />
+                                    {/* <FileBase name='LocImage' type='file' multiple={false} onDone={({base64}) => setPostData({ ...postData, LocImage: base64 })}  /> */}
                                 </>
                             ) : activebutton === 'Link' ? (
                                 <label>Link</label>

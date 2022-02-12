@@ -11,7 +11,7 @@ API.interceptors.request.use((req)=> {
 })
 
 export const getPost = () => API.get('/posts');
-export const createPost = (NewPost) => API.post('/posts', NewPost);
+export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
 
 export const getTag = () => API.get('/tags');

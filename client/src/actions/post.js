@@ -12,14 +12,35 @@ export const getPosts = () => async (dispatch) => {
 
 export const createPost = (post, navigate) => async (dispatch) => {
     try {
-        const { data } = await api.createPost(post);
+        
+        const fd = new FormData();
+        console.log(post);
 
+        buildFormData(fd, post);
+
+        // fd.append("LocImage", post.LocImage);
+
+        
+        const { data } = await api.createPost(fd);
+        
         dispatch({ type: "CREATE_POST", payload: data});
-        navigate('/');
+        // navigate('/');
     } catch (error) {
         console.log(error);
     }
 }
+
+const buildFormData = (formData, data, parentKey) => {
+    if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
+      Object.keys(data).forEach(key => {
+        buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
+      });
+    } else {
+      const value = data == null ? '' : data;
+  
+      formData.append(parentKey, value);
+    }
+  }
 
 export const likePost = (id, state) => async (dispatch) => {
     try {

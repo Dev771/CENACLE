@@ -1,25 +1,32 @@
 import postSchema from '../model/postSchema.js';
 import mongoose from 'mongoose';
 
+import { upload } from '../aws/s3.js';
+
 export const getPost = async (req, res) => {
     try {
-        const posts = await postSchema.find();
+        
+        // const posts = await postSchema.find();
 
-        res.status(200).json(posts);
+        // res.status(200).json(posts);
     } catch(error) {
         res.status(400).json({message: error});
     }
 }
 
 export const createPost = async (req, res) => {
+    const File = req.file;
     const Post = req.body;
-
-    const newPost = postSchema({ ...Post, creatorId: req.userId });
-
+    
     try {
-        await newPost.save();
-        
+        // await newPost.save();
+        const result = await upload(File);
+        // const newPost = postSchema({ ...Post, LocImage: result.Key, creatorId: req.userId });
+        console.log(result);
+        // console.log(req.file);
+        // console.log(req.body);
         res.status(200).json(newPost);
+        res.send(`images/${result.Key}`);
     } catch (error) {
         res.status(400).json({ message: error });
     }
