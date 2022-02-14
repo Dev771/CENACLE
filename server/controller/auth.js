@@ -43,3 +43,24 @@ export const SignUp = async ( req, res ) => {
         res.status(500).json({ message: "something went wrong||"});
     }
 }
+
+export const GoogleSignUp = async (req, res) => {
+    const { email, givenName, googleId, imageUrl, name } = req.body;
+
+    try {
+        const User =  await userSchema.findOne({ email });
+
+        if(!User) {
+            const result = await userSchema.create({ email, password: '', name: givenName, imageURL: imageUrl });
+
+            return res.status(200).json({ message: 'Success' });
+        }
+
+        if(User.password === "") return res.status(200).json({ message: 'Success' });
+
+        res.status(400).json({ message: "User Already Exists With Same Id" });
+
+    } catch (error) {
+        res.status(500).json({ message: "Something Went Wrong!!!"});
+    }
+}

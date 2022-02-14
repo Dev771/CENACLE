@@ -23,7 +23,7 @@ const MainBody = () => {
                         <div className="profile-picture">
                             <img src="img/Profile1.jpg" alt='' />
                         </div>
-                            <input type="text" placeholder={`What's on your mind ${User.result.name} ?`} id="create-post" />
+                            <input type="text" placeholder={`What's on your mind ${User?.result?.name} ?`} id="create-post" />
                         <input type="submit" value="post" className=" btn btn-primary" />
                     </form>
                 ) : (

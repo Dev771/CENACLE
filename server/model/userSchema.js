@@ -15,12 +15,12 @@ const UserSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
     },
     Date_Of_Reg: {
         type: Date,
         default: Date.now(),
     },
+    imageURL: String,
     id: String,
     theme: {
         color: {
