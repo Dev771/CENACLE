@@ -12,7 +12,7 @@ const Home = () => {
         <div>                    
             {/* <!-- *********** MAIN (For left, middle and right)************--> */}
             <main>
-                <div class="container">
+                <div className="container">
                     {/* <!--*****************Left******************--> */}
                     <BodyLeft />
                     

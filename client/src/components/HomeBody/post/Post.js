@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {ArrowUpwardOutlined, ArrowDownwardOutlined } from '@material-ui/icons';
+import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
 import { likePost } from '../../../actions/post';
+import { Badge, Avatar } from '@material-ui/core';
 
 import './styles.css';
+
 
 const Post = ({post}) => {
     const dispatch = useDispatch();
@@ -45,7 +47,7 @@ const Post = ({post}) => {
                 <div className="head">
                     <div className="user">
                         <div className="profile-picture">
-                            <img src="img/image15.jpg" alt='' />
+                            <Avatar style={{ width: '40px', height: '40px'}} alt={post.creator} src={post?.CreatorImage} >{post.creator.charAt(0)}</Avatar>
                         </div>
                         <div className="ingo">
                             <h3>{post.tags_type}/{post.tags_name} || {post.creator}</h3>
@@ -58,15 +60,15 @@ const Post = ({post}) => {
                 </div>
 
                 <div className="photo">
-                    {post.title}
-                    {post.post_Type === 'Images' && post.LocImage.split('/')[0] === 'data:image' ? (
-                        <img loading='lazy' src={post.LocImage} alt={post.title} />
-                    ) : post.post_Type === 'Images' && post.LocImage.split('/')[0] === 'data:video' ? (
+                    <label>{post.title}</label>
+                    {post.post_Type.split('/')[0] === 'image' ? (
+                        <img loading='lazy' src={`http://localhost:8080/posts/${post.LocImage}`} alt={post.title} />
+                    ) : post.post_Type.split('/')[0] === 'video' ? (
                         <>
                             <video width="100%" height='100%' autoPlay={true} muted={muted} loop>
-                                <source src={post.LocImage} type={post.LocImage.split(':')[1].split(';')[0]} />
+                                <source src={`http://localhost:8080/posts/${post.LocImage}`} type={post.post_Type} />
                             </video>
-                            <button style={muted ? { background: 'red' } : { background: 'white'}} className='mute' onClick={mutedchange}>Muted</button>
+                            <button onClick={mutedchange} className='mute'>{!muted ? <VolumeUpRounded /> : <VolumeOff />}</button>
                         </>
                     ) : post.post_Type === 'Post' && post.LocImage === '' ? (
                         <label>{post.post_Texts}</label>

@@ -1,11 +1,24 @@
 .middle > .feeds > .feed > .photo {
     position: relative;
+    max-width: 600px;
+}
+
+.middle > .feeds > .feed > .photo > label {
+    max-width: min-content;
 }
 
 .middle > .feeds > .feed > .photo > .mute {
     position: absolute;
-    bottom: 10px;
+    bottom: 15px;
     right: 10px;
+    background: rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: .3em;
+    border-radius: 100%;
+    cursor: pointer;
 }
 
 .interaction-buttons {

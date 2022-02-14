@@ -5,11 +5,11 @@ import { Avatar } from '@material-ui/core';
 const Left = () => {
 
 
+    const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive ] = useState(false);
     const [color , setColor ] = useState('color-1');
     const [ Font, setFont ] = useState('font-size-3');
     const [ bg, setBg ] = useState('bg-1');
-    const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const OpenTheme = (click) => {
         setactive(click);
@@ -78,15 +78,15 @@ const Left = () => {
 
     return (
         <div>
-            <div class="left">
+            <div className="left">
                 {User ? (
-                    <a class="profile" href='/'>
-                        <div class="profile-picture">
+                    <a className="profile" href='/'>
+                        <div className="profile-picture">
                             <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
                         </div>
-                        <div class="handle">
+                        <div className="handle">
                             <h4>{User?.result?.name}</h4>
-                            <label class="text-muted">
+                            <label className="text-muted">
                                 @dayi
                             </label>
                         </div>
@@ -95,48 +95,48 @@ const Left = () => {
                     <></>
                 )}
                 {/* <!--*****************Sidebar******************--> */}
-                <div class="sidebar">
-                    <a href='/' class="menu-item">
-                        <span><i class="uil uil-home"></i></span><h3>Home</h3>
+                <div className="sidebar">
+                    <a href='/' className="menu-item">
+                        <span><i className="uil uil-home"></i></span><h3>Home</h3>
                     </a>
-                    <a href='/' class="menu-item " id="notifications">
-                        <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span><h3>Notification</h3>
+                    <a href='/' className="menu-item " id="notifications">
+                        <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span><h3>Notification</h3>
                         {/* <!--     Notification Popup    --> */}
-                        <div class="notifications-popup">
+                        <div className="notifications-popup">
                         <div>
-                            <div class="profile-picture">
+                            <div className="profile-picture">
                                 <img src="img/image1.jpg" alt='' />
                             </div>
-                            <div class="notification-body">
+                            <div className="notification-body">
                                 <b>Keke Benjamin</b> accepted your friend request
-                                <small class="text-muted">2 DAYS AGO</small>
+                                <small className="text-muted">2 DAYS AGO</small>
                             </div>
                         </div>
                         <div>
-                            <div class="profile-picture">
+                            <div className="profile-picture">
                                 <img src="img/image2.jpg" alt='' />
                             </div>
-                            <div class="notification-body">
+                            <div className="notification-body">
                                 <b>Ayevhor Mensah</b>  Commented on your post
-                                <small class="text-muted">2 DAYS AGO</small>
+                                <small className="text-muted">2 DAYS AGO</small>
                             </div>
                         </div>
                         <div>
-                            <div class="profile-picture">
+                            <div className="profile-picture">
                                 <img src="img/image3.jpg" alt='' />
                             </div>
-                            <div class="notification-body">
+                            <div className="notification-body">
                                 <b>Marry opong</b> and 283 others liked your psot
-                                <small class="text-muted">2 DAYS AGO</small>
+                                <small className="text-muted">2 DAYS AGO</small>
                             </div>
                         </div>
                         <div>
-                            <div class="profile-picture">
+                            <div className="profile-picture">
                                 <img src="img/image4.jpg" alt='' /> 
                             </div>
-                            <div class="notification-body">
+                            <div className="notification-body">
                                 <b>Doris Y.Lartey</b> commented on a post you're tagged in
-                                <small class="text-muted">2 DAYS AGO</small>
+                                <small className="text-muted">2 DAYS AGO</small>
                             </div>
                         </div>
                         </div>
@@ -144,23 +144,23 @@ const Left = () => {
                     {/* <!--****************End Notification Popup*********************--> */}
                     
                     
-                    <a href='/' class="menu-item" id="messages-notification">
-                        <span><i class="uil uil-envelopes"><small class="notification-count">6</small></i></span><h3>Messages</h3>
+                    <a href='/' className="menu-item" id="messages-notification">
+                        <span><i className="uil uil-envelopes"><small className="notification-count">6</small></i></span><h3>Messages</h3>
                     </a>
-                    {/* <button class="menu-item" id="theme" type="button" onClick={ () => {alert(1)}}>
-                        <span></span><i class="uil uil-palette"></i><h3>Themes</h3>
+                    {/* <button className="menu-item" id="theme" type="button" onClick={ () => {alert(1)}}>
+                        <span></span><i className="uil uil-palette"></i><h3>Themes</h3>
                     </button> */}
-                    {/* <input type="button" value="theme" class="menu-item" id="theme" onClick={handleclick}>
+                    {/* <input type="button" value="theme" className="menu-item" id="theme" onClick={handleclick}>
                     </input> */}
                     <span className='menu-item' onClick={() => OpenTheme(true)}>
-                        <i class="uil uil-palette"></i><h3>Theme</h3>
+                        <i className="uil uil-palette"></i><h3>Theme</h3>
                     </span>
-                    <a class="menu-item" href='/'>
-                        <span></span><i class="uil uil-setting"></i><h3>Settings</h3>
+                    <a className="menu-item" href='/'>
+                        <span></span><i className="uil uil-setting"></i><h3>Settings</h3>
                     </a>
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
-                <label htmlFor="create-post" class="btn btn-primary">Create Post</label>
+                <label htmlFor="create-post" className="btn btn-primary">Create Post</label>
             </div> 
             {active ? ( 
                 <>

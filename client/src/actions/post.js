@@ -2,7 +2,7 @@ import * as api from '../api/index';
 
 export const getPosts = () => async (dispatch) => {
     try {
-        const { data } = await api.getPost();
+        const { data } = await api.getPosts();
 
         dispatch({ type: 'FETCH_ALL', payload: data });
     } catch (error) {
@@ -24,7 +24,7 @@ export const createPost = (post, navigate) => async (dispatch) => {
         const { data } = await api.createPost(fd);
         
         dispatch({ type: "CREATE_POST", payload: data});
-        // navigate('/');
+        navigate('/');
     } catch (error) {
         console.log(error);
     }
@@ -45,7 +45,7 @@ const buildFormData = (formData, data, parentKey) => {
 export const likePost = (id, state) => async (dispatch) => {
     try {
         const { data } = await api.likePost(id, state);
-
+        console.log(data);
         dispatch({type: "LIKE_POST", payload: data});
     } catch (error) {
         console.log(error);

@@ -6,17 +6,17 @@ const Theme = ({ themeClose, theme, color, Font, bg }) => {
     // const [ color, setColor ] = useState('color-1');
 
     return (
-            <div class="customize-theme">
-                <div class="card">
+            <div className="customize-theme">
+                <div className="card">
                     <input type="button" className='closeButton' value="X" onClick={() => themeClose(false)} />
                     <h2>Customize your view</h2>
-                    <p class="text muted">Manage your font size , color, and background.</p>
+                    <p className="text muted">Manage your font size , color, and background.</p>
                     {/* <!---------------------------FONT SIZES-----------------> */}
-                    <div class="font-size">
+                    <div className="font-size">
                         <h4>Font Size</h4>
                             <div>
                                 <h6>Aa</h6>
-                                <div class="choose-size">
+                                <div className="choose-size">
                                     <span onClick={() => theme('font', 'font-size-1')} className={`font-size-1 ${Font === 'font-size-1' ? 'active' : ''}`} ></span>
                                     <span onClick={() => theme('font', 'font-size-2')} className={`font-size-2 ${Font === 'font-size-2' ? 'active' : ''}`} ></span>
                                     <span onClick={() => theme('font', 'font-size-3')} className={`font-size-3 ${Font === 'font-size-3' ? 'active' : ''}`} ></span>
@@ -27,9 +27,9 @@ const Theme = ({ themeClose, theme, color, Font, bg }) => {
                             </div>
                     </div>
                     {/* <!----------------------PRIMARY COLORS--------------------------> */}
-                    <div class="color">
+                    <div className="color">
                         <h4>colors</h4>
-                        <div class="choose-color">
+                        <div className="choose-color">
                             <span onClick={() => theme('color', 'color-1')} className={`color-1 ${color === 'color-1' ? 'active' : ''}`}></span>
                             <span onClick={() => theme('color', 'color-2')} className={`color-2 ${color === 'color-2' ? 'active' : ''}`}></span>
                             <span onClick={() => theme('color', 'color-3')} className={`color-3 ${color === 'color-3' ? 'active' : ''}`}></span>
@@ -39,12 +39,12 @@ const Theme = ({ themeClose, theme, color, Font, bg }) => {
                     </div>
                         
                     {/* <!-----------------------BACKGROUND COLORS---------------------------> */}
-                    <div class="background">
+                    <div className="background">
                         <h4>Background</h4>
-                        <div class="choose-bg">
+                        <div className="choose-bg">
                             <div onClick={() => theme('bg', 'bg-1')} className={`bg-1 ${bg === 'bg-1' ? 'active' : ''}`}>
                                 <span></span>
-                                <h5 for="bg-1">Light</h5>
+                                <h5 htmlFor="bg-1">Light</h5>
                             </div>
                             <div onClick={() => theme('bg', 'bg-2')} className={`bg-2 ${bg === 'bg-2' ? 'active' : ''}`}>
                                 <span></span>
@@ -52,7 +52,7 @@ const Theme = ({ themeClose, theme, color, Font, bg }) => {
                             </div>
                             <div onClick={() => theme('bg', 'bg-3')} className={`bg-3 ${bg === 'bg-3' ? 'active' : ''}`}>
                                 <span></span>
-                                <h5 for="bg-3">Lights Out</h5>
+                                <h5 htmlFor="bg-3">Lights Out</h5>
                             </div>
                         </div>
                     </div>

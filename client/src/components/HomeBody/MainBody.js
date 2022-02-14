@@ -13,7 +13,7 @@ const MainBody = () => {
 
     useEffect(() => {
         dispatch(getPosts());
-    }, [posts, dispatch]);
+    }, []);
 
     return (
         <div>
@@ -31,11 +31,13 @@ const MainBody = () => {
                 )}
 
                 {/* <!--*******************************FEEDS******************************--> */}
-                {
-                    posts.map((post) => (
+                {posts.length > 0 ? (
+                    posts.slice().reverse().map((post) => (
                         <Post post={post} key={post._id} />
                     ))
-                }
+                ) : (
+                    <label>Hello</label>
+                )}
                     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
             </div>

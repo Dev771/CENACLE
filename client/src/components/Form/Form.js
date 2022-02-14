@@ -25,13 +25,13 @@ const Form = () => {
     }, [dispatch]);
     
     const clear = () => {
-        setPostData({title: '', tags_name: '', tags_type: '', creator: '', creatorEmail: '', post_Type: activebutton, post_Texts: '' });
+        setPostData({title: '', tags_name: '', tags_type: '', creator: '', creatorEmail: '', post_Type: '', post_Texts: '' });
     }
 
     const handleSubmit = (e) =>  {
         e.preventDefault();
-        console.log(postData.LocImage);
-        dispatch(createPost({...postData, creator: user?.result?.name, creatorEmail: user?.result?.email, post_Type: activebutton}, navigate));
+        
+        dispatch(createPost({...postData, creator: user?.result?.name, creatorEmail: user?.result?.email, post_Type: ''}, navigate));
         clear();
     }
 

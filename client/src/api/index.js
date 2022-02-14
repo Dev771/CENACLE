@@ -10,7 +10,7 @@ API.interceptors.request.use((req)=> {
     return req;
 })
 
-export const getPost = () => API.get('/posts');
+export const getPosts = () => API.get('/posts');
 export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
 

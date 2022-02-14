@@ -22,6 +22,16 @@ const UserSchema = mongoose.Schema({
         default: Date.now(),
     },
     id: String,
+    theme: {
+        color: {
+            type: String,
+            default: 'color-1',
+        },
+        background: {
+            type: String,
+            default: 'bg-2',
+        } 
+    }
 });
 
 export default mongoose.model('User', UserSchema);

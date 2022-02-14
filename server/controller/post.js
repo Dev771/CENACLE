@@ -1,14 +1,27 @@
 import postSchema from '../model/postSchema.js';
 import mongoose from 'mongoose';
 
-import { upload } from '../aws/s3.js';
+import fs from 'fs';
+import util from 'util';
 
-export const getPost = async (req, res) => {
+const unlink = util.promisify(fs.unlink);
+
+import { upload, getFile } from '../aws/s3.js';
+
+export const getPost = (req, res) => {
+    const Key = req.params.key;
+    const readStream = getFile(Key);
+
+    readStream.pipe(res);
+}
+
+export const getPosts = async (req, res) => {
     try {
         
-        // const posts = await postSchema.find();
+        const posts = await postSchema.find();
 
-        // res.status(200).json(posts);
+        res.status(200).json(posts);
+
     } catch(error) {
         res.status(400).json({message: error});
     }
@@ -19,14 +32,16 @@ export const createPost = async (req, res) => {
     const Post = req.body;
     
     try {
-        // await newPost.save();
+
         const result = await upload(File);
-        // const newPost = postSchema({ ...Post, LocImage: result.Key, creatorId: req.userId });
-        console.log(result);
-        // console.log(req.file);
-        // console.log(req.body);
+        await unlink(File.path)
+        
+        const newPost = postSchema({ ...Post, LocImage: result.Key, creatorId: req.userId, post_Type: File.mimetype });
+        
+        await newPost.save();
+
         res.status(200).json(newPost);
-        res.send(`images/${result.Key}`);
+
     } catch (error) {
         res.status(400).json({ message: error });
     }
@@ -56,7 +71,7 @@ export const likePost = async (req, res) => {
         }
 
         const updatedPost = await postSchema.findByIdAndUpdate(id, Post, { new: true });
-
+        // res.send(updatedPost);
         res.status(200).json(updatedPost);
     } catch (error) {
         console.log(error);
