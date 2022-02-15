@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { getPosts } from '../../actions/post';
 import { useSelector, useDispatch } from 'react-redux';
+import { Avatar } from '@material-ui/core';
+import {useNavigate} from 'react-router-dom';
+
 
 import Loading from '../Loading/Loading';
 import Post from './post/Post';
@@ -8,10 +11,12 @@ import Post from './post/Post';
 const MainBody = () => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const posts = useSelector((state) => state.posts);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     useEffect(() => {
+        console.log(User);
         dispatch(getPosts());
     }, []);
 
@@ -19,10 +24,8 @@ const MainBody = () => {
         <div>
             <div className="middle">
                 {User ? (
-                    <form className="create-post">
-                        <div className="profile-picture">
-                            <img src="img/Profile1.jpg" alt='' />
-                        </div>
+                    <form className="create-post" onClick={() => navigate('/Form')}>
+                        <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
                             <input type="text" placeholder={`What's on your mind ${User.result.name} ?`} id="create-post" />
                         <input type="submit" value="post" className=" btn btn-primary" />
                     </form>

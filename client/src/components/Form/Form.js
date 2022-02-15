@@ -62,7 +62,7 @@ const Form = () => {
                         )}
                         onChange={(e) => setPostData({...postData, tagname: e.target.value})}
                         getOptionLabel={option => option.name}
-                        style={{ width: '130px', border: '1px solid #fff2', background: '#1A1A1B', borderRadius: '5px' }}
+                        style={{ width: '130px', border: '1px solid #fff2', background: 'white', borderRadius: '5px' , borderRadius: '5px' }}
                     />
                     <Autocomplete
                         id="Tags"
@@ -73,7 +73,7 @@ const Form = () => {
                         renderInput={params => (
                             <TextField required className={classes.textfield} style={{fontSize: '10px'}} {...params} label="Tag Name"  variant="outlined" />
                         )}
-                        style={{ width: 270, border: '1px solid #fff2', background: '#1A1A1B', borderRadius: '5px' }}
+                        style={{ width: 270, border: '1px solid #fff2', background: 'white', borderRadius: '5px', color : 'black' }}
                         getOptionLabel={option => option.tagtype}
                     />
                 </div>

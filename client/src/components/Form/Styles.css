@@ -68,6 +68,11 @@
     box-shadow: 0 0 10px #0005;
     margin: 1em 0 0 0;
 }
+#Tags
+{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 
 .createForm > form > div > .ButtonGroup > button {
     width: 100%;

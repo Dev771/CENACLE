@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Theme from '../Theme/Theme';
 import { Avatar } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
 
 const Left = () => {
 
@@ -10,6 +11,7 @@ const Left = () => {
     const [color , setColor ] = useState('color-1');
     const [ Font, setFont ] = useState('font-size-3');
     const [ bg, setBg ] = useState('bg-1');
+    const navigate = useNavigate();
 
     const OpenTheme = (click) => {
         setactive(click);
@@ -80,14 +82,14 @@ const Left = () => {
         <div>
             <div className="left">
                 {User ? (
-                    <a className="profile" href='/'>
+                    <a className="profile" onClick={() => navigate('/Profile')}>
                         <div className="profile-picture">
                             <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
                         </div>
                         <div className="handle">
                             <h4>{User?.result?.name}</h4>
                             <label className="text-muted">
-                                @dayi
+                                @{User?.result?.name}
                             </label>
                         </div>
                     </a> 
