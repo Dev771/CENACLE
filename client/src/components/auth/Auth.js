@@ -11,7 +11,7 @@ import Icon from './icon';
 import { useNavigate } from 'react-router-dom';
 import  { useParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { signIn, signUp } from '../../actions/Auth';
+import { signIn, signUp, GoogleSignUp } from '../../actions/Auth';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
@@ -60,8 +60,8 @@ const Auth = () => {
         const result = res?.profileObj;
         const token  = res?.tokenId;
         try {
-            dispatch({type: "AUTH", data: { result, token }});
-            navigate('/')
+            dispatch(GoogleSignUp(result, token, navigate));
+
         } catch (error) {
             console.log(error);
         }
@@ -105,7 +105,7 @@ const Auth = () => {
                         clientId='478668842778-9dp0645g3thr4oga6kfrldi9ktehvsce.apps.googleusercontent.com'
                         render={(renderProps) => (
                             <Button className={classes.googleButton} color='secondary' onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant='contained'fullWidth>
-                            Google SignIn
+                                Google SignIn
                             </Button>
                         )}
                         onSuccess={googleSuccess}

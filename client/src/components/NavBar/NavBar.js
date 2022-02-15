@@ -26,7 +26,7 @@ const NavBar = () => {
     return (
         <nav>
             <div className="container">
-                <h2 className="logo">
+                <h2 className="logo" onClick={() => navigate("/")}>
                     Social_Media
                 </h2>
                 <div className="search-bar">
