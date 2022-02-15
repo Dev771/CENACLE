@@ -8,7 +8,7 @@ const Left = () => {
 
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive ] = useState(false);
-    const [color , setColor ] = useState('color-1');
+    const [color , setColor ] = useState(User?.result?.theme?.color);
     const [ Font, setFont ] = useState('font-size-3');
     const [ bg, setBg ] = useState('bg-1');
     const navigate = useNavigate();

@@ -45,7 +45,7 @@ const buildFormData = (formData, data, parentKey) => {
 export const likePost = (id, state) => async (dispatch) => {
     try {
         const { data } = await api.likePost(id, state);
-        console.log(data);
+
         dispatch({type: "LIKE_POST", payload: data});
     } catch (error) {
         console.log(error);
