@@ -97,6 +97,10 @@ nav .container{
     align-items: center;
     justify-content: space-between;
 }
+nav .container .logo{
+    cursor: pointer;
+
+}
 
     .search-bar{
     background: var(--color-light);
@@ -152,6 +156,7 @@ main .container .left .profile{
     column-gap: 1 rem;
     width: 100%;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 

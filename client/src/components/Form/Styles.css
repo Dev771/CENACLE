@@ -68,6 +68,11 @@
     box-shadow: 0 0 10px #0005;
     margin: 1em 0 0 0;
 }
+#Tags
+{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 
 .createForm > form > div > .ButtonGroup > button {
     width: 100%;
@@ -222,4 +227,25 @@
 
 .createForm > form > .cP > .ButtonGroup > *:last-child {
     border-top-right-radius: var(--card-border-radius);
+}
+
+
+@media screen and (max-width:1200px){
+
+}
+
+@media screen and (max-width : 992px){
+    .Rules{
+        display: none !important;
+    }
+
+
+}
+
+@media screen and (max-width: 630px){
+
+}
+
+@media screen and (max-width : 480px){
+
 }

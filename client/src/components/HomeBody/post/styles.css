@@ -1,10 +1,10 @@
 .middle > .feeds > .feed > .photo {
     position: relative;
-    max-width: 600px;
+    /* max-width: 600px; */
 }
 
 .middle > .feeds > .feed > .photo > label {
-    max-width: min-content;
+    /* max-width: min-content; */
 }
 
 .middle > .feeds > .feed > .photo > .mute {

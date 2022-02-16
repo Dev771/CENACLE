@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import Cam from '@material-ui/icons/CameraAlt'
+import { Avatar } from '@material-ui/core';
 
 const Right = () => {
+
+    const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     return (
         <div>
@@ -9,14 +12,19 @@ const Right = () => {
                 <div className='Profile'>
                     <div style={{ background: 'blue' }} >
                         <span>
+                           <Avatar style={{ width: '92px', height: '92px', border: '4px solid white', boxShadow : '0 0 5px black'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}
+                            </Avatar>
                             <button className='cameraButton'><Cam style={{ color: 'white' }} /></button>  
-                        </span>
+                            </span>
                         <button className='cameraButton'>
                             <Cam style={{ color: 'white' }} />
                         </button>
                     </div>
-                    <div>
-                        <button type='button'>Hello</button>
+                    <div className='details'>
+                        <label className='name'>
+                        {User?.result?.name}
+                        </label>
+                    
                     </div>
                 </div>
             </div> 

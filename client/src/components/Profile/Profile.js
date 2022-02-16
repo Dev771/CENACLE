@@ -25,7 +25,7 @@ const Profile = () => {
                 </div>  
             </main> 
             {/* <!---########      ###############THEME CUSTOMIZATION###############--> */}
-            <Theme />
+            {/* <Theme /> */}
         </div>
     );
 };
