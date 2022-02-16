@@ -1,10 +1,90 @@
-import React from 'react'
+import React , {useState} from 'react'
+import Profile1 from '../../img/Profile1.jpg'
+import ChipInput from 'material-ui-chip-input';
+import { TextField } from '@material-ui/core';
 
 const Right = () => {
+
+    const [search, setSearch] = useState('');
+    const [tags, setTags] = useState([]);
+    const [active, setactive] = useState(true);
+
+    const handleKeyPress = (e) => {
+        if (e.keyCode === 13) {
+        //   searchPost();
+        }
+      };
+
+    const handleAddChip = (tag) => setTags([...tags, tag]);
+
+    const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
+
+
     return (
         <div>
             <div className="right">
                         <div className="messages">
+                                <div className="headings">
+                                    <h4>Search</h4><i className="uil uil-edit"></i>
+                                </div>
+                            
+                                {/* <!--------------------MESSAGES CATEGORY-------- --> */}
+                            <div className="category">
+                                   <h6 className={active ? 'active' : '' }><input type="button"  value="By Posts"  onClick={() => setactive(!active)} style={{background : "transparent"}}/> </h6>
+                                   <h6 className={active ? '' : 'active' }><input type="button"  value="By Tags"  onClick={() => setactive(!active)} style={{background : "transparent"}}/> </h6>
+                            </div>
+                            {/* <!----------------SEARCH BAR-----------------> */}
+                            <div className="search-bar">
+                                <i className="uil uil-search"></i>
+                                <TextField 
+                                name="search" 
+                                placeholder='Search posts'
+                                onKeyPress={handleKeyPress}
+                                fullWidth 
+                                value={search} 
+                                onChange={(e) => setSearch(e.target.value)}
+                                />
+                            </div>
+                            <div className="search-bar">
+                                <i className="uil uil-search"></i>
+                                <ChipInput
+                                value={tags}
+                                onAdd={handleAddChip}
+                                onDelete={handleDeleteChip}
+                                placeholder="Search tags"
+                                />
+                            </div>
+
+                        </div>
+                                {/* <!----------------------------END OF MESSAGES---------------> */}
+
+                                {/* <!----------------------------FRIEND REQUESTS---------------> */}
+                                <div className="friend-requests">
+                                    <h4>Requests</h4>
+                                    {/* <!--Request  1--> */}
+                                    <div className="requests">
+                                        <div className="info">
+                                            <div className="profile-picture">
+                                                <img src={Profile1} />
+                                            </div>
+                                            <div>
+                                                <h5>Coming Soon!!</h5>
+                                                <p className="text-muted">
+                                                    8 mutual friends
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="action">
+                                            <button className="btn btn-primary">
+                                                Accept
+                                            </button>
+                                            <button className="btn">
+                                                Decline
+                                            </button>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div className="messages">
                                 <div className="headings">
                                     <h4>Messages</h4><i className="uil uil-edit"></i>
                                 </div>
@@ -24,55 +104,9 @@ const Right = () => {
                             
                                 {/* <!-----------------------------------MESSAGE--------------> */}
                                 <div className="message">
-                                    <div className="profile-picture">
-                                        <img src="img/Profile1.jpg" />
-
-                                    </div>
-                                    <div className="message-body">
-                                        <h5>Anny Quist</h5>
-                                        <p className="text-muted">how are you!!</p>
-                                    </div>
+                                    Coming Soon!!
                                 </div>
-                                <div className="message">
-                                    <div className="profile-picture">
-                                        <img src="img/Profile1.jpg" />
-
-                                    </div>
-                                    <div className="message-body">
-                                        <h5>Nigga</h5>
-                                        <p className="text-muted">how are you!!</p>
-                                    </div>
-                                </div>
-
                         </div>
-                                {/* <!----------------------------END OF MESSAGES---------------> */}
-
-                                {/* <!----------------------------FRIEND REQUESTS---------------> */}
-                                <div className="friend-requests">
-                                    <h4>Requests</h4>
-                                    {/* <!--Request  1--> */}
-                                    <div className="requests">
-                                        <div className="info">
-                                            <div className="profile-picture">
-                                                <img src="img/Profile1.jpg" />
-                                            </div>
-                                            <div>
-                                                <h5>Hajia bintu</h5>
-                                                <p className="text-muted">
-                                                    8 mutual friends
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div className="action">
-                                            <button className="btn btn-primary">
-                                                Accept
-                                            </button>
-                                            <button className="btn">
-                                                Decline
-                                            </button>
-                                            </div>
-                                    </div>
-                                </div>
                         
                     </div> 
         </div>

@@ -51,7 +51,7 @@ const Post = ({post}) => {
                         </div>
                         <div className="ingo">
                             <h3>{post.tags_type}/{post.tags_name} || {post.creator}</h3>
-                            <small>Dubai, {post.Date_Of_Creation}</small>
+                            <small>{post.Date_Of_Creation}</small>
                         </div>
                     </div>
                     <span className="edit">
@@ -73,7 +73,7 @@ const Post = ({post}) => {
                     ) : post.post_Type === 'Post' && post.LocImage === '' ? (
                         <label>{post.post_Texts}</label>
                     ) : (
-                        <label>Hello</label>
+                        <label>No Posts!!</label>
                     )}
                 </div>
 

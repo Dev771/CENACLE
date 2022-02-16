@@ -410,7 +410,7 @@ main .container .right{
     border-radius:var(--card-border-radius) ;
     padding: var(--card-padding);
 }
-.right .messages .heading{
+.right .messages .headings{
     display: flex;
     align-items: center;
     justify-content: space-between;
