@@ -39,8 +39,8 @@ const NavBar = () => {
                     </div>
                     {!SignInUser ? (
                         <div className='Profile-1'>
-                            <Button component={Link} to='/auth/SignIn' variant='contained' color='secondary' >Login</Button>
-                            <Button component={Link} to='/auth/SignUp' variant='contained' color='secondary'>Register</Button>
+                            <Button component={Link} to='/login/SignIn' variant='contained' color='secondary' >Login</Button>
+                            <Button component={Link} to='/login/SignUp' variant='contained' color='secondary'>Register</Button>
                         </div>
                     ) :  (
                             <Badge 
