@@ -16,7 +16,6 @@ const MainBody = () => {
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     useEffect(() => {
-        console.log(User);
         dispatch(getPosts());
     }, []);
 

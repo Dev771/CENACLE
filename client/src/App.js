@@ -6,6 +6,7 @@ import Form from './components/Form/Form';
 import Profile from './components/Profile/Profile';
 import Auth from './components/auth/Auth';
 import Login from './components/LoginSignUp/Login';
+import Error from './components/Error/Error';
 
 const App = () => {
     return (
@@ -17,6 +18,7 @@ const App = () => {
                 <Route path='/Profile' exact element={<Profile />} />
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />
+                <Route path='*' element={<Error />} />
             </Routes>
         </BrowserRouter>
     )
