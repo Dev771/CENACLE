@@ -1,19 +1,46 @@
 import React , {useState} from 'react'
 import Profile1 from '../../img/Profile1.jpg'
 import ChipInput from 'material-ui-chip-input';
-import { TextField } from '@material-ui/core';
+import { TextField , Button } from '@material-ui/core';
+import { useLocation ,useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+
+import './styleS.css';
+import { getPostsBySearch } from '../../actions/post';
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
 
 const Right = () => {
 
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
     const [active, setactive] = useState(true);
+    const navigate = useNavigate();
+    const query = useQuery();
+    const searchQuery = query.get('searchQuery');
+    const dispatch = useDispatch();
+    
+
+
 
     const handleKeyPress = (e) => {
         if (e.keyCode === 13) {
-        //   searchPost();
+          searchPost();
         }
       };
+
+    const searchPost = () => {
+    if (search.trim() || tags) {
+        dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+        navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+    } else {
+        navigate('/');
+    }
+    };
+
 
     const handleAddChip = (tag) => setTags([...tags, tag]);
 
@@ -23,7 +50,7 @@ const Right = () => {
     return (
         <div>
             <div className="right">
-                        <div className="messages">
+                        <div className="search1">
                                 <div className="headings">
                                     <h4>Search</h4><i className="uil uil-edit"></i>
                                 </div>
@@ -54,6 +81,13 @@ const Right = () => {
                                 placeholder="Search tags"
                                 />
                             </div>
+                            <Button onClick={searchPost}  variant="contained" color="primary">Search</Button>
+                            <div className="buttonS">
+                                <button onClick={searchPost} className="btn btn-primary">
+                                search
+                                </button>
+                            </div>
+
 
                         </div>
                                 {/* <!----------------------------END OF MESSAGES---------------> */}
@@ -75,7 +109,7 @@ const Right = () => {
                                             </div>
                                         </div>
                                         <div className="action">
-                                            <button className="btn btn-primary">
+                                            <button className="btn btn-Search">
                                                 Accept
                                             </button>
                                             <button className="btn">

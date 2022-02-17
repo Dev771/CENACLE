@@ -17,6 +17,7 @@ const App = () => {
                 <Route path='/Profile' exact element={<Profile />} />
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />
+                <Route path="/posts/search" exact element={<Home/>} />
             </Routes>
         </BrowserRouter>
     )

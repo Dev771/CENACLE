@@ -14,6 +14,9 @@ export const getPosts = () => API.get('/posts');
 export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
 
+export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
+export const fetchPostsByCreatorid =(creatorid) => API.get(`/posts/searchcreator?cretorid=${creatorid}`);
+
 export const getTag = () => API.get('/tags');
 
 export const SignIn = (formData) => API.post('/auth/signIn', formData);

@@ -27,6 +27,26 @@ export const getPosts = async (req, res) => {
     }
 }
 
+export const getPostsBySearch = async (req, res) => {
+    const { searchQuery, tags } = req.query;
+
+    try {
+        const title = new RegExp(searchQuery, "i");
+
+        const posts = await postSchema.find({ $or: [ { title }, { tags_type: { $in: tags.split(',') } } ]});
+
+        res.json({ data: posts });
+    } catch (error) {    
+        res.status(404).json({ message: error.message });
+    }
+}
+
+export const getPostsByCreator = async (req , res) => {
+    const data = req.query;
+    res.send(data);
+}
+
+
 export const createPost = async (req, res) => {
     const File = req.file;
     const Post = req.body;
