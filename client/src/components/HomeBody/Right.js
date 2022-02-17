@@ -81,7 +81,6 @@ const Right = () => {
                                 placeholder="Search tags"
                                 />
                             </div>
-                            <Button onClick={searchPost}  variant="contained" color="primary">Search</Button>
                             <div className="buttonS">
                                 <button onClick={searchPost} className="btn btn-primary">
                                 search

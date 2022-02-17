@@ -1,6 +1,11 @@
 :root {
-    --clr-neon: hsl(317 100% 54%);
-    --clr-bg: hsl(323 50% 30%);
+    --primary-color-hue : 252;
+    --dark-color-lightness: 17%;
+    --light-color-lightness: 95%;
+    --white-color-lightness: 100%;
+
+    --clr-neon: hsl(var(--primary-color-hue),75%,60%);
+    --clr-bg: hsl(var(--primary-color-hue),75%,60%);
     --n: 1;
 }
 
@@ -9,7 +14,7 @@
     top: 69px;
     width: 100%;
     min-height: 100vh;
-    background-color: #ffe5dd;
+    background-color: #ffffff;
     overflow: hidden;
 }
 

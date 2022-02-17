@@ -17,7 +17,7 @@ const MainBody = () => {
 
     useEffect(() => {
         console.log(User);
-        dispatch(getPostsByCreator(User?.result?._id ));
+        dispatch(getPostsByCreator(User?.result?._id || User?.result?.googleId));
         // dispatch(getPosts());
     }, []);
 

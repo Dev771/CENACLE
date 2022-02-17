@@ -33,13 +33,11 @@ const MainBody = () => {
                 )}
 
                 {/* <!--*******************************FEEDS******************************--> */}
-                {posts.length > 0 ? (
+                {!posts.length   ? (<Loading/>) :  (
                     posts.slice().reverse().map((post) => (
                         <Post post={post} key={post._id} />
                     ))
-                ) : (
-                    <label>Hello</label>
-                )}
+                ) }
                     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
             </div>

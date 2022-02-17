@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
-import { likePost } from '../../../actions/post';
+import { likePost ,deletePost} from '../../../actions/post';
 import { Badge, Avatar } from '@material-ui/core';
+import {Delete} from '@material-ui/icons';
 
 import './styles.css';
 
@@ -50,17 +51,19 @@ const Post = ({post}) => {
                             <Avatar style={{ width: '40px', height: '40px'}} alt={post.creator} src={post?.CreatorImage} >{post.creator.charAt(0)}</Avatar>
                         </div>
                         <div className="ingo">
-                            <h3>{post.tags_type}/{post.tags_name} || {post.creator}</h3>
+                            <h3>{post.tags_name}/{post.tags_type} || {post.creator}</h3>
                             <small>{post.Date_Of_Creation}</small>
                         </div>
                     </div>
-                    <span className="edit">
-                    <i className="uil uil-ellipsis-h"></i>
+                    {(user?.result?._id == post?.creatorId || user?.result?.googleId === post?.creatorId) && (
+                    <span onClick={()=> dispatch(deletePost(post._id))} className="edit">
+                    <Delete/>
                     </span>
+                    )}
                 </div>
 
                 <div className="photo">
-                    <label>{post.title}</label>
+                    <h2><b>{post.title}</b></h2>
                     {post.post_Type.split('/')[0] === 'image' ? (
                         <img loading='lazy' src={`http://localhost:8080/posts/${post.LocImage}`} alt={post.title} />
                     ) : post.post_Type.split('/')[0] === 'video' ? (

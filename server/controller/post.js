@@ -35,15 +35,21 @@ export const getPostsBySearch = async (req, res) => {
 
         const posts = await postSchema.find({ $or: [ { title }, { tags_type: { $in: tags.split(',') } } ]});
 
-        res.json({ data: posts });
+        res.status(200).json({ data: posts });
     } catch (error) {    
         res.status(404).json({ message: error.message });
     }
 }
 
-export const getPostsByCreator = async (req , res) => {
-    const data = req.query;
-    res.send(data);
+export const getPostsBycreator = async (req , res) => {
+    const {creatorid} = req.query;
+    try {
+        const posts = await postSchema.find({creatorId : creatorid})
+
+        res.status(200).json({ data: posts }); 
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
 }
 
 
@@ -126,4 +132,14 @@ export const dislikePost = async (req, res) => {
     } catch (error) {
         console.log(error);
     }
+}
+
+export const deletePost = async ( req, res ) => {
+    const { id: _id } = req.params;
+
+    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No Such POST Available!!!....');
+
+    await postSchema.findByIdAndRemove(_id);
+
+    res.json({ message: 'Post Deleted Successfully!.. '});
 }

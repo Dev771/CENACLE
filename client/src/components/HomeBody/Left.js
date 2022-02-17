@@ -98,9 +98,9 @@ const Left = () => {
                 )}
                 {/* <!--*****************Sidebar******************--> */}
                 <div className="sidebar">
-                    <a href='/' className="menu-item">
-                        <span><i className="uil uil-home"></i></span><h3>Home</h3>
-                    </a>
+                    <span href='/' className="menu-item">
+                        <span><i className="uil uil-home" ></i></span><h3>Home</h3>
+                    </span>
                     <a href='/' className="menu-item " id="notifications">
                         <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span><h3>Notification</h3>
                         {/* <!--     Notification Popup    --> */}
