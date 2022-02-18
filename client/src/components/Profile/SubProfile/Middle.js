@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getPosts , getPostsByCreator} from '../../../actions/post';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@material-ui/core';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 
 // import Loading from '../Loading/Loading';
@@ -11,15 +11,15 @@ import Post from '../../HomeBody/post/Post';
 const MainBody = () => {
 
     const dispatch = useDispatch();
+    const { creatorId } = useParams();
     const navigate = useNavigate();
     const posts = useSelector((state) => state.posts);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     useEffect(() => {
-        console.log(User);
-        dispatch(getPostsByCreator(User?.result?._id || User?.result?.googleId));
+        dispatch(getPostsByCreator(creatorId));
         // dispatch(getPosts());
-    }, []);
+    }, [creatorId, dispatch]);
 
     return (
         <div>
