@@ -98,7 +98,8 @@ const Left = () => {
                 )}
                 {/* <!--*****************Sidebar******************--> */}
                 <div className="sidebar">
-                    <span href='/' className="menu-item"><i className="uil uil-home"></i>
+                    <span href='/' className="menu-item active">
+                        <i className="uil uil-home"></i>
                     <h3>Home</h3>
                     </span>
                     
