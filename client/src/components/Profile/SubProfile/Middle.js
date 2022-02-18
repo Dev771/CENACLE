@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getPosts } from '../../../actions/post';
+import { getPosts , getPostsByCreator} from '../../../actions/post';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import {useNavigate} from 'react-router-dom';
@@ -17,7 +17,8 @@ const MainBody = () => {
 
     useEffect(() => {
         console.log(User);
-        dispatch(getPosts());
+        dispatch(getPostsByCreator(User?.result?._id || User?.result?.googleId));
+        // dispatch(getPosts());
     }, []);
 
     return (

@@ -13,6 +13,10 @@ API.interceptors.request.use((req)=> {
 export const getPosts = () => API.get('/posts');
 export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
+export const deletePost = (id) => API.delete(`/posts/${id}`);
+
+export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
+export const fetchPostsByCreatorid =(creatorid) => API.get(`/posts/searchcreator?creatorid=${creatorid}`);
 
 export const getTag = () => API.get('/tags');
 

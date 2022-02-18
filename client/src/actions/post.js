@@ -1,4 +1,5 @@
 import * as api from '../api/index';
+import { FETCH_BY_SEARCH , DELETE} from '../constants/ActionTypes'
 
 export const getPosts = () => async (dispatch) => {
     try {
@@ -9,6 +10,28 @@ export const getPosts = () => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+    try {
+      const { data: { data } } = await api.fetchPostsBySearch(searchQuery);
+      console.log(data);
+      
+      dispatch({ type: FETCH_BY_SEARCH, payload: data});
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+export const getPostsByCreator = (creatorid) => async (dispatch) => {
+  try {
+      const { data: { data } }=await api.fetchPostsByCreatorid(creatorid);
+      console.log(data);
+
+      dispatch({ type: FETCH_BY_SEARCH, payload: data});
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const createPost = (post, navigate) => async (dispatch) => {
     try {
@@ -51,3 +74,13 @@ export const likePost = (id, state) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const deletePost = (id) => async (dispatch) => {
+  try {
+      await api.deletePost(id);
+
+      dispatch({ type:DELETE, payload: id});
+  } catch (error) {
+      console.log(error);
+  }
+};

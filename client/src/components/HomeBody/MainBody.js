@@ -16,7 +16,6 @@ const MainBody = () => {
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     useEffect(() => {
-        console.log(User);
         dispatch(getPosts());
     }, []);
 
@@ -34,7 +33,7 @@ const MainBody = () => {
                 )}
 
                 {/* <!--*******************************FEEDS******************************--> */}
-                {posts.length > 0 ? (
+                {!posts.length   ? (<Loading/>) :  (
                     posts.slice().reverse().map((post) => (
                         <Post post={post} key={post._id} />
                     ))

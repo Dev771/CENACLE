@@ -27,20 +27,29 @@ const NavBar = () => {
         <nav>
             <div className="container">
                 <h2 className="logo" onClick={() => navigate("/")}>
-                    Social_Media
+                    CENACLE
                 </h2>
                 <div className="search-bar">
                     <i className="uil uil-search"></i>
                     <input type="search" placeholder="Search for Creators, Ispiration, and people" />
                 </div>
                 <div className='left-nav'>
+<<<<<<< HEAD
                     <div className="create">
                         <label className="btn btn-primary"  onClick={() => navigate("/Form")}>Create</label>
                     </div>
+=======
+                {!SignInUser ? (<></>):
+                    (<div className="create">
+                        <a className="btn btn-primary" href='/Form'>Create</a>
+                    </div>)}
+>>>>>>> 1c8ea691a199a0a23a9d8357bc137de3a9301d4e
                     {!SignInUser ? (
                         <div className='Profile-1'>
-                            <Button component={Link} to='/auth/SignIn' variant='contained' color='secondary' >Login</Button>
-                            <Button component={Link} to='/auth/SignUp' variant='contained' color='secondary'>Register</Button>
+                           <span className="btn btn-primary" onClick={() => navigate('/login/SignIn')} >Login</span>
+                           <span className="btn btn-primary" onClick={() => navigate('/login/SignUp')} >Register</span>
+                            {/* <Button component={Link} to='/login/SignIn' variant='contained' color='secondary' >Login</Button>
+                            <Button component={Link} to='/login/SignUp' variant='contained' color='secondary'>Register</Button> */}
                         </div>
                     ) :  (
                             <Badge 
@@ -49,10 +58,11 @@ const NavBar = () => {
                                 overlap='circular' 
                                 variant='dot' 
                                 anchorOrigin={{  vertical: 'bottom', horizontal: 'right'}} 
-                                color='error'
+                                color='secondary'
                                 // ref={anchorRef}
                                 // aria-controls={open ? 'menu-list-grow' : undefined}
                                 // aria-haspopup="true" 
+                                // style={{background : 'green'}}
                             >
                                 <Avatar style={{ width: '40px', height: '40px'}} alt={SignInUser?.result.name} src={SignInUser?.result.imageUrl} >{SignInUser?.result.name.charAt(0)}</Avatar>
                             </Badge>

@@ -335,7 +335,8 @@ main .container .left .profile{
 /*=============================Create Post================*/
 .middle .create-post{
     width: 100%;
-    display: flex;
+    display: flex ;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     /* margin-top: 1rem; */
@@ -415,7 +416,7 @@ main .container .right{
     border-radius:var(--card-border-radius) ;
     padding: var(--card-padding);
 }
-.right .messages .heading{
+.right .messages .headings{
     display: flex;
     align-items: center;
     justify-content: space-between;
