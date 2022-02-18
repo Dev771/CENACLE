@@ -26,9 +26,10 @@ const NavBar = () => {
     return (
         <nav>
             <div className="container">
-                <h2 className="logo" onClick={() => navigate("/")}>
+                <a  href="/">
+                <h2 className="logo">
                     CENACLE
-                </h2>
+                </h2></a>
                 <div className="search-bar">
                     <i className="uil uil-search"></i>
                     <input type="search" placeholder="Search for Creators, Ispiration, and people" />

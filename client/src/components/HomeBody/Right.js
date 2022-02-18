@@ -2,25 +2,30 @@ import React , { useState, useEffect }from 'react';
 import Profile1 from '../../img/Profile1.jpg';
 import './search.css';
 import { Container, Grow, Grid , Paper , TextField , AppBar ,Button , Chip} from '@material-ui/core';
-// import ChipInput from 'material-ui-chip-input';
+import ChipInput from 'material-ui-chip-input';
 import { useLocation, useNavigate } from 'react-router-dom';
 // import useStyles from './styles';
 import { useDispatch } from 'react-redux';
-// import { getPosts ,  getPostsBySearch } from '../../actions/posts';
+import { getPosts ,  getPostsBySearch } from '../../actions/post';
 // import Chip from '@mui/material/Chip';
 // import TextField from '@mui/material/TextField';
 // import Autocomplete from '@mui/material/Autocomplete';
 import { Autocomplete } from '@material-ui/lab';
+
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
 
 const Right = () => {
 
     // const classes = useStyles();
     const dispatch = useDispatch();
     const [currentId, setcurrentId] = useState(0);
-    // const query = useQuery();
-    // const page = query.get('page') || 1;
+    const query = useQuery();
+    const page = query.get('page') || 1;
     const history = useNavigate();
-    // const searchQuery = query.get('searchQuery');
+    const searchQuery = query.get('searchQuery');
 
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
@@ -28,21 +33,22 @@ const Right = () => {
 
     const handleKeyPress = (e) => {
         if (e.keyCode === 13) {
-        //   searchPost();
+          searchPost();
         }
       };
-    //   const searchPost = () => {
-    //     if (search.trim() || tags) {
-    //       dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
-    //       history(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
-    //     } else {
-    //       history('/');
-    //     }
-    //   };
+      
+    const searchPost = () => {
+    if (search.trim() || tags) {
+        dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+        history(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+    } else {
+        history('/');
+    }
+    };
 
-    //   const handleAddChip = (tag) => setTags([...tags, tag]);
+      const handleAddChip = (tag) => setTags([...tags, tag]);
 
-    //   const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
+      const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
     return (
         <div>
             <div className="right">
@@ -69,19 +75,27 @@ const Right = () => {
                                 {/* <!----------------SEARCH BAR-----------------> */}
                             <div className="search-bar">
                                     <i className="uil uil-search"></i>
-                                    <input
-                                    name="search" 
-                                    onKeyPress={handleKeyPress}
-                                    fullWidth 
-                                    value={search} 
-                                    onChange={(e) => setSearch(e.target.value)} 
-                                    type="search" 
-                                    placeholder="search posts/tags" 
-                                    id="search1-search" />
+                                    <TextField 
+                                        name="search" 
+                                        // variant="outlined" 
+                                        // label="Search Memories"
+                                        onKeyPress={handleKeyPress}
+                                        fullWidth 
+                                        value={search} 
+                                        onChange={(e) => setSearch(e.target.value)}
+                                    />
                             </div>
                             <div className="search-bar">
                                     <i className="uil uil-search"></i>
+                                    <ChipInput
+                                        
+                                        value={tags}
+                                        onAdd={handleAddChip}
+                                        onDelete={handleDeleteChip}
+                                    />
                             </div>
+                            <Button onClick={searchPost}  variant="contained" color="primary">Search</Button>
+
                             
                         </div>
 
