@@ -77,8 +77,7 @@ const Right = () => {
                                     <i className="uil uil-search"></i>
                                     <TextField 
                                         name="search" 
-                                        // variant="outlined" 
-                                        // label="Search Memories"
+                                        placeholder="search Post"
                                         onKeyPress={handleKeyPress}
                                         fullWidth 
                                         value={search} 
@@ -88,7 +87,7 @@ const Right = () => {
                             <div className="search-bar">
                                     <i className="uil uil-search"></i>
                                     <ChipInput
-                                        
+                                        placeholder="search Tag"
                                         value={tags}
                                         onAdd={handleAddChip}
                                         onDelete={handleDeleteChip}
