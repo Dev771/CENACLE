@@ -8,7 +8,7 @@ const Left = () => {
 
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive ] = useState(false);
-    const [color , setColor ] = useState(User?.result?.theme?.color);
+    const [color , setColor ] = useState('color-1');
     const [ Font, setFont ] = useState('font-size-3');
     const [ bg, setBg ] = useState('bg-1');
     const navigate = useNavigate();
@@ -98,11 +98,14 @@ const Left = () => {
                 )}
                 {/* <!--*****************Sidebar******************--> */}
                 <div className="sidebar">
-                    <a href='/' className="menu-item">
-                        <span><i className="uil uil-home"></i></span><h3>Home</h3>
-                    </a>
-                    <a href='/' className="menu-item " id="notifications">
-                        <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span><h3>Notification</h3>
+                    <span href='/' className="menu-item"><i className="uil uil-home"></i>
+                    <h3>Home</h3>
+                    </span>
+                    
+                    <span href='/' className="menu-item " id="notifications"><i className="uil uil-bell"><small className="notification-count">9+</small></i>
+                    <h3>Notification</h3>
+                    </span>
+                    
                         {/* <!--     Notification Popup    --> */}
                         <div className="notifications-popup">
                         <div>
@@ -142,24 +145,16 @@ const Left = () => {
                             </div>
                         </div>
                         </div>
-                    </a>
                     {/* <!--****************End Notification Popup*********************--> */}
+
+                    <span href='/' className="menu-item" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
+                     <h3>Messages</h3>
+                    </span>
                     
-                    
-                    <a href='/' className="menu-item" id="messages-notification">
-                        <span><i className="uil uil-envelopes"><small className="notification-count">6</small></i></span><h3>Messages</h3>
-                    </a>
-                    {/* <button className="menu-item" id="theme" type="button" onClick={ () => {alert(1)}}>
-                        <span></span><i className="uil uil-palette"></i><h3>Themes</h3>
-                    </button> */}
-                    {/* <input type="button" value="theme" className="menu-item" id="theme" onClick={handleclick}>
-                    </input> */}
                     <span className='menu-item' onClick={() => OpenTheme(true)}>
                         <i className="uil uil-palette"></i><h3>Theme</h3>
                     </span>
-                    <a className="menu-item" href='/'>
-                        <span></span><i className="uil uil-setting"></i><h3>Settings</h3>
-                    </a>
+                        <span className="menu-item" href='/'><i className="uil uil-setting"></i><h3>Settings</h3></span>
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
                 <label htmlFor="create-post" className="btn btn-primary">Create Post</label>

@@ -35,7 +35,7 @@ const NavBar = () => {
                 </div>
                 <div className='left-nav'>
                     <div className="create">
-                        <a className="btn btn-primary" href='/Form'>Create</a>
+                        <label className="btn btn-primary"  onClick={() => navigate("/Form")}>Create</label>
                     </div>
                     {!SignInUser ? (
                         <div className='Profile-1'>

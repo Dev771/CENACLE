@@ -39,7 +39,7 @@ const MainBody = () => {
                         <Post post={post} key={post._id} />
                     ))
                 ) : (
-                    <label>Hello</label>
+                    <label>No Post</label>
                 )}
                     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}

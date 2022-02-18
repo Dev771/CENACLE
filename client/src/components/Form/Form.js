@@ -45,7 +45,7 @@ const Form = () => {
 
     return (
         <div className='createForm'>
-            <form autoComplete='off' onSubmit={handleSubmit}>
+            <form  autoComplete='off' onSubmit={handleSubmit}>
                 <div className='CreatePostTop'>
                     <label>Create a Post</label>
                 </div>
