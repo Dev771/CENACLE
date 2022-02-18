@@ -34,16 +34,9 @@ const NavBar = () => {
                     <input type="search" placeholder="Search for Creators, Ispiration, and people" />
                 </div>
                 <div className='left-nav'>
-<<<<<<< HEAD
                     <div className="create">
                         <label className="btn btn-primary"  onClick={() => navigate("/Form")}>Create</label>
                     </div>
-=======
-                {!SignInUser ? (<></>):
-                    (<div className="create">
-                        <a className="btn btn-primary" href='/Form'>Create</a>
-                    </div>)}
->>>>>>> 1c8ea691a199a0a23a9d8357bc137de3a9301d4e
                     {!SignInUser ? (
                         <div className='Profile-1'>
                            <span className="btn btn-primary" onClick={() => navigate('/login/SignIn')} >Login</span>
