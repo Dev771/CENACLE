@@ -15,7 +15,7 @@ const App = () => {
             <Routes>
                 <Route path='/' exact element={<Home />} />
                 <Route path='/Form' exact element={<Form />} />
-                <Route path='/Profile' exact element={<Profile />} />
+                <Route path='/Profile/:creatorId' exact element={<Profile />} />
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />
                 <Route path="/posts/search" exact element={<Home/>} />

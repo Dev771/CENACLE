@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { likePost ,deletePost} from '../../../actions/post';
 import { Badge, Avatar } from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 import './styles.css';
 
 
 const Post = ({post}) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [isLiked, setisLiked] = useState(false);
     const [isDisliked, setIsDisLiked] = useState(false);
     const [muted, setMuted] = useState(true);
@@ -51,7 +53,7 @@ const Post = ({post}) => {
                             <Avatar style={{ width: '40px', height: '40px'}} alt={post.creator} src={post?.CreatorImage} >{post.creator.charAt(0)}</Avatar>
                         </div>
                         <div className="ingo">
-                            <h3>{post.tags_name}/{post.tags_type} || {post.creator}</h3>
+                            <h3>{post.tags_name}/{post.tags_type} || <label onClick={() => navigate(`/Profile/${post?.creatorId}`)}>{post.creator}</label></h3>
                             <small>{post.Date_Of_Creation}</small>
                         </div>
                     </div>

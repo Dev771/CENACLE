@@ -82,7 +82,7 @@ const Left = () => {
         <div>
             <div className="left">
                 {User ? (
-                    <a className="profile" onClick={() => navigate('/Profile')}>
+                    <span className="profile" onClick={() => navigate(`/Profile/${User?.result?._id || User?.result?.googleId}`)}>
                         <div className="profile-picture">
                             <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
                         </div>
@@ -92,7 +92,7 @@ const Left = () => {
                                 @{User?.result?.name}
                             </label>
                         </div>
-                    </a> 
+                    </span> 
                     ) : (
                     <></>
                 )}
