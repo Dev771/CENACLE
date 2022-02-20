@@ -13,6 +13,9 @@ import { getPosts ,  getPostsBySearch } from '../../actions/post';
 import { Autocomplete } from '@material-ui/lab';
 
 
+// import './styleS.css';
+import { getPostsBySearch } from '../../actions/post';
+
 function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -74,24 +77,31 @@ const Right = () => {
                             />  */}
                                 {/* <!----------------SEARCH BAR-----------------> */}
                             <div className="search-bar">
-                                    <i className="uil uil-search"></i>
-                                    <TextField 
-                                        name="search" 
-                                        placeholder="search Post"
-                                        onKeyPress={handleKeyPress}
-                                        fullWidth 
-                                        value={search} 
-                                        onChange={(e) => setSearch(e.target.value)}
-                                    />
+                                <i className="uil uil-search"></i>
+                                <TextField 
+                                id="messages-search"
+                                name="search" 
+                                placeholder='Search posts'
+                                onKeyPress={handleKeyPress}
+                                fullWidth 
+                                value={search} 
+                                onChange={(e) => setSearch(e.target.value)}
+                                />
                             </div>
                             <div className="search-bar">
-                                    <i className="uil uil-search"></i>
-                                    <ChipInput
-                                        placeholder="search Tag"
-                                        value={tags}
-                                        onAdd={handleAddChip}
-                                        onDelete={handleDeleteChip}
-                                    />
+                                <i className="uil uil-search"></i>
+                                <ChipInput
+                                id="messages-search"
+                                value={tags}
+                                onAdd={handleAddChip}
+                                onDelete={handleDeleteChip}
+                                placeholder="Search tags"
+                                />
+                            </div>
+                            <div className="buttonS">
+                                <button onClick={searchPost} className="btn btn-primary">
+                                search
+                                </button>
                             </div>
                             <Button onClick={searchPost}  variant="contained" color="primary">Search</Button>
 

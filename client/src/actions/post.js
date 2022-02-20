@@ -22,10 +22,9 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
     }
   };
 
-export const getPostsByCreator = (creatorid) => async (dispatch) => {
+export const getPostsByCreator = (creatorid, navigate) => async (dispatch) => {
   try {
       const { data: { data } }=await api.fetchPostsByCreatorid(creatorid);
-      console.log(data);
 
       dispatch({ type: FETCH_BY_SEARCH, payload: data});
   } catch (error) {

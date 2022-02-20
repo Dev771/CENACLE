@@ -141,13 +141,15 @@ const RegistrationForm = () => {
 
                         <form action='' className='sign-up-form' onSubmit={handleSubmit}>
                             <h2 className='title'>Registration</h2>
-                            <div className='input-feild'>
+                            <div className='name'>
+                            <div className='input-feild-a'>
                                 <label><FaClone /></label>
                                 <input type='text' required name='firstName' onChange={handleChange} value={formData.firstName} placeholder='First Name' className='' />
                             </div>
-                            <div className='input-feild'>
+                            <div className='input-feild-a'>
                                 <label><FaClone /></label>
                                 <input type='text' required name='lastName' placeholder='Last Name' value={formData.lastName} className='' onChange={handleChange} />
+                            </div>
                             </div>
                             <div className='input-feild'>
                                 <label><FaVoicemail /></label>
@@ -183,7 +185,8 @@ const RegistrationForm = () => {
                                 />
                                 {/* <GoogleBtn></GoogleBtn> */}
                                 <a href='sd' className='social-icons'>
-                                    <FaGooglePlus />
+                                    <FaGooglePlus
+                                     />
                                 </a>
                                 <a href='dsd' className='social-icons'>
                                     <FaLinkedin />

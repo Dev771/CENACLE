@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
-import { likePost ,deletePost} from '../../../actions/post';
+import { likePost ,deletePost , getPostsByCreator} from '../../../actions/post';
 import { Badge, Avatar } from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';

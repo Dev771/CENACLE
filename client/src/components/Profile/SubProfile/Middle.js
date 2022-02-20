@@ -9,7 +9,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import Post from '../../HomeBody/post/Post';
 
 const MainBody = () => {
-
+    const { creatorId } = useParams();
     const dispatch = useDispatch();
     const { creatorId } = useParams();
     const navigate = useNavigate();

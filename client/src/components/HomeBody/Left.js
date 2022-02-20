@@ -99,6 +99,12 @@ const Left = () => {
                 {/* <!--*****************Sidebar******************--> */}
                 <div className="sidebar">
                     <span href='/' className="menu-item active">
+<<<<<<< HEAD
+                        <span><i className="uil uil-home " ></i></span><h3>Home</h3>
+                    </span>
+                    <span href='/' className="menu-item " id="notifications">
+                        <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span><h3>Notification</h3>
+=======
                         <i className="uil uil-home"></i>
                     <h3>Home</h3>
                     </span>
@@ -107,6 +113,7 @@ const Left = () => {
                     <h3>Notification</h3>
                     </span>
                     
+>>>>>>> b1b505c343e71509dcf25403dfa181c8fa5333ca
                         {/* <!--     Notification Popup    --> */}
                         <div className="notifications-popup">
                         <div>
@@ -146,16 +153,38 @@ const Left = () => {
                             </div>
                         </div>
                         </div>
+<<<<<<< HEAD
+                    </span>
+=======
+>>>>>>> b1b505c343e71509dcf25403dfa181c8fa5333ca
                     {/* <!--****************End Notification Popup*********************--> */}
 
                     <span href='/' className="menu-item" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
                      <h3>Messages</h3>
                     </span>
                     
+<<<<<<< HEAD
+                    
+                    <span href='/' className="menu-item" id="messages-notification">
+                        <span><i className="uil uil-envelopes"><small className="notification-count">6</small></i></span><h3>Messages</h3>
+                    </span>
+                    {/* <button className="menu-item" id="theme" type="button" onClick={ () => {alert(1)}}>
+                        <span></span><i className="uil uil-palette"></i><h3>Themes</h3>
+                    </button> */}
+                    {/* <input type="button" value="theme" className="menu-item" id="theme" onClick={handleclick}>
+                    </input> */}
+                    <span className='menu-item' onClick={() => OpenTheme(true)}>
+                        <i className="uil uil-palette"></i><h3>Theme</h3>
+                    </span>
+                    <span className="menu-item" href='/'>
+                        <span></span><i className="uil uil-setting"></i><h3>Settings</h3>
+                    </span>
+=======
                     <span className='menu-item' onClick={() => OpenTheme(true)}>
                         <i className="uil uil-palette"></i><h3>Theme</h3>
                     </span>
                         <span className="menu-item" href='/'><i className="uil uil-setting"></i><h3>Settings</h3></span>
+>>>>>>> b1b505c343e71509dcf25403dfa181c8fa5333ca
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
                 <label htmlFor="create-post" className="btn btn-primary">Create Post</label>
