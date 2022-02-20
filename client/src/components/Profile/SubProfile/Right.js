@@ -1,10 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Cam from '@material-ui/icons/CameraAlt'
 import { Avatar } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getUser } from '../../../actions/User';
 
 const Right = () => {
 
-    const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch();
+    const User = useState(JSON.parse(localStorage.getItem('profile')));
+    const { creatorId } = useParams();
+
+    useEffect(() => {
+        dispatch(getUser(creatorId));
+    }, [creatorId, User, dispatch]);
 
     return (
         <div>

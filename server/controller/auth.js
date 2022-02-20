@@ -51,7 +51,7 @@ export const GoogleSignUp = async (req, res) => {
         const User =  await userSchema.findOne({ email });
 
         if(!User) {
-            const result = await userSchema.create({ email, password: '', name: givenName, imageURL: imageUrl });
+            const result = await userSchema.create({ email, password: '', name: givenName, imageURL: imageUrl, googleId: googleId });
 
             return res.status(200).json({ message: 'Success' });
         }
