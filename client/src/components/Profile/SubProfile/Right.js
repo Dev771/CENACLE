@@ -32,7 +32,7 @@ const Right = () => {
                     </div>
                     <div className='details'>
                         <label className='name'>
-                        {User?.result?.name}
+                        {Users?.User?.name}
                         </label>
                     
                     </div>
