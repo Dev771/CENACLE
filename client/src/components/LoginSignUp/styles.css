@@ -108,6 +108,38 @@ form.sign-up-form {
     color: #333;
 }
 
+
+.input-feild-a {
+    max-width: 380px;
+    width: 40%;
+    height: 55px;
+    background-color: #ddd9d9;
+    margin: 10px 0;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+}
+
+
+.input-feild-a label {
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    font-size: 1.1.rem;
+}
+
+.input-feild-a input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+
 .btn-2 input::placeholder {
     color: #aaa;
     font-weight: 400;
@@ -364,4 +396,10 @@ form.sign-up-form {
         bottom: 28%;
         left: 50%;
     }
+}
+
+.sign-up-form > .name {
+    display : flex;
+    justify-content: space-evenly;
+    gap: 5px;
 }

@@ -82,7 +82,7 @@ const Left = () => {
         <div>
             <div className="left">
                 {User ? (
-                    <a className="profile" onClick={() => navigate('/Profile')}>
+                    <a className="profile" onClick={() => navigate(`/Profile/${User?.result?._id || User?.result?.googleId}`)}>
                         <div className="profile-picture">
                             <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
                         </div>
@@ -98,10 +98,10 @@ const Left = () => {
                 )}
                 {/* <!--*****************Sidebar******************--> */}
                 <div className="sidebar">
-                    <span href='/' className="menu-item">
-                        <span><i className="uil uil-home" ></i></span><h3>Home</h3>
+                    <span href='/' className="menu-item active">
+                        <span><i className="uil uil-home " ></i></span><h3>Home</h3>
                     </span>
-                    <a href='/' className="menu-item " id="notifications">
+                    <span href='/' className="menu-item " id="notifications">
                         <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span><h3>Notification</h3>
                         {/* <!--     Notification Popup    --> */}
                         <div className="notifications-popup">
@@ -142,13 +142,13 @@ const Left = () => {
                             </div>
                         </div>
                         </div>
-                    </a>
+                    </span>
                     {/* <!--****************End Notification Popup*********************--> */}
                     
                     
-                    <a href='/' className="menu-item" id="messages-notification">
+                    <span href='/' className="menu-item" id="messages-notification">
                         <span><i className="uil uil-envelopes"><small className="notification-count">6</small></i></span><h3>Messages</h3>
-                    </a>
+                    </span>
                     {/* <button className="menu-item" id="theme" type="button" onClick={ () => {alert(1)}}>
                         <span></span><i className="uil uil-palette"></i><h3>Themes</h3>
                     </button> */}
@@ -157,9 +157,9 @@ const Left = () => {
                     <span className='menu-item' onClick={() => OpenTheme(true)}>
                         <i className="uil uil-palette"></i><h3>Theme</h3>
                     </span>
-                    <a className="menu-item" href='/'>
+                    <span className="menu-item" href='/'>
                         <span></span><i className="uil uil-setting"></i><h3>Settings</h3>
-                    </a>
+                    </span>
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
                 <label htmlFor="create-post" className="btn btn-primary">Create Post</label>

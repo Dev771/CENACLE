@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FaUser, FaVoicemail, FaLock, FaFacebook, FaGooglePlus, FaLinkedin, FaClone, } from 'react-icons/fa'
+import { FaUser, FaVoicemail, FaLock, FaFacebook, FaGooglePlus, FaLinkedin, FaClone, FaGoogle } from 'react-icons/fa'
 import { useDispatch } from 'react-redux';
 import './styles.css';
 import { useNavigate, useParams } from 'react-router-dom'
@@ -132,13 +132,15 @@ const RegistrationForm = () => {
 
                         <form action='' className='sign-up-form' onSubmit={handleSubmit}>
                             <h2 className='title'>Registration</h2>
-                            <div className='input-feild'>
+                            <div className='name'>
+                            <div className='input-feild-a'>
                                 <label><FaClone /></label>
                                 <input type='text' required name='firstName' onChange={handleChange} value={formData.firstName} placeholder='First Name' className='' />
                             </div>
-                            <div className='input-feild'>
+                            <div className='input-feild-a'>
                                 <label><FaClone /></label>
                                 <input type='text' required name='lastName' placeholder='Last Name' value={formData.lastName} className='' onChange={handleChange} />
+                            </div>
                             </div>
                             <div className='input-feild'>
                                 <label><FaVoicemail /></label>
@@ -163,8 +165,13 @@ const RegistrationForm = () => {
                                 <GoogleLogin 
                                     clientId='478668842778-9dp0645g3thr4oga6kfrldi9ktehvsce.apps.googleusercontent.com'
                                     render={(renderProps) => (
-                                        <Button className={classes.googleButton} color='secondary' onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant='contained'fullWidth>
-                                        </Button>
+                                        <label className='social-icons'>
+                                        <FaGoogle
+                                        onClick={renderProps.onClick} disabled={renderProps.disabled}
+                                        />
+                                        </label>
+                                        // <Button className={classes.googleButton} color='secondary' onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant='contained'fullWidth>
+                                        // </Button>
                                     )}
                                     onSuccess={googleSuccess}
                                     onFailure={googleFailure}
@@ -172,7 +179,8 @@ const RegistrationForm = () => {
                                 />
                                 {/* <GoogleBtn></GoogleBtn> */}
                                 <a href='sd' className='social-icons'>
-                                    <FaGooglePlus />
+                                    <FaGooglePlus
+                                     />
                                 </a>
                                 <a href='dsd' className='social-icons'>
                                     <FaLinkedin />

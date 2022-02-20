@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { getPosts , getPostsByCreator} from '../../../actions/post';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@material-ui/core';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 
 // import Loading from '../Loading/Loading';
 import Post from '../../HomeBody/post/Post';
 
 const MainBody = () => {
-
+    const { creatorId } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const posts = useSelector((state) => state.posts);
@@ -17,8 +17,7 @@ const MainBody = () => {
 
     useEffect(() => {
         console.log(User);
-        dispatch(getPostsByCreator(User?.result?._id || User?.result?.googleId));
-        // dispatch(getPosts());
+        dispatch(getPostsByCreator(creatorId, navigate));
     }, []);
 
     return (

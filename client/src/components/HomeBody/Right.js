@@ -6,7 +6,7 @@ import { useLocation ,useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
-import './styleS.css';
+// import './styleS.css';
 import { getPostsBySearch } from '../../actions/post';
 
 function useQuery() {
@@ -64,6 +64,7 @@ const Right = () => {
                             <div className="search-bar">
                                 <i className="uil uil-search"></i>
                                 <TextField 
+                                id="messages-search"
                                 name="search" 
                                 placeholder='Search posts'
                                 onKeyPress={handleKeyPress}
@@ -75,6 +76,7 @@ const Right = () => {
                             <div className="search-bar">
                                 <i className="uil uil-search"></i>
                                 <ChipInput
+                                id="messages-search"
                                 value={tags}
                                 onAdd={handleAddChip}
                                 onDelete={handleDeleteChip}
