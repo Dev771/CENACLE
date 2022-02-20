@@ -6,7 +6,7 @@ export const getUser = (creator) => async (dispatch) => {
 
         const { data } = await api.getUser(creator);
 
-        console.log(data);
+        dispatch({ type: "USER_PROFILE", payload: data})
     } catch (error) {
         console.log(error);
     }

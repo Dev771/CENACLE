@@ -2,15 +2,16 @@ import React, { useEffect, useState } from 'react'
 import Cam from '@material-ui/icons/CameraAlt'
 import { Avatar } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../../actions/User';
 
 const Right = () => {
 
     const dispatch = useDispatch();
+    const Users = useSelector((state) => state.Users);
     const User = useState(JSON.parse(localStorage.getItem('profile')));
     const { creatorId } = useParams();
-
+    
     useEffect(() => {
         dispatch(getUser(creatorId));
     }, [creatorId, User, dispatch]);
@@ -21,7 +22,7 @@ const Right = () => {
                 <div className='Profile'>
                     <div style={{ background: 'blue' }} >
                         <span>
-                           <Avatar style={{ width: '92px', height: '92px', border: '4px solid white', boxShadow : '0 0 5px black'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}
+                            <Avatar style={{ width: '92px', height: '92px', border: '4px solid white', boxShadow : '0 0 5px black'}} alt={Users?.User?.name} src={Users?.User?.imageURL} >{Users?.User?.name.charAt(0)}
                             </Avatar>
                             <button className='cameraButton'><Cam style={{ color: 'white' }} /></button>  
                             </span>
