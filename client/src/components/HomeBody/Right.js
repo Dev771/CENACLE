@@ -14,7 +14,6 @@ import { Autocomplete } from '@material-ui/lab';
 
 
 // import './styleS.css';
-import { getPostsBySearch } from '../../actions/post';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
