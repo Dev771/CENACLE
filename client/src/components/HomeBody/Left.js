@@ -8,7 +8,7 @@ const Left = () => {
 
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive ] = useState(false);
-    const [color , setColor ] = useState(User?.result?.theme?.color);
+    const [color , setColor ] = useState('color-1');
     const [ Font, setFont ] = useState('font-size-3');
     const [ bg, setBg ] = useState('bg-1');
     const navigate = useNavigate();
@@ -82,7 +82,7 @@ const Left = () => {
         <div>
             <div className="left">
                 {User ? (
-                    <a className="profile" onClick={() => navigate(`/Profile/${User?.result?._id || User?.result?.googleId}`)}>
+                    <span className="profile" onClick={() => navigate(`/Profile/${User?.result?._id || User?.result?.googleId}`)}>
                         <div className="profile-picture">
                             <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
                         </div>
@@ -92,17 +92,28 @@ const Left = () => {
                                 @{User?.result?.name}
                             </label>
                         </div>
-                    </a> 
+                    </span> 
                     ) : (
                     <></>
                 )}
                 {/* <!--*****************Sidebar******************--> */}
                 <div className="sidebar">
                     <span href='/' className="menu-item active">
+<<<<<<< HEAD
                         <span><i className="uil uil-home " ></i></span><h3>Home</h3>
                     </span>
                     <span href='/' className="menu-item " id="notifications">
                         <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span><h3>Notification</h3>
+=======
+                        <i className="uil uil-home"></i>
+                    <h3>Home</h3>
+                    </span>
+                    
+                    <span href='/' className="menu-item " id="notifications"><i className="uil uil-bell"><small className="notification-count">9+</small></i>
+                    <h3>Notification</h3>
+                    </span>
+                    
+>>>>>>> b1b505c343e71509dcf25403dfa181c8fa5333ca
                         {/* <!--     Notification Popup    --> */}
                         <div className="notifications-popup">
                         <div>
@@ -142,9 +153,17 @@ const Left = () => {
                             </div>
                         </div>
                         </div>
+<<<<<<< HEAD
                     </span>
+=======
+>>>>>>> b1b505c343e71509dcf25403dfa181c8fa5333ca
                     {/* <!--****************End Notification Popup*********************--> */}
+
+                    <span href='/' className="menu-item" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
+                     <h3>Messages</h3>
+                    </span>
                     
+<<<<<<< HEAD
                     
                     <span href='/' className="menu-item" id="messages-notification">
                         <span><i className="uil uil-envelopes"><small className="notification-count">6</small></i></span><h3>Messages</h3>
@@ -160,6 +179,12 @@ const Left = () => {
                     <span className="menu-item" href='/'>
                         <span></span><i className="uil uil-setting"></i><h3>Settings</h3>
                     </span>
+=======
+                    <span className='menu-item' onClick={() => OpenTheme(true)}>
+                        <i className="uil uil-palette"></i><h3>Theme</h3>
+                    </span>
+                        <span className="menu-item" href='/'><i className="uil uil-setting"></i><h3>Settings</h3></span>
+>>>>>>> b1b505c343e71509dcf25403dfa181c8fa5333ca
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
                 <label htmlFor="create-post" className="btn btn-primary">Create Post</label>

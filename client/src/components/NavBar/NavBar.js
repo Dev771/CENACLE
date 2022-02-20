@@ -2,6 +2,7 @@ import React, { useState , useEffect} from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { Badge, Avatar, Button } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
 
 import './styles.css';
 
@@ -12,17 +13,29 @@ const NavBar = () => {
     const dispatch = useDispatch();
     const [SignInUser, setSignInUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-    useEffect(() => {    
-        setSignInUser(JSON.parse(localStorage.getItem('profile')));
-    }, [location]);
-
+    // useEffect(() => {    
+    //     setSignInUser(JSON.parse(localStorage.getItem('profile')));
+    // }, [location]);
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
         navigate('/');
         window.location.reload();
         setSignInUser(null);
     }
+    
+    useEffect(() => {
+        const token = SignInUser?.token;
+        
+        if (token) {
+            const decodedToken = decode(token);
+            
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
+        
+        setSignInUser(JSON.parse(localStorage.getItem('profile')));
+    }, [location]);
 
+    
     return (
         <nav>
             <div className="container">

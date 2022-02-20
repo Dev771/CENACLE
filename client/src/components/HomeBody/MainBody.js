@@ -37,7 +37,7 @@ const MainBody = () => {
                     posts.slice().reverse().map((post) => (
                         <Post post={post} key={post._id} />
                     ))
-                ) }
+                )}
                     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
             </div>

@@ -1,9 +1,16 @@
-import React , {useState} from 'react'
-import Profile1 from '../../img/Profile1.jpg'
+import React , { useState, useEffect }from 'react';
+import Profile1 from '../../img/Profile1.jpg';
+import './search.css';
+import { Container, Grow, Grid , Paper , TextField , AppBar ,Button , Chip} from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input';
-import { TextField , Button } from '@material-ui/core';
-import { useLocation ,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+// import useStyles from './styles';
 import { useDispatch } from 'react-redux';
+import { getPosts ,  getPostsBySearch } from '../../actions/post';
+// import Chip from '@mui/material/Chip';
+// import TextField from '@mui/material/TextField';
+// import Autocomplete from '@mui/material/Autocomplete';
+import { Autocomplete } from '@material-ui/lab';
 
 
 // import './styleS.css';
@@ -15,15 +22,16 @@ function useQuery() {
 
 const Right = () => {
 
+    // const classes = useStyles();
+    const dispatch = useDispatch();
+    const [currentId, setcurrentId] = useState(0);
+    const query = useQuery();
+    const page = query.get('page') || 1;
+    const history = useNavigate();
+    const searchQuery = query.get('searchQuery');
+
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
-    const [active, setactive] = useState(true);
-    const navigate = useNavigate();
-    const query = useQuery();
-    const searchQuery = query.get('searchQuery');
-    const dispatch = useDispatch();
-    
-
 
 
     const handleKeyPress = (e) => {
@@ -31,36 +39,43 @@ const Right = () => {
           searchPost();
         }
       };
-
+      
     const searchPost = () => {
     if (search.trim() || tags) {
         dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
-        navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+        history(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
     } else {
-        navigate('/');
+        history('/');
     }
     };
 
+      const handleAddChip = (tag) => setTags([...tags, tag]);
 
-    const handleAddChip = (tag) => setTags([...tags, tag]);
-
-    const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
-
-
+      const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
     return (
         <div>
             <div className="right">
-                        <div className="search1">
+                       <div className="search1">
                                 <div className="headings">
-                                    <h4>Search</h4><i className="uil uil-edit"></i>
+                                    <h4>search</h4><i className="uil uil-edit"></i>
                                 </div>
                             
                                 {/* <!--------------------MESSAGES CATEGORY-------- --> */}
                             <div className="category">
-                                   <h6 className={active ? 'active' : '' }><input type="button"  value="By Posts"  onClick={() => setactive(!active)} style={{background : "transparent"}}/> </h6>
-                                   <h6 className={active ? '' : 'active' }><input type="button"  value="By Tags"  onClick={() => setactive(!active)} style={{background : "transparent"}}/> </h6>
+                                    <h6 className="active" type="button">By Posts</h6>
+                                    <h6 >By tags</h6>
+
                             </div>
-                            {/* <!----------------SEARCH BAR-----------------> */}
+                             {/* <TextField 
+                            name="search" 
+                            variant="outlined" 
+                            label="Search Memories"
+                            onKeyPress={'handleKeyPress'}
+                            fullWidth 
+                            value={search} 
+                            onChange={(e) => setSearch(e.target.value)}
+                            />  */}
+                                {/* <!----------------SEARCH BAR-----------------> */}
                             <div className="search-bar">
                                 <i className="uil uil-search"></i>
                                 <TextField 
@@ -88,10 +103,13 @@ const Right = () => {
                                 search
                                 </button>
                             </div>
+                            <Button onClick={searchPost}  variant="contained" color="primary">Search</Button>
 
-
+                            
                         </div>
+
                                 {/* <!----------------------------END OF MESSAGES---------------> */}
+                                
 
                                 {/* <!----------------------------FRIEND REQUESTS---------------> */}
                                 <div className="friend-requests">
@@ -103,14 +121,14 @@ const Right = () => {
                                                 <img src={Profile1} />
                                             </div>
                                             <div>
-                                                <h5>Coming Soon!!</h5>
+                                                <h5>Coming Soon</h5>
                                                 <p className="text-muted">
                                                     8 mutual friends
                                                 </p>
                                             </div>
                                         </div>
                                         <div className="action">
-                                            <button className="btn btn-Search">
+                                            <button className="btn btn-primary">
                                                 Accept
                                             </button>
                                             <button className="btn">
@@ -139,7 +157,7 @@ const Right = () => {
                             
                                 {/* <!-----------------------------------MESSAGE--------------> */}
                                 <div className="message">
-                                    Coming Soon!!
+                                Coming Soon    
                                 </div>
                         </div>
                         

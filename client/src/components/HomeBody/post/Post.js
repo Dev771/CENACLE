@@ -53,7 +53,7 @@ const Post = ({post}) => {
                             <Avatar style={{ width: '40px', height: '40px'}} alt={post.creator} src={post?.CreatorImage} >{post.creator.charAt(0)}</Avatar>
                         </div>
                         <div className="ingo">
-                            <h3>{post.tags_name}/{post.tags_type} || <label onClick={() => navigate(`/Profile/${post.creatorId}`)}>{post.creator}</label></h3>
+                            <h3>{post.tags_name}/{post.tags_type} || <label onClick={() => navigate(`/Profile/${post?.creatorId}`)}>{post.creator}</label></h3>
                             <small>{post.Date_Of_Creation}</small>
                         </div>
                     </div>

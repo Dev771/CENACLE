@@ -121,9 +121,18 @@ const RegistrationForm = () => {
                                 {/*  <div className="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                                 */}
                                 {/* <GoogleBtn></GoogleBtn> */}
-                                <a href='sd' className='social-icons'>
-                                    <FaGooglePlus />
-                                </a>
+                                <GoogleLogin 
+                                    clientId='478668842778-9dp0645g3thr4oga6kfrldi9ktehvsce.apps.googleusercontent.com'
+                                    render={(renderProps) => (
+
+                                        <span className='social-icons'>
+                                        <FaGoogle onClick={renderProps.onClick} disabled={renderProps.disabled} />
+                                        </span>
+                                    )}
+                                    onSuccess={googleSuccess}
+                                    onFailure={googleFailure}
+                                    cookiePolicy='single_host_origin'
+                                />
                                 <a href='dsd' className='social-icons'>
                                     <FaLinkedin />
                                 </a>
@@ -165,13 +174,10 @@ const RegistrationForm = () => {
                                 <GoogleLogin 
                                     clientId='478668842778-9dp0645g3thr4oga6kfrldi9ktehvsce.apps.googleusercontent.com'
                                     render={(renderProps) => (
-                                        <label className='social-icons'>
-                                        <FaGoogle
-                                        onClick={renderProps.onClick} disabled={renderProps.disabled}
-                                        />
-                                        </label>
-                                        // <Button className={classes.googleButton} color='secondary' onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant='contained'fullWidth>
-                                        // </Button>
+
+                                        <span className='social-icons'>
+                                        <FaGoogle onClick={renderProps.onClick} disabled={renderProps.disabled} />
+                                        </span>
                                     )}
                                     onSuccess={googleSuccess}
                                     onFailure={googleFailure}

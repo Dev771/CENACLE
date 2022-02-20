@@ -22,6 +22,7 @@ const UserSchema = mongoose.Schema({
     },
     imageURL: String,
     id: String,
+    googleId: String,
     theme: {
         color: {
             type: String,

@@ -23,3 +23,5 @@ export const getTag = () => API.get('/tags');
 export const SignIn = (formData) => API.post('/auth/signIn', formData);
 export const SignUp = (formData) => API.post('/auth/signUp', formData);
 export const GoogleSignUp = (formData) => API.post('/auth/GoogleAuth', formData);
+
+export const getUser = (creator) => API.get(`/user/${creator}`);

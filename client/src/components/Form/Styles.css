@@ -229,23 +229,27 @@
     border-top-right-radius: var(--card-border-radius);
 }
 
-
-@media screen and (max-width:1200px){
+@media screen and (max-width : 1200px)
+{
 
 }
 
 @media screen and (max-width : 992px){
+
     .Rules{
         display: none !important;
     }
+    form{
+    padding-left: 50px;
+    }
+}
 
+@media screen and (max-width : 630px)
+{
 
 }
 
-@media screen and (max-width: 630px){
-
-}
-
-@media screen and (max-width : 480px){
+@media screen and (max-width : 480px)
+{
 
 }
