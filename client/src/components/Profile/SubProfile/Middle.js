@@ -11,7 +11,6 @@ import Post from '../../HomeBody/post/Post';
 const MainBody = () => {
     const { creatorId } = useParams();
     const dispatch = useDispatch();
-    const { creatorId } = useParams();
     const navigate = useNavigate();
     const posts = useSelector((state) => state.posts);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));

@@ -23,6 +23,10 @@ const UserSchema = mongoose.Schema({
     imageURL: String,
     id: String,
     googleId: String,
+    Total_Post_Like: {
+        type: Number,
+        default: 0,
+    },
     theme: {
         color: {
             type: String,
