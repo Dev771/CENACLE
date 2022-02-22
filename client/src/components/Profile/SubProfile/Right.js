@@ -4,6 +4,7 @@ import { Avatar } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../../actions/User';
+import './right.css';
 
 const Right = () => {
 
@@ -20,7 +21,7 @@ const Right = () => {
         <div>
             <div class="right">
                 <div className='Profile'>
-                    <div style={{ background: 'blue' }} >
+                    <div className='Rick' >
                         <span>
                             <Avatar style={{ width: '92px', height: '92px', border: '4px solid white', boxShadow : '0 0 5px black'}} alt={Users?.User?.name} src={Users?.User?.imageURL} >{Users?.User?.name.charAt(0)}
                             </Avatar>
@@ -34,8 +35,25 @@ const Right = () => {
                         <label className='name'>
                         {Users?.User?.name}
                         </label>
+                        <div className='Profile_Grid'>
+                    <label className='User_likes'>
+                        FOLLOW ME:
+                        </label>
+                        <label className='User_likes'>
+                        POSTS LIKES:
+                        </label>
+                        <label className='User_likes'>
+                        NIGGA MARDA
+                        </label>
+                        <label className='User_likes'>
+                        RICK ROLL
+                        </label>
+
+
+                    </div>
                     
                     </div>
+                    
                 </div>
             </div> 
         </div>
