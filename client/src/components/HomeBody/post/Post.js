@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff } from '@material-ui/icons';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { likePost ,deletePost , getPostsByCreator} from '../../../actions/post';
 import { Badge, Avatar } from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
+import { getUser } from '../../../actions/User';
 
 import './styles.css';
 
@@ -16,6 +17,7 @@ const Post = ({post}) => {
     const [isDisliked, setIsDisLiked] = useState(false);
     const [muted, setMuted] = useState(true);
     const user = JSON.parse(localStorage.getItem('profile'));
+    const Users = useSelector((state) => state.Users);
 
     const isLike = (state) => {
         if(state === 'liked') {
@@ -29,6 +31,8 @@ const Post = ({post}) => {
         setMuted(!muted);
     }
 
+    
+    
     useEffect(() => {
         if(post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id))) {
             setIsDisLiked(false);
@@ -40,7 +44,8 @@ const Post = ({post}) => {
             setIsDisLiked(false);
             setisLiked(false);
         }
-    }, [post.dislikes, post.likes, user?.result?._id, user?.result?.googleId]);
+        dispatch(getUser(post?.creatorId));
+    }, [dispatch, post?.creatorId, post.dislikes, post.likes, user?.result?._id, user?.result?.googleId]);
 
 
     return (
@@ -50,7 +55,8 @@ const Post = ({post}) => {
                 <div className="head">
                     <div className="user">
                         <div className="profile-picture">
-                            <Avatar style={{ width: '40px', height: '40px'}} alt={post.creator} src={post?.CreatorImage} >{post.creator.charAt(0)}</Avatar>
+                            <Avatar style={{ width: '92px', height: '92px', border: '4px solid white', boxShadow : '0 0 5px black'}} alt={Users?.User?.name} src={Users?.User?.imageURL} >{Users?.User?.name.charAt(0)}
+                            </Avatar>
                         </div>
                         <div className="ingo">
                             <h3>{post.tags_name}/{post.tags_type} || <label onClick={() => navigate(`/Profile/${post?.creatorId}`)}>{post.creator}</label></h3>

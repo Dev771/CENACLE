@@ -36,6 +36,14 @@ const UserSchema = mongoose.Schema({
             type: String,
             default: 'bg-2',
         } 
+    },
+    likes: {
+        type: [String],
+        default: [],
+    },
+    dislikes: {
+        type: [String],
+        default: [],
     }
 });
 

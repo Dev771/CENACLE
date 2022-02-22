@@ -33,27 +33,23 @@ const Right = () => {
                     </div>
                     <div className='details'>
                         <label className='name'>
-                        {Users?.User?.name}
+                            {Users?.User?.name}
                         </label>
                         <div className='Profile_Grid'>
-                    <label className='User_likes'>
-                        FOLLOW ME:
-                        </label>
-                        <label className='User_likes'>
-                        POSTS LIKES:
-                        </label>
-                        <label className='User_likes'>
-                        NIGGA MARDA
-                        </label>
-                        <label className='User_likes'>
-                        RICK ROLL
-                        </label>
-
-
-                    </div>
-                    
-                    </div>
-                    
+                            <label className='User_likes'>
+                                FOLLOW ME:
+                            </label>
+                            <label className='User_likes'>
+                                POSTS LIKES:
+                            </label>
+                            <label className='User_likes'>
+                                NIGGA MARDA
+                            </label>
+                            <label className='User_likes'>
+                                RICK ROLL
+                            </label>
+                        </div>       
+                    </div>       
                 </div>
             </div> 
         </div>

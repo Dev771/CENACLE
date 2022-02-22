@@ -8,8 +8,12 @@ import { Autocomplete } from '@material-ui/lab';
 import { getTags } from '../../actions/Tag';
 import { createPost } from '../../actions/post';
 import { useNavigate } from 'react-router-dom';
+import { useDropzone } from 'react-dropzone';
+// import Draganddrop from './DragAndDrop/Draganddrop';
 import './Styles.css';
+import './DragAndDrop/styles.css';
 import useStyles from './Styles';
+import ImageUpload from './DragAndDrop/Draganddrop';
 
 const Form = () => {
     const [activebutton, setactiveButton] = useState('Post');
@@ -19,6 +23,36 @@ const Form = () => {
     const navigate = useNavigate();
     const tags = useSelector((state) => state.tags);
     const [postData, setPostData] = useState({title: '', LocImage: '', tags_name: '', tags_type: '', creator: '', creatorEmail: '', post_Type: activebutton, post_Texts: '' })
+
+    // const {
+    //     getRootProps,
+    //     getInputProps,
+    //     isDragActive,
+    //     isDragAccept,
+    //     isDragReject
+    //   } = useDropzone({
+    //     accept: 'image/*,video/*'
+    //   });
+
+    const [files, setFiles] = useState([]);
+
+    const { getRootProps, getInputProps } = useDropzone({
+        
+        accept: 'image/*',
+        onDrop: (acceptedFiles) => {
+            setFiles(
+                acceptedFiles.map((file) => Object.assign(file, {
+                    preview: URL.createObjectURL(file)
+                }))
+            )
+        }
+    });
+
+    const images = files.map((file) => (
+        <div key={file.name}>
+            <img style={{ maxHeight: '300px'}} src={file.preview} alt={file.name} />
+        </div>
+    ))
 
     useEffect(() => {
         dispatch(getTags());
@@ -31,7 +65,7 @@ const Form = () => {
     const handleSubmit = (e) =>  {
         e.preventDefault();
         
-        dispatch(createPost({...postData, creator: user?.result?.name, creatorEmail: user?.result?.email, post_Type: ''}, navigate));
+        dispatch(createPost({...postData, LocImage: files[0], creator: user?.result?.name, creatorEmail: user?.result?.email, post_Type: ''}, navigate));
         clear();
     }
 
@@ -40,7 +74,8 @@ const Form = () => {
     }
 
     const handleChangeImage = (e) => {
-        setPostData({ ...postData, LocImage: e.target.files[0]});
+        console.log(e.target);
+        // setPostData({ ...postData, LocImage: e.target.files[0]});
     }
 
     return (
@@ -62,7 +97,7 @@ const Form = () => {
                         )}
                         onChange={(e) => setPostData({...postData, tagname: e.target.value})}
                         getOptionLabel={option => option.name}
-                        style={{ width: '130px', border: '1px solid #fff2', background: 'white', borderRadius: '5px' , borderRadius: '5px' }}
+                        style={{ width: '130px', border: '1px solid #fff2', background: 'white', borderRadius: '5px' }}
                     />
                     <Autocomplete
                         id="Tags"
@@ -96,7 +131,39 @@ const Form = () => {
                             ) : activebutton === 'Images' ? (
                                 <>
                                     <input name='title' type='text' required placeholder='Enter Title' onChange={handleChange} />
-                                    <input type='file' onChange={handleChangeImage} name='LocImage' accept="image/*, video/*" />
+                                    {/* <input type='file' onChange={handleChangeImage} name='LocImage' accept="image/*, video/*" /> */}
+                                    {/* <div className="container">
+                                        <div {...getRootProps({className: "dropzone"})}>
+                                            <input type='file' {...getInputProps()} name="LocImage" onChange={handleChangeImage} />
+                                            {isDragAccept && (<p>All files will be accepted</p>)}
+                                            {isDragReject && (<p>Some files will be rejected</p>)}
+                                            {!isDragActive && (<p>Drop some files here ...</p>)}
+                                        </div>
+                                    </div> */}
+                                    <div style={{ position: 'relative'}}>
+                                        <div {...getRootProps()} className='DragAndDrop'>
+                                            <input {...getInputProps()} />
+                                            <p>{!files.length ? (
+                                                <label>Here</label>
+                                            ) : (
+                                                <div>{images}</div>
+                                            )}</p>
+                                        </div>
+                                    </div>
+
+
+
+                                    {/* <ImageUpload addFile={addFile} files={files} /> */}
+
+                                    {/* <div class="drag-area">
+                                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                                        <header>Drag & Drop to Upload File</header>
+                                        <span>OR</span>
+                                        <button type='button'>Browse File</button>
+                                        <input type="file" hidden />
+                                    </div> */}
+
+                                    {/* <Draganddrop /> */}
                                     {/* <FileBase name='LocImage' type='file' multiple={false} onDone={({base64}) => setPostData({ ...postData, LocImage: base64 })}  /> */}
                                 </>
                             ) : activebutton === 'Link' ? (

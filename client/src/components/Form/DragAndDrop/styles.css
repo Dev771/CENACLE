@@ -1,0 +1,21 @@
+.DragAndDrop {
+  min-height: 150px;  
+  border: 2px dotted #666;
+  width: 100%;
+  color: #999;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-light);
+}
+
+.dropzone {
+  width: 100%;
+  height: 150px;
+}
+
+.DragDropImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
