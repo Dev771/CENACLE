@@ -155,3 +155,17 @@
     color: var(--color-light);
 } 
 
+@media screen and (max-width: 992px){
+
+    .customize-theme .card{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 630px){
+    
+}
+
+@media screen and (max-width: 480px){
+    
+}

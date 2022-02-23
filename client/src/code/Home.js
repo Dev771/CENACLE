@@ -2,6 +2,7 @@ import React from 'react'
 
 import BodyLeft from '../components/HomeBody/Left';
 import MainBody from '../components/HomeBody/MainBody';
+import Mobile_Navbar from '../components/HomeBody/Mobile_Navbar';
 import BodyRight from '../components/HomeBody/Right';
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
                     {/* <!--*****************Right******************--> */}
                     <BodyRight />
                     {/* <!---######################END OF RIGHT#######################--> */}
+                    <Mobile_Navbar/>
                 </div>  
             </main> 
             {/* <!---########      ###############THEME CUSTOMIZATION###############--> */}

@@ -21,8 +21,8 @@
     --search-padding:0.6rem 1rem;
     --card-padding:1rem;
 
-    --sticky-top-left:5.4rem;
-    --sticky-top-right:-18rem;
+    --sticky-top-left: 5.4rem;
+    --sticky-top-right: 5.4rem;
 }
 *, 
 *::before,
@@ -144,7 +144,7 @@ main .container{
 main .container .left{
     height: max-content;
     position: sticky;
-    /* top: var(--sticky-top-left); */
+    top: var(--sticky-top-left);
 
 }
 main .container .left .profile{
@@ -758,11 +758,17 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     nav .search-bar {
         display: none;
     }
+    nav .create{
+        display: none;
+    }
 }
 
 @media screen and (max-width : 480px){
     .left {
         display: none;
+        /* bottom: 0;
+        left: 0; */
+
     }
 
     main .container {

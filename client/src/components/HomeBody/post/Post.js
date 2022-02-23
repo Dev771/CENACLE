@@ -54,10 +54,10 @@ const Post = ({post}) => {
             <div className="feed">
                 <div className="head">
                     <div className="user">
-                        <div className="profile-picture">
-                            <Avatar style={{ width: '92px', height: '92px', border: '4px solid white', boxShadow : '0 0 5px black'}} alt={Users?.User?.name} src={Users?.User?.imageURL} >{Users?.User?.name.charAt(0)}
+                        
+                            <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={Users?.User?.name} src={Users?.User?.imageURL} >{Users?.User?.name.charAt(0)}
                             </Avatar>
-                        </div>
+                        
                         <div className="ingo">
                             <h3>{post.tags_name}/{post.tags_type} || <label onClick={() => navigate(`/Profile/${post?.creatorId}`)}>{post.creator}</label></h3>
                             <small>{post.Date_Of_Creation}</small>

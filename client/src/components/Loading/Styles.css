@@ -4,16 +4,19 @@ bodY {
     box-sizing: border-box;
   }
   .center {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000;
+    background: var(--color-white);
+    margin-top: 10px;
+    border-radius: var(--card-border-radius);
+
   }
   .wave {
     width: 5px;
     height: 100px;
-    background: linear-gradient(45deg, cyan, #fff);
+    background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
     margin: 10px;
     animation: wave 1s linear infinite;
     border-radius: 20px;

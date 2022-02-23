@@ -39,8 +39,10 @@ const NavBar = () => {
     return (
         <nav>
             <div className="container">
-                <h2 className="logo" onClick={() => navigate("/")}>
+                <h2>
+                <Link className="logo" to={'/'}>
                     CENACLE
+                </Link>
                 </h2>
                 <div className="search-bar">
                     <i className="uil uil-search"></i>

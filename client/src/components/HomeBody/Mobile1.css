@@ -1,0 +1,46 @@
+  
+  nav1{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #333;
+    padding: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 480px;
+  }
+  
+  .nav1-item{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .nav1-item span{
+    width: 0;
+    overflow: hidden;
+  }
+  
+  .nav1-item:focus{
+    text-decoration: none;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: .2s;
+  }
+  
+  .nav1-item:focus span{
+    width: 100%;
+    margin-left: 8px;
+    transition: .2s;
+  }
+  
+  *:focus{
+    outline: none;
+    border: none;
+  }

@@ -113,9 +113,9 @@ const Right = () => {
                                 
 
                                 {/* <!----------------------------FRIEND REQUESTS---------------> */}
-                                <div className="friend-requests">
+                                {/* <div className="friend-requests">
                                     <h4>Requests</h4>
-                                    {/* <!--Request  1--> */}
+                                    
                                     <div className="requests">
                                         <div className="info">
                                             <div className="profile-picture">
@@ -144,23 +144,23 @@ const Right = () => {
                                 </div>
                             
                                 {/* <!----------------SEARCH BAR-----------------> */}
-                            <div className="search-bar">
+                            {/* <div className="search-bar">
                                     <i className="uil uil-search"></i>
                                     <input type="search" placeholder="search messages" id="messages-search" />
-                            </div>
+                            </div> */}
                             
                                 {/* <!--------------------MESSAGES CATEGORY-------- --> */}
-                            <div className="category">
+                            {/* <div className="category">
                                     <h6 className="active">Primary</h6>
                                     <h6 >General</h6>
                                     <h6 className="message-requests">Request(7)</h6>
-                            </div>
+                            </div> */}
                             
                                 {/* <!-----------------------------------MESSAGE--------------> */}
-                                <div className="message">
+                                {/* <div className="message">
                                 Coming Soon    
-                                </div>
-                        </div>
+                                </div> 
+                                </div> */}
                         
                     </div> 
         </div>
