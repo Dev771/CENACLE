@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff } from '@material-ui/icons';
+import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff, Add } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { likePost ,deletePost , getPostsByCreator} from '../../../actions/post';
-import { Badge, Avatar } from '@material-ui/core';
+import { Badge, Avatar, Button } from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../../actions/User';
@@ -102,19 +102,16 @@ const Post = ({post}) => {
                     <span><i className="uil uil-bookmark-full"></i></span>
                     </div>            
                 </div>
-            
-                <div className="liked-by">
-                    <span><img alt='' src="img/image15.jpg" /></span>
-                    <span><img alt='' src="img/image13.jpg" /></span>
-                    <span><img alt='' src="img/image4.jpg" /></span>
-                    <p>Liked by <b>Ernest Achiever</b> and <b>2,323 others </b></p>
-                </div>
 
                 <div className="caption">
                     <p><b>Lana Rose</b> Lorem ipsum dolor sit quisqum eius.
                     <span className="harsh-tag">#lifestyle</span></p>
                 </div>
                 <div className="comments text-muted">View all 277 comments</div>
+                <div className="search-bar" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
+                    <input type="Text" placeholder="Add a Comment" />
+                    <button style={{ float: 'right'}}><i className='uil uil-plus'></i></button>
+                </div>
             </div>
             {/* <!--***************************END OF FEED 1***********************************--> */}
         </div>

@@ -35,3 +35,26 @@
 .interaction-buttons > .Vote > * {
     cursor: pointer;
 }
+
+.search-bar input[type="Text"]{
+    background: transparent;
+    width: 100%;
+    /* margin-left: 1rem; */
+    font-size: 0.9rem;
+    color: var(--color-dark);
+}
+
+.search-bar > button {
+    padding: .5em 1em;
+    background-color: var(--color-primary);
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 1.1em;
+    color: white;
+}
+
+.search-bar > button > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

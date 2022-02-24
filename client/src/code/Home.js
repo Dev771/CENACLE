@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react'
 
 import BodyLeft from '../components/HomeBody/Left';
@@ -26,7 +27,7 @@ const Home = () => {
                     {/* <!--*****************Right******************--> */}
                     <BodyRight />
                     {/* <!---######################END OF RIGHT#######################--> */}
-                    <Mobile_Navbar className="Mob_nav" />
+                    <Mobile_Navbar />
                 </div>  
             </main> 
             {/* <!---########      ###############THEME CUSTOMIZATION###############--> */}
