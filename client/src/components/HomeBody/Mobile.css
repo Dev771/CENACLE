@@ -4,7 +4,7 @@
     z-index: 10;
     background: var(--color-light);
     min-height: 60px;
-    display: flex;
+    display: none;
     justify-content: center;
     width: 96%;
     align-items: center;
@@ -32,7 +32,7 @@
     margin: 0;
 }
 
-.active {
+.active1 {
     animation: 2s rotate ease-in-out;
 }
 
@@ -56,7 +56,7 @@
     height: 40px;
     margin: 0;
 }
-.BottomNav > ul > li > .active > i{
+.BottomNav > ul > li > .active1 > i{
     background: var(--color-primary);
     border-radius: 50%;
     padding: .1em;

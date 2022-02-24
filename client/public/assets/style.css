@@ -768,11 +768,17 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
         display: none;
         /* bottom: 0;
         left: 0; */
-
     }
 
     main .container {
         grid-template-columns: 0 auto 0;
         gap: 0;
+    }
+
+    .BottomNav{
+    display: flex !important;
+    }
+    .middle{
+        margin-bottom: 80px ;
     }
 }

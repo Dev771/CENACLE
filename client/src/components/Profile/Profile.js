@@ -3,6 +3,7 @@ import Theme from '../Theme/Theme';
 import BodyLeft from './SubProfile/left';
 import MainBody from './SubProfile/Middle';
 import BodyRight from './SubProfile/Right';
+import Mobile_Navbar from '../HomeBody/Mobile_Navbar';
 
 import './Styles.css';
 
@@ -22,6 +23,7 @@ const Profile = () => {
                     {/* <!--*****************Right******************--> */}
                     <BodyRight />
                     {/* <!---######################END OF RIGHT#######################--> */}
+                    <Mobile_Navbar className="Mob_nav" />
                 </div>  
             </main> 
             {/* <!---########      ###############THEME CUSTOMIZATION###############--> */}

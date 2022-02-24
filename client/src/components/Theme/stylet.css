@@ -166,6 +166,39 @@
     
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 550px){
+
+    .font-size{
+        display: none;
+    }
+
+    .customize-theme .choose-bg > div > h5{
+        display: none;
+        
+    }
+    .customize-theme .choose-bg > div{
+        background-color: transparent !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .customize-theme .choose-bg > .bg-1  > span {
+        margin: 0;
+        background: white;
+        color: black;
+    }
+    .customize-theme .choose-bg > .bg-2  > span {
+        margin: 0;
+        background: hsl(252,30%,17%);
+        color:white;
+    }
+    .customize-theme .choose-bg > .bg-3  > span {
+        margin: 0;
+        background: hsl(252,30%,10%);
+        color: white;
+    }
+
     
 }

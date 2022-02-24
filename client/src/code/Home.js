@@ -26,7 +26,7 @@ const Home = () => {
                     {/* <!--*****************Right******************--> */}
                     <BodyRight />
                     {/* <!---######################END OF RIGHT#######################--> */}
-                    <Mobile_Navbar/>
+                    <Mobile_Navbar className="Mob_nav" />
                 </div>  
             </main> 
             {/* <!---########      ###############THEME CUSTOMIZATION###############--> */}
