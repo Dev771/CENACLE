@@ -33,6 +33,7 @@ const NavBar = () => {
         }
         
         setSignInUser(JSON.parse(localStorage.getItem('profile')));
+        // window.location.reload();
     }, [location]);
 
     

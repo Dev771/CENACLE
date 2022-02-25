@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React , { useEffect } from 'react'; 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './code/Home';
 import NavBar from './components/NavBar/NavBar';
@@ -10,18 +10,19 @@ import Error from './components/Error/Error';
 
 const App = () => {
 
-    const User = JSON.parse(localStorage.getItem('profile'));
+    let User = JSON.parse(localStorage.getItem('profile'));
+
+    useEffect(() => {
+        User = JSON.parse(localStorage.getItem('profile'))
+    }, [User]);
+
 
     return (
         <BrowserRouter>
-        <NavBar />
+            <NavBar />
             <Routes>
                 <Route path='/' exact element={<Home />} />
-                {!User ?  (
-                    <Route path='/Form' exact element={<Navigate to='/' />} />
-                ) : (
-                    <Route path='/Form' exact element={<Form />} />
-                )}
+                <Route path='/Form' exact element={<Form />} />
                 <Route path='/Profile/:creatorId' exact element={<Profile />} />
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />

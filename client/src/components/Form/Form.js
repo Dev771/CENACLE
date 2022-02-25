@@ -56,6 +56,9 @@ const Form = () => {
 
     useEffect(() => {
         dispatch(getTags());
+        if(!user) {
+            navigate('/')
+        }
     }, [dispatch]);
     
     const clear = () => {
@@ -93,7 +96,7 @@ const Form = () => {
                         options={tags}
                         onSelect={(e) => setPostData({...postData, tags_name: e.target.value})}
                         renderInput={params => (
-                            <TextField required className={classes.textfield}  {...params} label="Post Type" variant="outlined" />
+                            <TextField required className={classes.textfield} {...params} label="Post Type" variant="outlined" />
                         )}
                         onChange={(e) => setPostData({...postData, tagname: e.target.value})}
                         getOptionLabel={option => option.name}
