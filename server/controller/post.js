@@ -7,12 +7,25 @@ import util from 'util';
 const unlink = util.promisify(fs.unlink);
 
 import { upload, getFile } from '../aws/s3.js';
+import userSchema from '../model/userSchema.js';
 
 export const getPost = (req, res) => {
     const Key = req.params.key;
     const readStream = getFile(Key);
 
     readStream.pipe(res);
+}
+
+export const fetchPost = async (req, res) => { 
+    const { id } = req.params;
+
+    try {
+        const post = await postSchema.findById(id);
+        
+        res.status(200).json(post);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
 }
 
 export const getPosts = async (req, res) => {
@@ -84,16 +97,46 @@ export const likePost = async (req, res) => {
 
         const Post = await postSchema.findById(id);
 
+        // if(!mongoose.Types.ObjectId.isValid(Post.creatorId)) {
+        //     const User = await userSchema.findOne({ googleId: Post.creatorId });
+        //     await userSchema.findOneAndUpdate({ googleId: Post.creatorId }, {Total_Post_Like: User.Total_Post_Like+1});
+        // } else {
+        //     const User = await userSchema.findById(Post.creatorId);
+        //     await userSchema.findByIdAndUpdate( Post.creatorId, { Total_Post_Like: User.Total_Post_Like+1 });
+        // }
+
+
         const likeindex = Post.likes.findIndex((id) => id === String(req.userId));
         const dislikeindex = Post.dislikes.findIndex((id) => id === String(req.userId));
 
         if(likeindex === -1 && dislikeindex === -1) {
             Post.likes.push(req.userId);
+            if(!mongoose.Types.ObjectId.isValid(Post.creatorId)) {
+                const User = await userSchema.findOne({ googleId: Post.creatorId });
+                await userSchema.findOneAndUpdate({ googleId: Post.creatorId }, {Total_Post_Like: User.Total_Post_Like+1});
+            } else {
+                const User = await userSchema.findById(Post.creatorId);
+                await userSchema.findByIdAndUpdate( Post.creatorId, { Total_Post_Like: User.Total_Post_Like+1 });
+            }
         } else if(likeindex === -1 && dislikeindex !== -1) {
             Post.likes.push(req.userId);
             Post.dislikes = Post.dislikes.filter((id) => id !== String(req.userId));
+            if(!mongoose.Types.ObjectId.isValid(Post.creatorId)) {
+                const User = await userSchema.findOne({ googleId: Post.creatorId });
+                await userSchema.findOneAndUpdate({ googleId: Post.creatorId }, {Total_Post_Like: User.Total_Post_Like+2});
+            } else {
+                const User = await userSchema.findById(Post.creatorId);
+                await userSchema.findByIdAndUpdate( Post.creatorId, { Total_Post_Like: User.Total_Post_Like+2 });
+            }
         } else {
             Post.likes = Post.likes.filter((id) => id !== String(req.userId));
+            if(!mongoose.Types.ObjectId.isValid(Post.creatorId)) {
+                const User = await userSchema.findOne({ googleId: Post.creatorId });
+                await userSchema.findOneAndUpdate({ googleId: Post.creatorId }, {Total_Post_Like: User.Total_Post_Like-1});
+            } else {
+                const User = await userSchema.findById(Post.creatorId);
+                await userSchema.findByIdAndUpdate( Post.creatorId, { Total_Post_Like: User.Total_Post_Like-1 });
+            }
         }
 
         const updatedPost = await postSchema.findByIdAndUpdate(id, Post, { new: true });
@@ -119,11 +162,32 @@ export const dislikePost = async (req, res) => {
 
         if(dislikeindex === -1 && likeindex === -1) {
             POST.dislikes.push(req.userId);
+            if(!mongoose.Types.ObjectId.isValid(POST.creatorId)) {
+                const User = await userSchema.findOne({ googleId: POST.creatorId });
+                 await userSchema.findOneAndUpdate({ googleId: POST.creatorId }, {Total_Post_Like: User.Total_Post_Like-1});
+            } else {
+                const User = await userSchema.findById(Post.creatorId);
+                 await userSchema.findByIdAndUpdate( POST.creatorId, { Total_Post_Like: User.Total_Post_Like-1 });
+            }
         } else if(dislikeindex === -1 && likeindex !== -1) {
             POST.likes = POST.likes.filter((id) => id !== String(req.userId));
             POST.dislikes.push(req.userId);
+            if(!mongoose.Types.ObjectId.isValid(POST.creatorId)) {
+                const User = await userSchema.findOne({ googleId: POST.creatorId });
+                 await userSchema.findOneAndUpdate({ googleId: POST.creatorId }, {Total_Post_Like: User.Total_Post_Like-2});
+            } else {
+                const User = await userSchema.findById(POST.creatorId);
+                 await userSchema.findByIdAndUpdate( POST.creatorId, { Total_Post_Like: User.Total_Post_Like-2 });
+            }
         } else {
             POST.dislikes = POST.dislikes.filter((id) => id !== String(req.userId));
+            if(!mongoose.Types.ObjectId.isValid(POST.creatorId)) {
+                const User = await userSchema.findOne({ googleId: POST.creatorId });
+                 await userSchema.findOneAndUpdate({ googleId: POST.creatorId }, {Total_Post_Like: User.Total_Post_Like+1});
+            } else {
+                const User = await userSchema.findById(POST.creatorId);
+                await userSchema.findByIdAndUpdate( POST.creatorId, { Total_Post_Like: User.Total_Post_Like+1 });
+            }
         }
 
         const updatedPost = await postSchema.findByIdAndUpdate(id, POST, {new: true});

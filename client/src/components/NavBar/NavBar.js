@@ -40,9 +40,9 @@ const NavBar = () => {
     return (
         <nav>
             <div className="container">
-                <h2>
+                <h2 className='headingg'>
                 <Link className="logo" to={'/'}>
-                    CENACLE
+                    Social Out
                 </Link>
                 </h2>
                 <div className="search-bar">

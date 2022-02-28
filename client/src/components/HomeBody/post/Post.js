@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff, Add } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { likePost ,deletePost , getPostsByCreator} from '../../../actions/post';
-import { Badge, Avatar, Button } from '@material-ui/core';
+import { Badge, Avatar, Button , ButtonBase } from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../../actions/User';
@@ -47,6 +47,8 @@ const Post = ({post}) => {
         dispatch(getUser(post?.creatorId));
     }, [dispatch, post?.creatorId, post.dislikes, post.likes, user?.result?._id, user?.result?.googleId]);
 
+    const openPost = () => navigate(`/posts/${post._id}`);
+
 
     return (
         <div className="feeds">
@@ -69,8 +71,8 @@ const Post = ({post}) => {
                     </span>
                     )}
                 </div>
-
-                <div className="photo">
+                {/* <ButtonBase className={classes.cardAction} onClick={openPost}> */}
+                <div className="photo" onClick={openPost}>
                     <h2><b>{post.title}</b></h2>
                     {post.post_Type.split('/')[0] === 'image' ? (
                         <img loading='lazy' src={`http://localhost:8080/posts/${post.LocImage}`} alt={post.title} />
@@ -87,7 +89,6 @@ const Post = ({post}) => {
                         <label>No Posts!!</label>
                     )}
                 </div>
-
                 <div className="action-buttons ">
                     <div className="interaction-buttons">
                         <div className='Vote'>
@@ -101,11 +102,6 @@ const Post = ({post}) => {
                     <div className="bookmark">
                     <span><i className="uil uil-bookmark-full"></i></span>
                     </div>            
-                </div>
-
-                <div className="caption">
-                    <p><b>Lana Rose</b> Lorem ipsum dolor sit quisqum eius.
-                    <span className="harsh-tag">#lifestyle</span></p>
                 </div>
                 <div className="comments text-muted">View all 277 comments</div>
                 <div className="search-bar" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>

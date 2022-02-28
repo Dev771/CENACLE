@@ -1,0 +1,138 @@
+
+.PostD .feed1{
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding:var(--card-padding);
+    margin-top: 5rem;
+    margin: 5rem 150px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    width: 80%;
+    height: 80vh;
+    justify-content: center;
+}
+ 
+.PostD .feed1 .head{
+    display: flex;
+    justify-content:space-between;
+    flex-direction: row;
+}
+.PostD .feed1 .user{
+    display: flex;
+    gap: 1rem;
+}
+.PostD .feed1 .picture{
+    border-radius: var(--card-border-radius);
+    overflow: hidden;
+    margin: 0.7rem 0;
+}
+.PostD .feed1 .action-buttons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    margin: 0.6rem;
+}
+.PostD .liked-by{
+    display: flex;
+}
+.PostD .liked-by span{
+     width: 1.4rem;
+     height: 1.4rem;
+     display: block;
+     border-radius: 50%;
+     overflow: hidden;
+     border: 2px solid var(--color-white);
+     margin-left:-0.6rem ;
+}
+.PostD .liked-by span:first-child{
+    margin: 0;
+}
+.PostD .liked-by p{
+    margin-left: 0.5rem;
+}
+
+.PostD .feed1 .Postdetail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.PostD .feed1 .Postdetail-grid .user-head {
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+.PostD .feed1 .Postdetail-grid .user-head{
+    display: grid;
+    grid-template-rows: auto 70vh;
+    padding: 0;
+    margin: 0;
+}
+.PostD .feed1 .Postdetail-grid .photo-likes .photo1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height : 70vh;
+}
+.PostD .feed1 .Postdetail-grid .photo-likes .photo1 > img {
+   
+    max-width: 100%;
+    max-height: 70vh;
+}
+.commentbox{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: scroll;
+    height: 80%;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.comments{
+    width: 100%;
+    background-color: var(--color-white);
+}
+
+.commentsection{
+   
+    background-color: var(--color-light);
+    border-radius: var(--card-border-radius);
+    padding:var(--card-padding);
+    border: 2px solid var(--color-primary);
+
+}
+
+.commentcrow{
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    background-color: var(--color-white);
+    margin-top: 10px;
+}
+
+.search-bar input[type="Text"]{
+    background: transparent;
+    width: 100%;
+    /* margin-left: 1rem; */
+    font-size: 0.9rem;
+    color: var(--color-dark);
+}
+
+.search-bar > button {
+    padding: .5em 1em;
+    background-color: var(--color-primary);
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 1.1em;
+    color: white;
+}
+
+.search-bar > button > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

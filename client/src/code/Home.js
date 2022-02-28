@@ -5,6 +5,7 @@ import BodyLeft from '../components/HomeBody/Left';
 import MainBody from '../components/HomeBody/MainBody';
 import Mobile_Navbar from '../components/HomeBody/Mobile_Navbar';
 import BodyRight from '../components/HomeBody/Right';
+import Postdetails from '../components/Post Details/Postdetails';
 
 const Home = () => {
 

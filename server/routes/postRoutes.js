@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPostsBySearch, getPost, getPosts, createPost, likePost, dislikePost , getPostsBycreator , deletePost} from '../controller/post.js';
+import { getPostsBySearch, fetchPost , getPost, getPosts, createPost, likePost, dislikePost , getPostsBycreator , deletePost} from '../controller/post.js';
 
 import multer from 'multer';
 const upload = multer({ dest : "uploads/" })
@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.get('/search', getPostsBySearch);
 router.get('/searchcreator', getPostsBycreator);
+router.get('/postdeets/:id', fetchPost);
 router.get('/', getPosts);
 router.get('/:key', getPost);
 router.delete('/:id', auth, deletePost);

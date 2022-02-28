@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../../actions/User';
 import './right.css';
+import {ArrowUpwardOutlined, ArrowDownwardOutlined} from '@material-ui/icons';
 
 const Right = () => {
 
@@ -38,9 +39,15 @@ const Right = () => {
                         <div className='Profile_Grid'>
                             <label className='User_likes'>
                                 FOLLOW ME:
+                                    <div className='Vote'>
+                                        <ArrowUpwardOutlined  />
+                                        {/* {post.likes.length - post.dislikes.length} */}
+                                        <ArrowDownwardOutlined  /> 
+                                    </div>
                             </label>
                             <label className='User_likes'>
-                                POSTS LIKES:
+                               <label>POSTS LIKES:</label> 
+                               <label>{Users?.User?.Total_Post_Like} </label>
                             </label>
                             <label className='User_likes'>
                                 NIGGA MARDA

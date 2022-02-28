@@ -84,6 +84,10 @@ img{
 
 
 /*========================= NAVBAR =============================*/
+.headingg{
+    font-family: 'Simple Brush Script', sans-serif;
+
+}
 nav{
     width: 100%;
     background:var(--color-white) ;
