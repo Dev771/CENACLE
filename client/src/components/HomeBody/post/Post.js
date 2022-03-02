@@ -6,7 +6,7 @@ import { Badge, Avatar, Button , ButtonBase } from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../../actions/User';
-
+import Commentsection from '../../Post Details/Commentsection';
 import './styles.css';
 
 
@@ -14,6 +14,7 @@ const Post = ({post}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isLiked, setisLiked] = useState(false);
+    const [Active, setActive]=useState(false);
     const [isDisliked, setIsDisLiked] = useState(false);
     const [muted, setMuted] = useState(true);
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -96,7 +97,7 @@ const Post = ({post}) => {
                             {post.likes.length - post.dislikes.length}
                             <ArrowDownwardOutlined color={!isDisliked ? 'inherit' : 'secondary'} onClick={() => isLike('disliked')} /> 
                         </div>
-                        <span><i className="uil uil-comment"></i></span>
+                        <span onClick={() => setActive(!Active)}><i className="uil uil-comment"></i></span>
                         <span><i className="uil uil-share"></i></span>
                     </div>
                     <div className="bookmark">
@@ -104,6 +105,7 @@ const Post = ({post}) => {
                     </div>            
                 </div>
                 <div className="comments text-muted">View all {post?.comments.length} comments</div>
+                 <Commentsection posts={post} Active={Active}/>
                 <div className="search-bar" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
                     <input type="Text" placeholder="Add a Comment" />
                     <button style={{ float: 'right'}}><i className='uil uil-plus'></i></button>
@@ -111,6 +113,7 @@ const Post = ({post}) => {
             </div>
             {/* <!--***************************END OF FEED 1***********************************--> */}
         </div>
+        
     );
 };
 
