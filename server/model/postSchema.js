@@ -21,6 +21,7 @@ const PostSchema  = mongoose.Schema({
         type: [String],
         default: [],
     },
+    comments:{type:[String],default:[]},
     Subject: String,
     Country: String,
     Location: String,

@@ -1,4 +1,4 @@
-import { FETCH_BY_SEARCH , DELETE ,FETCH_POST} from "../constants/ActionTypes";
+import { FETCH_BY_SEARCH , DELETE ,FETCH_POST , COMMENT} from "../constants/ActionTypes";
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (posts = [], actions) => {
     switch(actions.type) {
@@ -14,6 +14,8 @@ export default (posts = [], actions) => {
             return posts.filter((post) => post._id !== actions.payload) ;  
         case FETCH_POST:
             return actions.payload;  
+        case COMMENT:
+            return actions.payload;
         default: 
             return posts;
     }

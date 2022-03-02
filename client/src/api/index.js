@@ -14,7 +14,9 @@ export const fetchPost = (id) => API.get(`/posts/postdeets/${id}`);
 export const getPosts = () => API.get('/posts');
 export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
-export const deletePost = (id) => API.delete(`/posts/${id}`);
+export const deletePost = (id) => API.delete(`/posts/delete/${id}`);
+export const comment = (value, id) => API.post(`/posts/${id}/commentPost`, {value});
+
 
 export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
 export const fetchPostsByCreatorid =(creatorid) => API.get(`/posts/searchcreator?creatorid=${creatorid}`);
