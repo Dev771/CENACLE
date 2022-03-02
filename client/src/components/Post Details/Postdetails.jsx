@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate as useHistory } from 'react-router-dom';
 import { getPost, getPostsBySearch } from '../../actions/post';
 import Commentsection from './Commentsection';
+import Loading from '../Loading/Loading';
 
 const Postdetails = () => {
 
@@ -17,8 +18,9 @@ const Postdetails = () => {
   const { id } = useParams();
   
   useEffect(() => {
+
     dispatch(getPost(id));
-    // console.log(posts);
+    console.log(posts);
   }, [id, dispatch]);
 
   return (
@@ -43,8 +45,10 @@ const Postdetails = () => {
             <div class="photo-likes">
                <h2><b>{posts?.title}</b></h2>
                 <div class="photo1">
-                    <img src={`http://localhost:8080/posts/${posts.LocImage}`} alt={posts.title} />
-                   {/* <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_IzC_2oReGw0JKuUztPFXJEelvP6LNXsFng&usqp=CAU"  />        */}
+                    {/* {!posts.length ? (<Loading />) : (
+                        <img src={`http://localhost:8080/posts/${posts?.LocImage}`} alt={posts.title} />
+                    )} */}
+                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_IzC_2oReGw0JKuUztPFXJEelvP6LNXsFng&usqp=CAU"  />       
                 </div>
 
                 <div class="action-buttons ">

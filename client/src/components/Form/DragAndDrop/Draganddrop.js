@@ -23,7 +23,7 @@ class ImageUpload extends React.Component {
         };
       });
       blobPromise.then(value => {
-        // console.log(value);
+        console.log(value);
       });
     }
   };
@@ -65,7 +65,7 @@ class ImageUpload extends React.Component {
             border: " 1px dashed"
           }}
           multiple={false}
-          accept="image/*"
+          accept="image/*,video/*"
           onDrop={(accepted, rejected) => this.onDrop(accepted, rejected)}
         >
           {({ isDragAccept, isDragReject, acceptedFiles, rejectedFiles }) => {

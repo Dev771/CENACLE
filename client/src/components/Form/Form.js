@@ -38,7 +38,7 @@ const Form = () => {
 
     const { getRootProps, getInputProps } = useDropzone({
         
-        accept: 'image/*',
+        accept: 'image/*, video/*',
         onDrop: (acceptedFiles) => {
             setFiles(
                 acceptedFiles.map((file) => Object.assign(file, {

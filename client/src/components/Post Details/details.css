@@ -61,7 +61,7 @@
 .PostD .feed1 .Postdetail-grid .user-head {
     display: flex;
     flex-direction: column;
-    background: white;
+    background: var(--color-white);
 }
 .PostD .feed1 .Postdetail-grid .user-head{
     display: grid;

@@ -10,7 +10,7 @@ import { upload, getFile } from '../aws/s3.js';
 import userSchema from '../model/userSchema.js';
 
 export const getPost = (req, res) => {
-    const Key = req.params.key;
+    const Key = req.path.split('/')[1];
     const readStream = getFile(Key);
 
     readStream.pipe(res);

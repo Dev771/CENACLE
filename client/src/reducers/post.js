@@ -5,9 +5,12 @@ export default (posts = [], actions) => {
         case "CREATE_POST": 
             return [ ...posts, actions.payload ];
         case "FETCH_ALL": 
+            console.log(actions.payload)
             return actions.payload;
         case FETCH_BY_SEARCH:
-            return  actions.payload;
+            posts = actions.payload;
+            console.log(actions.payload)
+            return posts;
         case "LIKE_POST":
             return posts.map((post) => post._id === actions.payload._id ? actions.payload : post);    
         case DELETE:
@@ -17,6 +20,7 @@ export default (posts = [], actions) => {
         case COMMENT:
             return actions.payload;
         default: 
+
             return posts;
     }
 }

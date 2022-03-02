@@ -103,7 +103,7 @@ const Post = ({post}) => {
                     <span><i className="uil uil-bookmark-full"></i></span>
                     </div>            
                 </div>
-                <div className="comments text-muted">View all 277 comments</div>
+                <div className="comments text-muted">View all {post?.comments.length} comments</div>
                 <div className="search-bar" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
                     <input type="Text" placeholder="Add a Comment" />
                     <button style={{ float: 'right'}}><i className='uil uil-plus'></i></button>
