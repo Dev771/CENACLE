@@ -151,11 +151,19 @@ export const likePost = async (req, res) => {
 export const commentPost= async (req, res) =>{
     const{id}=req.params;
     const{value}= req.body;
+    
+    try{
+        const post = await postSchema.findById(id);
+        post.comments.push(value);
+        const updatedPost= await postSchema.findByIdAndUpdate(id, post,{new:true});
+        // res.status(200).json(updatedPost);
+        const posts = await postSchema.find();
 
-    const post = await postSchema.findById(id);
-    post.comments.push(value);
-    const updatedPost= await postSchema.findByIdAndUpdate(id, post,{new:true});
-    res.json(updatedPost);
+        res.status(200).json(posts);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 

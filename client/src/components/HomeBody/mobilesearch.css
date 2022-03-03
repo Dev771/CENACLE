@@ -1,0 +1,83 @@
+main .container .right1{
+    height: max-content;
+    position: fixed;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    width: 95%;
+   
+}
+
+.right1 .search1{
+    background: var(--color-gray);
+    border-radius:var(--card-border-radius) ;
+    padding: var(--card-padding);
+}
+.right1 .search1 .heading{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom:1rem ;
+}
+.right1 .search1 i{
+    font-size: 1.4rem;
+}
+.right1 .search1 .search-bar{
+    display: flex; 
+    margin-bottom: 1rem;
+}
+.right1 .search1 .category{
+    display:flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.right1 .search1 .category h6{
+    width: 100%;
+    text-align: center;
+    border-bottom: 4px solid var(--color-light);
+    padding-bottom: 0.5rem;
+    font-size: 0.85;
+}
+.right1 .search1 .category .active{
+    border-color:var(--color-dark) ;
+}
+.right1 .search1 .message{
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: start;
+}
+.right1 .message .profile-picture{
+    position: relative;
+    overflow: visible; 
+}
+.right1 .profile-picture img{
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.right1 .search1 .message:last-child{
+    margin: 0;
+}
+.right1 .search1 .message p{
+    font-size: 0.8rem;
+}
+.right1 .search1 .message .profile-picture .active{
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 3px solid var(--color-white);
+    background: var(--color-success);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.right1 .search1 .message-requests{
+    color: var(--color-primary);
+}
+
+#multiple-limit-tags
+{
+    border: 2px solid;
+
+}

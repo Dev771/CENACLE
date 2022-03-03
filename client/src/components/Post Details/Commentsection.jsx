@@ -14,8 +14,8 @@ const Commentsection = ({ posts,Active }) => {
   const post = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(posts);
-  console.log(comments);
+  // console.log(posts);
+  // console.log(comments);
 
   const handleClick= () =>{
     const finalComment= `${user.result.name}: ${comment}`;
@@ -31,8 +31,8 @@ const Commentsection = ({ posts,Active }) => {
 
 
   return (
-    <div class="commentsection" style={Active ? {display:'inherit'} : {display:'none'}}>
-                 <h2>Comments</h2>
+    <div className="commentsection" style={Active ? {display:'inherit'} : {display:'none'}}>
+                 <h3 className="waao">Comments</h3>
                  <div class="commentbox">
                  {comments?.map((c, i)=>(
                     <label key={i} class="search-bar comments" >
@@ -41,7 +41,7 @@ const Commentsection = ({ posts,Active }) => {
                     </label>
                   ))}
                 </div>
-                {user?.result?.name && (
+                {/* {user?.result?.name && (
                   <div class="search-bar commentcrow" >
                     <TextField 
                       fullWidth
@@ -49,10 +49,9 @@ const Commentsection = ({ posts,Active }) => {
                       value={comment}
                       onChange={(e)=> setComment(e.target.value)}
                     />
-                    {/* <input type="Text" placeholder="Add a Comment" /> */}
                     <button  onClick={handleClick} ><i className='uil uil-plus'></i></button>
                   </div>
-                )}
+                )} */}
                 </div>
   )
 }

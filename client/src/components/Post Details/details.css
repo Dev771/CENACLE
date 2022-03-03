@@ -80,12 +80,16 @@
     max-width: 100%;
     max-height: 60vh;
 }
+
+.waao{
+    padding-bottom: 10px;
+}
 .commentbox{
     display: flex;
     flex-direction: column;
     gap: 10px;
     overflow-y: scroll;
-    height: 80%;
+    max-height: 200px;
 }
 
 ::-webkit-scrollbar{

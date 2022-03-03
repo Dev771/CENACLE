@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff, Add } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { likePost ,deletePost , getPostsByCreator} from '../../../actions/post';
-import { Badge, Avatar, Button , ButtonBase } from '@material-ui/core';
+import { likePost ,deletePost , getPostsByCreator , commentPost} from '../../../actions/post';
+import { Badge, Avatar, Button , ButtonBase , TextField} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../../actions/User';
 import Commentsection from '../../Post Details/Commentsection';
+
+
 import './styles.css';
 
 
@@ -14,11 +16,13 @@ const Post = ({post}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isLiked, setisLiked] = useState(false);
-    const [Active, setActive]=useState(false);
     const [isDisliked, setIsDisLiked] = useState(false);
+    const [Active , setActive] = useState(false);
     const [muted, setMuted] = useState(true);
     const user = JSON.parse(localStorage.getItem('profile'));
     const Users = useSelector((state) => state.Users);
+    const [comment,setComment]=useState('');
+
 
     const isLike = (state) => {
         if(state === 'liked') {
@@ -49,6 +53,15 @@ const Post = ({post}) => {
     }, [dispatch, post?.creatorId, post.dislikes, post.likes, user?.result?._id, user?.result?.googleId]);
 
     const openPost = () => navigate(`/posts/${post._id}`);
+
+    const handleClick= () =>{
+        const finalComment= `${user.result.name}: ${comment}`;
+        // window.location.reload();
+        dispatch(commentPost(finalComment,post._id));
+        navigate('/');
+        setComment('');
+      };
+    
 
 
     return (
@@ -97,23 +110,38 @@ const Post = ({post}) => {
                             {post.likes.length - post.dislikes.length}
                             <ArrowDownwardOutlined color={!isDisliked ? 'inherit' : 'secondary'} onClick={() => isLike('disliked')} /> 
                         </div>
-                        <span onClick={() => setActive(!Active)}><i className="uil uil-comment"></i></span>
-                        <span><i className="uil uil-share"></i></span>
+                        <span onClick={() => setActive (!Active) }><i className="uil uil-comment"></i></span>
+                        {/* <span><i className="uil uil-share"></i></span> */}
                     </div>
                     <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                    {/* <span><i className="uil uil-bookmark-full"></i></span> */}
                     </div>            
                 </div>
                 <div className="comments text-muted">View all {post?.comments.length} comments</div>
-                 <Commentsection posts={post} Active={Active}/>
-                <div className="search-bar" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
-                    <input type="Text" placeholder="Add a Comment" />
-                    <button style={{ float: 'right'}}><i className='uil uil-plus'></i></button>
-                </div>
+                 {/* <div className="search-bar" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
+                    <TextField 
+                      fullWidth
+                      placeholder="Add a Comment"
+                      value={comment}
+                      onChange={(e)=> setComment(e.target.value)}
+                    />
+                    <button  onClick={handleClick} ><i className='uil uil-plus'></i></button>
+                </div>  */}
+                <Commentsection posts={post} Active={Active}/>
+                {user?.result?.name && (
+                     <div className="search-bar okay" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
+                     <TextField 
+                       fullWidth
+                       placeholder="Add a Comment"
+                       value={comment}
+                       onChange={(e)=> setComment(e.target.value)}
+                     />
+                     <button  onClick={handleClick} ><i className='uil uil-plus'></i></button>
+                    </div> 
+                )}
             </div>
             {/* <!--***************************END OF FEED 1***********************************--> */}
         </div>
-        
     );
 };
 
