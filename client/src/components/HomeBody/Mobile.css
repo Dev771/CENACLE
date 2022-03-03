@@ -13,15 +13,11 @@
 }
 
 .BottomNav > ul {
-    /* display: flex;
-    justify-content: space-between; */
     height: 100%;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0;
-
-    /* margin: 0 20px; */
     font-size: 1.6em;
 }
 
@@ -46,7 +42,6 @@
 }
 
 .BottomNav > ul > li > .menu-item1 {
-    /* border: 5px solid rgba(0, 0, 0, 1); */
     padding: 1em;
     display: flex;
     justify-content: center;
@@ -63,11 +58,3 @@
     color: var(--color-light);
 }
 
-/* .BottomNav > ul > li > .active::before{
-    content: "";
-    display: block;
-    width: 0.5rem;
-    height: 100%;
-    position: absolute;
-    background: var(--color-primary);
-} */

@@ -4,8 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import {useNavigate, useParams} from 'react-router-dom';
 
-
-// import Loading from '../Loading/Loading';
 import Post from '../../HomeBody/post/Post';
 
 const MainBody = () => {
@@ -17,7 +15,6 @@ const MainBody = () => {
 
     useEffect(() => {
         dispatch(getPostsByCreator(creatorId));
-        // dispatch(getPosts());
     }, [creatorId, dispatch]);
 
     return (
@@ -32,17 +29,13 @@ const MainBody = () => {
                 ) : (
                     <></>
                 )}
-
-                {/* <!--*******************************FEEDS******************************--> */}
                 {posts.length > 0 ? (
                     posts.slice().reverse().map((post) => (
                         <Post post={post} key={post._id} />
                     ))
                 ) : (
                     <label>Hello</label>
-                )}
-                    
-                {/* <!--***********************************END OF FEEDS*******************************--> */}
+                )}                    
             </div>
         </div>
     )

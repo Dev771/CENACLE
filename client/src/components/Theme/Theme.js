@@ -3,8 +3,6 @@ import './stylet.css';
 
 const Theme = ({ themeClose, theme, color, Font, bg }) => {
 
-    // const [ color, setColor ] = useState('color-1');
-
     return (
             <div className="customize-theme">
                 <div className="card">

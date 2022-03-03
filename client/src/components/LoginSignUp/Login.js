@@ -89,9 +89,7 @@ const RegistrationForm = () => {
         }
         
         setFormData(initialState);
-
-        // document.getElementsByName('firstName').value = formData.firstName;
-
+        
     }, [action, navigate, isSignUp])
 
 

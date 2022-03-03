@@ -1,10 +1,8 @@
 .middle > .feeds > .feed > .photo {
     position: relative;
-    /* max-width: 600px; */
 }
 
 .middle > .feeds > .feed > .photo > label {
-    /* max-width: min-content; */
 }
 
 .middle > .feeds > .feed > .photo > .mute {
@@ -39,7 +37,6 @@
 .search-bar input[type="Text"]{
     background: transparent;
     width: 100%;
-    /* margin-left: 1rem; */
     font-size: 0.9rem;
     color: var(--color-dark);
 }

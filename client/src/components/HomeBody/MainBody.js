@@ -3,8 +3,6 @@ import { getPosts } from '../../actions/post';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import {useNavigate} from 'react-router-dom';
-import Commentsection from '../Post Details/Commentsection';
-
 
 import Loading from '../Loading/Loading';
 import Post from './post/Post';
@@ -41,8 +39,6 @@ const MainBody = () => {
                 )}
                     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
-                {/* <Commentsection posts={post}/> */}
-
             </div>
         </div>
     )

@@ -1,7 +1,6 @@
 import React , {useEffect, useState} from 'react'
 import './Mobile.css'
 import { useNavigate } from 'react-router-dom';
-// import { Home } from '@material-ui/icons';
 import Theme from '../Theme/Theme';
 import Msearch from '../HomeBody/Mobilesearch'
 
@@ -93,11 +92,6 @@ useEffect(() => {
     }
 
 }, [Font, bg, color]);
-
-
-  // useEffect(() => {
-  //  console.log(active);
-  // } , [active] )
 
   return (
     <div>

@@ -1,9 +1,7 @@
 .Profile-1 {
     display: flex;
     align-items: center;
-    /* border: 1px solid rgba(121, 123, 124, .3); */
     width: fit-content;
-    /* padding: .5em; */
     border-radius: 2px;
     gap: 5px;
     color: aliceblue;
@@ -31,7 +29,6 @@
     border-radius: 100%;
     transform: translate(25%, 25%);
     background-color: rgb(194, 12, 12);
-    /* cursor: pointer; */
 }
 
 .Profile-1 > label {

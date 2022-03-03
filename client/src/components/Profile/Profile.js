@@ -1,5 +1,4 @@
 import React from 'react';
-import Theme from '../Theme/Theme';
 import BodyLeft from './SubProfile/left';
 import MainBody from './SubProfile/Middle';
 import BodyRight from './SubProfile/Right';
@@ -27,7 +26,6 @@ const Profile = () => {
                 </div>  
             </main> 
             {/* <!---########      ###############THEME CUSTOMIZATION###############--> */}
-            {/* <Theme /> */}
         </div>
     );
 };

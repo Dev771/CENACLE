@@ -14,12 +14,10 @@ const Commentsection = ({ posts,Active }) => {
   const post = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  // console.log(posts);
-  // console.log(comments);
+
 
   const handleClick= () =>{
     const finalComment= `${user.result.name}: ${comment}`;
-    // window.location.reload();
     dispatch(commentPost(finalComment,posts._id));
     navigate('/');
     setComment('');
@@ -32,27 +30,16 @@ const Commentsection = ({ posts,Active }) => {
 
   return (
     <div className="commentsection" style={Active ? {display:'inherit'} : {display:'none'}}>
-                 <h3 className="waao">Comments</h3>
-                 <div class="commentbox">
-                 {comments?.map((c, i)=>(
-                    <label key={i} class="search-bar comments" >
-                      <strong>{c.split(':')[0]}</strong>
-                      {c.split(':')[1]}
-                    </label>
-                  ))}
-                </div>
-                {/* {user?.result?.name && (
-                  <div class="search-bar commentcrow" >
-                    <TextField 
-                      fullWidth
-                      placeholder="Add a Comment"
-                      value={comment}
-                      onChange={(e)=> setComment(e.target.value)}
-                    />
-                    <button  onClick={handleClick} ><i className='uil uil-plus'></i></button>
-                  </div>
-                )} */}
-                </div>
+      <h3 className="waao">Comments</h3>
+        <div class="commentbox">
+          {comments?.map((c, i)=>(
+            <label key={i} class="search-bar comments" >
+              <strong>{c.split(':')[0]}</strong>
+              {c.split(':')[1]}
+            </label>
+          ))}
+       </div>
+    </div>
   )
 }
 

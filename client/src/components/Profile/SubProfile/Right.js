@@ -27,7 +27,7 @@ const Right = () => {
                             <Avatar style={{ width: '92px', height: '92px', border: '4px solid white', boxShadow : '0 0 5px black'}} alt={Users?.User?.name} src={Users?.User?.imageURL} >{Users?.User?.name.charAt(0)}
                             </Avatar>
                             <button className='cameraButton'><Cam style={{ color: 'white' }} /></button>  
-                            </span>
+                        </span>
                         <button className='cameraButton'>
                             <Cam style={{ color: 'white' }} />
                         </button>
@@ -41,7 +41,7 @@ const Right = () => {
                                 FOLLOW ME:
                                     <div className='Vote'>
                                         <ArrowUpwardOutlined  />
-                                        {/* {post.likes.length - post.dislikes.length} */}
+                                        69
                                         <ArrowDownwardOutlined  /> 
                                     </div>
                             </label>

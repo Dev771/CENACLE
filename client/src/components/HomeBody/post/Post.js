@@ -52,11 +52,10 @@ const Post = ({post}) => {
         dispatch(getUser(post?.creatorId));
     }, [dispatch, post?.creatorId, post.dislikes, post.likes, user?.result?._id, user?.result?.googleId]);
 
-    const openPost = () => navigate(`/posts/${post._id}`);
+    // const openPost = () => navigate(`/posts/${post._id}`);
 
     const handleClick= () =>{
         const finalComment= `${user.result.name}: ${comment}`;
-        // window.location.reload();
         dispatch(commentPost(finalComment,post._id));
         navigate('/');
         setComment('');
@@ -66,7 +65,6 @@ const Post = ({post}) => {
 
     return (
         <div className="feeds">
-            {/* <!--***********************************FEEDS 1*************************************--> */}
             <div className="feed">
                 <div className="head">
                     <div className="user">
@@ -85,8 +83,7 @@ const Post = ({post}) => {
                     </span>
                     )}
                 </div>
-                {/* <ButtonBase className={classes.cardAction} onClick={openPost}> */}
-                <div className="photo" onClick={openPost}>
+                <div className="photo">
                     <h2><b>{post.title}</b></h2>
                     {post.post_Type.split('/')[0] === 'image' ? (
                         <img loading='lazy' src={`http://localhost:8080/posts/${post.LocImage}`} alt={post.title} />
@@ -111,22 +108,13 @@ const Post = ({post}) => {
                             <ArrowDownwardOutlined color={!isDisliked ? 'inherit' : 'secondary'} onClick={() => isLike('disliked')} /> 
                         </div>
                         <span onClick={() => setActive (!Active) }><i className="uil uil-comment"></i></span>
-                        {/* <span><i className="uil uil-share"></i></span> */}
+                        <span><i className="uil uil-share"></i></span>
                     </div>
                     <div className="bookmark">
-                    {/* <span><i className="uil uil-bookmark-full"></i></span> */}
+                    <span><i className="uil uil-bookmark-full"></i></span>
                     </div>            
                 </div>
                 <div className="comments text-muted">View all {post?.comments.length} comments</div>
-                 {/* <div className="search-bar" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
-                    <TextField 
-                      fullWidth
-                      placeholder="Add a Comment"
-                      value={comment}
-                      onChange={(e)=> setComment(e.target.value)}
-                    />
-                    <button  onClick={handleClick} ><i className='uil uil-plus'></i></button>
-                </div>  */}
                 <Commentsection posts={post} Active={Active}/>
                 {user?.result?.name && (
                      <div className="search-bar okay" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
@@ -140,7 +128,6 @@ const Post = ({post}) => {
                     </div> 
                 )}
             </div>
-            {/* <!--***************************END OF FEED 1***********************************--> */}
         </div>
     );
 };

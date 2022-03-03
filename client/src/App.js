@@ -7,7 +7,7 @@ import Profile from './components/Profile/Profile';
 import Auth from './components/auth/Auth';
 import Login from './components/LoginSignUp/Login';
 import Error from './components/Error/Error';
-import Postdetails from './components/Post Details/Postdetails';
+// import Postdetails from './components/Post Details/Postdetails';
 
 const App = () => {
 
@@ -28,8 +28,7 @@ const App = () => {
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />
                 <Route path="/posts/search" exact element={<Home/>} />
-                <Route path="/posts/:id" exact element={<Postdetails/>}/>
-                {/* <Route path="/posts/:id"  element={<PostDetails />} /> */}
+                {/* <Route path="/posts/:id" exact element={<Postdetails/>}/> */}
                 <Route path='*' element={<Error />} />
             </Routes>
         </BrowserRouter>
