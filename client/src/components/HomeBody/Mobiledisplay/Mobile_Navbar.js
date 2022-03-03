@@ -1,8 +1,8 @@
 import React , {useEffect, useState} from 'react'
 import './Mobile.css'
 import { useNavigate } from 'react-router-dom';
-import Theme from '../Theme/Theme';
-import Msearch from '../HomeBody/Mobilesearch'
+import Theme from '../../Theme/Theme';
+import Msearch from './Mobilesearch'
 
 const Mobile_Navbar = () => {
 

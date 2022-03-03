@@ -2,7 +2,7 @@ import React from 'react';
 import BodyLeft from './SubProfile/left';
 import MainBody from './SubProfile/Middle';
 import BodyRight from './SubProfile/Right';
-import Mobile_Navbar from '../HomeBody/Mobile_Navbar';
+import Mobile_Navbar from '../HomeBody/Mobiledisplay/Mobile_Navbar';
 
 import './Styles.css';
 

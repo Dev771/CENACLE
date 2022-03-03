@@ -10,9 +10,7 @@ import { createPost } from '../../actions/post';
 import { useNavigate } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 import './Styles.css';
-import './DragAndDrop/styles.css';
 import useStyles from './Styles';
-import ImageUpload from './DragAndDrop/Draganddrop';
 
 const Form = () => {
     const [activebutton, setactiveButton] = useState('Post');
@@ -89,8 +87,19 @@ const Form = () => {
                         getOptionLabel={option => option.name}
                         style={{ width: '130px', border: '1px solid #fff2', background: 'white', borderRadius: '5px' }}
                     />
-                    <Autocomplete
-                        id="Tags"
+                    <TextField 
+                        required 
+                        className={classes.textfield} 
+                        style={{fontSize: '10px'}}  
+                        label="Tag Name"  
+                        variant="outlined"
+                        onChange={handleChange}
+                        name="tags_type"
+                        style={{background : 'white'}} 
+                    />
+
+                    {/* <Autocomplete
+                        d="Tags"i
                         options={tags}
                         autoHighlight
                         onSelect={(e) => setPostData({...postData, tags_type: e.target.value})}
@@ -100,7 +109,7 @@ const Form = () => {
                         )}
                         style={{ width: 270, border: '1px solid #fff2', background: 'white', borderRadius: '5px', color : 'black' }}
                         getOptionLabel={option => option.tagtype}
-                    />
+                    /> */}
                 </div>
                 <div className='cP'>
                     <ButtonGroup style={{ width: '100%' }} className='ButtonGroup'>

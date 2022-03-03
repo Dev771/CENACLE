@@ -4,7 +4,7 @@ import {TextField} from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getPostsBySearch } from '../../actions/post';
+import { getPostsBySearch } from '../../../actions/post';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);

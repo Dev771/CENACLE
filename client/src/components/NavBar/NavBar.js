@@ -19,7 +19,18 @@ const NavBar = () => {
         window.location.reload();
         setSignInUser(null);
     }
-    
+
+    const handleClick = () =>{
+        dispatch({ type : "RESET" });
+        navigate("/Form");
+    }
+
+    const handleWhy = () =>{
+        dispatch({type : "RESET" });
+        navigate('/');
+        window.location.reload();
+    }
+
     useEffect(() => {
         const token = SignInUser?.token;
         
@@ -37,9 +48,9 @@ const NavBar = () => {
         <nav>
             <div className="container">
                 <h2 className='headingg'>
-                <Link className="logo" to={'/'}>
+                <span className="logo" onClick={handleWhy}>
                     Social Out
-                </Link>
+                </span>
                 </h2>
                 <div className="search-bar">
                     <i className="uil uil-search"></i>
@@ -48,7 +59,7 @@ const NavBar = () => {
                 <div className='left-nav'>
                 {!SignInUser ? (<></>):
                     (<div className="create">
-                        <a className="btn btn-primary" href='/Form'>Create</a>
+                        <span className="btn btn-primary" onClick={handleClick}>Create</span>
                     </div>)}
                     {!SignInUser ? (
                         <div className='Profile-1'>

@@ -3,7 +3,7 @@ import { getPosts } from '../../actions/post';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import {useNavigate} from 'react-router-dom';
-
+import './styleS.css';
 import Loading from '../Loading/Loading';
 import Post from './post/Post';
 
@@ -15,7 +15,7 @@ const MainBody = () => {
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     useEffect(() => {
-        dispatch(getPosts());
+        dispatch(getPosts(posts.length));
     }, []);
 
     return (
@@ -33,12 +33,16 @@ const MainBody = () => {
 
                 {/* <!--*******************************FEEDS******************************--> */}
                 {!posts.length   ? (<Loading/>) :  (
-                    posts.slice().reverse().map((post) => (
+                    posts.map((post) => (
                         <Post post={post} key={post._id} />
                     ))
-                )}
-                    
+                )}     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
+                <div className="showmore">
+                    <button className="btn btn-primary" type="button" onClick={() => dispatch(getPosts(posts.length))}>
+                        Show More <i class="uil uil-angle-down"></i>
+                    </button>
+                </div>
             </div>
         </div>
     )

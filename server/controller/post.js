@@ -29,9 +29,11 @@ export const fetchPost = async (req, res) => {
 }
 
 export const getPosts = async (req, res) => {
+    const { N } = req.params;
+
     try {
-        
-        const posts = await postSchema.find();
+        const Limit = N + 5;
+        const posts = await postSchema.find().sort({_id:-1}).limit(Limit);
 
         res.status(200).json(posts);
 

@@ -14,9 +14,9 @@ export const getPost = (id) => async (dispatch) => {
   }
 };
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (N) => async (dispatch) => {
     try {
-        const { data } = await api.getPosts();
+        const { data } = await api.getPosts(N);
 
         dispatch({ type: 'FETCH_ALL', payload: data });
     } catch (error) {

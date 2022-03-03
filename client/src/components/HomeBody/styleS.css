@@ -42,3 +42,15 @@ main .container .right{
 .right .buttonS .btn{
     width: 100%;
 }
+
+
+
+/*========showmore========*/
+
+.showmore{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0 0 10px;
+}

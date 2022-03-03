@@ -19,6 +19,8 @@ export default (posts = [], actions) => {
             return actions.payload;  
         case COMMENT:
             return actions.payload;
+        case "RESET":
+            return [];
         default: 
 
             return posts;
