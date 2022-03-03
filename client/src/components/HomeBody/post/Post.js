@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff, Add } from '@material-ui/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { likePost ,deletePost , getPostsByCreator , commentPost} from '../../../actions/post';
-import { Badge, Avatar, Button , ButtonBase , TextField} from '@material-ui/core';
+import { Badge, Avatar, TextField} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../../actions/User';
@@ -117,14 +117,14 @@ const Post = ({post}) => {
                 <div className="comments text-muted">View all {post?.comments.length} comments</div>
                 <Commentsection posts={post} Active={Active}/>
                 {user?.result?.name && (
-                     <div className="search-bar okay" style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
+                     <div className="search-bar okay" onClick={() => setActive(true) } style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
                      <TextField 
                        fullWidth
                        placeholder="Add a Comment"
                        value={comment}
                        onChange={(e)=> setComment(e.target.value)}
                      />
-                     <button  onClick={handleClick} ><i className='uil uil-plus'></i></button>
+                     <button type="button" onClick={handleClick} ><i className='uil uil-plus'></i></button>
                     </div> 
                 )}
             </div>

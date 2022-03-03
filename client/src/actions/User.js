@@ -11,3 +11,14 @@ export const getUser = (creator) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const Likeduser = ( User , state ) => async (dispatch) => {
+
+    try {
+       const { data } =await api.Likeduser(User ,state);
+       console.log(data);
+       
+    } catch (error) {
+        console.log(error);
+    }
+}

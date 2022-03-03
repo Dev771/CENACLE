@@ -3,6 +3,8 @@ import { getPosts , getPostsByCreator} from '../../../actions/post';
 import { useSelector, useDispatch } from 'react-redux';
 import { Avatar } from '@material-ui/core';
 import {useNavigate, useParams} from 'react-router-dom';
+import Loading from '../../Loading/Loading';
+
 
 import Post from '../../HomeBody/post/Post';
 
@@ -12,6 +14,7 @@ const MainBody = () => {
     const navigate = useNavigate();
     const posts = useSelector((state) => state.posts);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [counter , setcounter] =useState(5);
 
     useEffect(() => {
         dispatch(getPostsByCreator(creatorId));
@@ -29,13 +32,34 @@ const MainBody = () => {
                 ) : (
                     <></>
                 )}
-                {posts.length > 0 ? (
-                    posts.slice().reverse().map((post) => (
+                {!posts.length  ? (<Loading/>) :  (
+                    posts.slice().reverse().slice(0,counter).map((post) => (
                         <Post post={post} key={post._id} />
                     ))
-                ) : (
-                    <label>Hello</label>
-                )}                    
+                )}
+                <div className="showmore">
+                   { counter>=posts.length && posts.length > 5 ? (
+                       <button className="btn btn-primary" type="button" onClick={() => setcounter(counter - 5)}>
+                       Show Less <i class="uil uil-angle-up"></i>
+                   </button>
+
+                   ): counter > 5 ? (
+                       <div>
+                    <button className="btn btn-primary" type="button" onClick={() => setcounter(counter + 5)}>
+                        Show More <i class="uil uil-angle-down"></i>
+                     </button>
+                      <button className="btn btn-primary" type="button" onClick={() => setcounter(counter - 5)}>
+                        Show Less <i class="uil uil-angle-up"></i>
+                     </button>
+                     </div>
+                   ): counter <= posts.length ? (
+                    <button className="btn btn-primary" type="button" onClick={() => setcounter(counter + 5)}>
+                        Show More <i class="uil uil-angle-down"></i>
+                    </button>
+                   ) : (
+                       <></>
+                   )}
+                </div>                    
             </div>
         </div>
     )

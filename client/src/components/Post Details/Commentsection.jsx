@@ -5,6 +5,7 @@ import {commentPost} from '../../actions/post';
 import Isloading from '../Loading/Loading';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './details.css';
 
 const Commentsection = ({ posts,Active }) => {
 

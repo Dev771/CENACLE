@@ -1,5 +1,5 @@
 import React from 'react';
-import BodyLeft from './SubProfile/left';
+import BodyLeft from '../HomeBody/Left';
 import MainBody from './SubProfile/Middle';
 import BodyRight from './SubProfile/Right';
 import Mobile_Navbar from '../HomeBody/Mobiledisplay/Mobile_Navbar';

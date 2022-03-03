@@ -29,11 +29,8 @@ export const fetchPost = async (req, res) => {
 }
 
 export const getPosts = async (req, res) => {
-    const { N } = req.params;
-
     try {
-        const Limit = N + 5;
-        const posts = await postSchema.find().sort({_id:-1}).limit(Limit);
+        const posts = await postSchema.find();
 
         res.status(200).json(posts);
 
@@ -98,15 +95,6 @@ export const likePost = async (req, res) => {
         if(!mongoose.Types.ObjectId(id)) return res.status(404).send("Post Not Found");
 
         const Post = await postSchema.findById(id);
-
-        // if(!mongoose.Types.ObjectId.isValid(Post.creatorId)) {
-        //     const User = await userSchema.findOne({ googleId: Post.creatorId });
-        //     await userSchema.findOneAndUpdate({ googleId: Post.creatorId }, {Total_Post_Like: User.Total_Post_Like+1});
-        // } else {
-        //     const User = await userSchema.findById(Post.creatorId);
-        //     await userSchema.findByIdAndUpdate( Post.creatorId, { Total_Post_Like: User.Total_Post_Like+1 });
-        // }
-
 
         const likeindex = Post.likes.findIndex((id) => id === String(req.userId));
         const dislikeindex = Post.dislikes.findIndex((id) => id === String(req.userId));

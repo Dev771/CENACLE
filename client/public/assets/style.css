@@ -782,7 +782,24 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     .BottomNav{
     display: flex !important;
     }
+    
+    .CreatorNameMobile{
+        display: flex !important;
+    }
+
     .middle{
         margin-bottom: 80px ;
     }
+}
+
+.CreatorNameMobile{
+    margin-top: 10px;
+    background: var(--color-white);
+    border-radius:var(--card-border-radius) ;
+    padding: var(--card-padding);
+    display: none;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    font-weight: bold;
 }

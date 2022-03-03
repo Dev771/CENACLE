@@ -49,7 +49,7 @@ const NavBar = () => {
             <div className="container">
                 <h2 className='headingg'>
                 <span className="logo" onClick={handleWhy}>
-                    Social Out
+                    CENACLE
                 </span>
                 </h2>
                 <div className="search-bar">

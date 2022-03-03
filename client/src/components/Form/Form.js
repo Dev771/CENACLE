@@ -13,7 +13,7 @@ import './Styles.css';
 import useStyles from './Styles';
 
 const Form = () => {
-    const [activebutton, setactiveButton] = useState('Post');
+    const [activebutton, setactiveButton] = useState('Images');
     const user = JSON.parse(localStorage.getItem('profile'));
     const dispatch = useDispatch();
     const classes = useStyles();
@@ -97,24 +97,11 @@ const Form = () => {
                         name="tags_type"
                         style={{background : 'white'}} 
                     />
-
-                    {/* <Autocomplete
-                        d="Tags"i
-                        options={tags}
-                        autoHighlight
-                        onSelect={(e) => setPostData({...postData, tags_type: e.target.value})}
-                        className={classes.Autocomplete}
-                        renderInput={params => (
-                            <TextField required className={classes.textfield} style={{fontSize: '10px'}} {...params} label="Tag Name"  variant="outlined" />
-                        )}
-                        style={{ width: 270, border: '1px solid #fff2', background: 'white', borderRadius: '5px', color : 'black' }}
-                        getOptionLabel={option => option.tagtype}
-                    /> */}
                 </div>
                 <div className='cP'>
                     <ButtonGroup style={{ width: '100%' }} className='ButtonGroup'>
-                        <button type='button' className={activebutton === 'Post' ? 'focusClass' : ''} onClick={() => setactiveButton('Post')}><PostAdd />Post</button>
                         <button type='button' className={activebutton === 'Images' ? 'focusClass' : ''} onClick={() => setactiveButton('Images')}><Photo />Image and Video</button>
+                        <button type='button' className={activebutton === 'Post' ? 'focusClass' : ''} onClick={() => setactiveButton('Post')}><PostAdd />Post</button>
                         <button type='button' className={activebutton === 'Link' ? 'focusClass' : ''} onClick={() => setactiveButton('Link')}><Link />Link</button>
                         <button type='button' className={activebutton === 'Poll' ? 'focusClass' : ''} onClick={() => setactiveButton('Poll')}><List />Poll</button>
                     </ButtonGroup>
@@ -124,7 +111,7 @@ const Form = () => {
                                 <>
                                     <input name='title' type='text' required placeholder='Enter Title' onChange={handleChange}  />
                                     <div className='editablediv'>
-                                        <div contentEditable ></div>
+                                        <div contentEditable > Coming Soon</div>
                                     </div>
                                 </>
                             ) : activebutton === 'Images' ? (

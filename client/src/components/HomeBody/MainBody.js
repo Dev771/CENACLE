@@ -13,9 +13,10 @@ const MainBody = () => {
     const navigate = useNavigate();
     const posts = useSelector((state) => state.posts);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const [counter , setcounter] =useState(5);
 
     useEffect(() => {
-        dispatch(getPosts(posts.length));
+        dispatch(getPosts());
     }, []);
 
     return (
@@ -32,16 +33,43 @@ const MainBody = () => {
                 )}
 
                 {/* <!--*******************************FEEDS******************************--> */}
-                {!posts.length   ? (<Loading/>) :  (
-                    posts.map((post) => (
+                {!posts.length  ? (<Loading/>) :  (
+                    posts.slice().reverse().slice(0,counter).map((post) => (
                         <Post post={post} key={post._id} />
                     ))
                 )}     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
                 <div className="showmore">
-                    <button className="btn btn-primary" type="button" onClick={() => dispatch(getPosts(posts.length))}>
+                { counter>=posts.length && posts.length > 5 ? (
+                       <button className="btn btn-primary" type="button" onClick={() => setcounter(counter - 5)}>
+                       Show Less <i class="uil uil-angle-up"></i>
+                   </button>
+
+                   ): counter > 5 ? (
+                       <div>
+                    <button className="btn btn-primary" type="button" onClick={() => setcounter(counter + 5)}>
+                        Show More <i class="uil uil-angle-down"></i>
+                     </button>
+                      <button className="btn btn-primary" type="button" onClick={() => setcounter(counter - 5)}>
+                        Show Less <i class="uil uil-angle-up"></i>
+                     </button>
+                     </div>
+                   ): counter <= posts.length ? (
+                    <button className="btn btn-primary" type="button" onClick={() => setcounter(counter + 5)}>
                         Show More <i class="uil uil-angle-down"></i>
                     </button>
+                   ) : (
+                       <></>
+                   )}
+                </div>
+                <div className="CreatorNameMobile">
+                   <div>
+                Made with Love <br />
+                by &nbsp;
+                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
+                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
+                   <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
+                   </div>
                 </div>
             </div>
         </div>

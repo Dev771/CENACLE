@@ -11,7 +11,7 @@ API.interceptors.request.use((req)=> {
 })
 
 export const fetchPost = (id) => API.get(`/posts/postdeets/${id}`);
-export const getPosts = (N) => API.get(`/posts/arraysize/${N}`);
+export const getPosts = () => API.get("/posts");
 export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
 export const deletePost = (id) => API.delete(`/posts/delete/${id}`);
@@ -28,3 +28,4 @@ export const SignUp = (formData) => API.post('/auth/signUp', formData);
 export const GoogleSignUp = (formData) => API.post('/auth/GoogleAuth', formData);
 
 export const getUser = (creator) => API.get(`/user/${creator}`);
+export const Likeduser = (id , state) => API.patch(`/user/${id}/${state}`);

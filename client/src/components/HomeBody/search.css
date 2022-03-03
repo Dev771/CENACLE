@@ -78,3 +78,20 @@ main .container .right{
     border: 2px solid;
 
 }
+
+.CreatorName{
+    margin-top: 10px;
+    background: var(--color-white);
+    border-radius:var(--card-border-radius) ;
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    font-weight: bold;
+
+}
+
+.linkden {
+   color: var(--color-primary);
+}

@@ -85,7 +85,16 @@ const Right = () => {
                         search
                         </button>
                     </div>  
-                </div>         
+                </div>
+                <div className="CreatorName">
+                   <div>
+                Made with Love <br />
+                by &nbsp;
+                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
+                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
+                   <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
+                   </div>
+                </div>   
             </div> 
         </div>
     )
