@@ -64,12 +64,13 @@ const MainBody = () => {
                 </div>
                 <div className="CreatorNameMobile">
                    <div>
-                Made with Love <br />
+                Made with Love <i class="uil uil-heart" style={{color : "red"}}></i> <br />
                 by &nbsp;
-                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
-                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
-                   <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
+                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" target="_blank" className='linkden'>Dev G </a> &nbsp; | &nbsp;
+                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" target="_blank" className='linkden'>Naman B </a> &nbsp;| &nbsp;
+                   <a href="https://www.linkedin.com/in/heygaurav07/" target="_blank" className='linkden'>Gaurav S </a>   
                    </div>
+                   <div className='copyright'><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
                 </div>
             </div>
         </div>

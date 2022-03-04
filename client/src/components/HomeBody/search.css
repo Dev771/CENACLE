@@ -95,3 +95,10 @@ main .container .right{
 .linkden {
    color: var(--color-primary);
 }
+
+.copyright {
+    font-size: small;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
