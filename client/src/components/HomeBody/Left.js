@@ -8,15 +8,16 @@ const Left = () => {
 
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive ] = useState(false);
-    const [color , setColor ] = useState('color-1');
+    const [color , setColor ] = useState(User?.result?.theme.color);
     const [ Font, setFont ] = useState('font-size-3');
-    const [ bg, setBg ] = useState('bg-1');
+    const [ bg, setBg ] = useState(User?.result?.theme?.background);
+    console.log(bg);
     const navigate = useNavigate();
-
+    
     const OpenTheme = (click) => {
         setactive(click);
     }
-
+    
     const themeEdit = (type, value) => {
         if(type === 'color') {
             setColor(value);
@@ -27,18 +28,51 @@ const Left = () => {
         }
     }
 
+    // useEffect(async() =>{
+    // }, [User]);
+    
     useEffect(() => {
-        if(color === 'color-1') {
-            document.documentElement.style.setProperty('--primary-color-hue', 252);
-        } else if(color === 'color-2') {
-            document.documentElement.style.setProperty('--primary-color-hue', 52);
-        } else if(color === 'color-3') {
-            document.documentElement.style.setProperty('--primary-color-hue', 352);
-        } else if(color === 'color-4') {
-            document.documentElement.style.setProperty('--primary-color-hue', 152);
-        } else if(color === 'color-5') {
-            document.documentElement.style.setProperty('--primary-color-hue', 202);
+
+        async function background(bg) {
+            if(bg === 'bg-1') {
+                await document.querySelector(':root').style.setProperty('--light-color-lightness', '95%');
+                await document.querySelector(':root').style.setProperty('--light-color-lightness', '95%');
+
+                await document.querySelector(':root').style.setProperty('--dark-color-lightness', '17%');
+                await document.querySelector(':root').style.setProperty('--white-color-lightness', '100%');
+            } else if(bg === 'bg-2') {
+                await document.querySelector(':root').style.setProperty('--light-color-lightness', '15%');
+                await document.querySelector(':root').style.setProperty('--light-color-lightness', '15%');
+
+                await document.querySelector(':root').style.setProperty('--dark-color-lightness', '95%');
+                await document.querySelector(':root').style.setProperty('--white-color-lightness', '20%');
+            } else if(bg === 'bg-3') {
+                await document.querySelector(':root').style.setProperty('--light-color-lightness', '0%');
+                await document.querySelector(':root').style.setProperty('--light-color-lightness', '0%');
+
+                await document.querySelector(':root').style.setProperty('--dark-color-lightness', '95%');
+                await document.querySelector(':root').style.setProperty('--white-color-lightness', '10%');
+            }
         }
+
+        async function color(color) {
+            if(color === 'color-1') {
+                document.documentElement.style.setProperty('--primary-color-hue', 252);
+            } else if(color === 'color-2') {
+                document.documentElement.style.setProperty('--primary-color-hue', 52);
+            } else if(color === 'color-3') {
+                document.documentElement.style.setProperty('--primary-color-hue', 352);
+            } else if(color === 'color-4') {
+                document.documentElement.style.setProperty('--primary-color-hue', 152);
+            } else if(color === 'color-5') {
+                document.documentElement.style.setProperty('--primary-color-hue', 202);
+            }
+        }
+
+        background(bg);
+        color(color);
+
+
 
         if(Font === 'font-size-1') {
             document.querySelector('html').style.fontSize = '10px';
@@ -61,21 +95,9 @@ const Left = () => {
             document.documentElement.style.setProperty('----sticky-top-left', '-12rem');
             document.documentElement.style.setProperty('----sticky-top-right', '-35rem');
         }
-        if(bg === 'bg-1') {
-            document.documentElement.style.setProperty('--light-color-lightness', '95%');
-            document.documentElement.style.setProperty('--dark-color-lightness', '17%');
-            document.documentElement.style.setProperty('--white-color-lightness', '100%');
-        } else if(bg === 'bg-2') {
-            document.documentElement.style.setProperty('--light-color-lightness', '15%');
-            document.documentElement.style.setProperty('--dark-color-lightness', '95%');
-            document.documentElement.style.setProperty('--white-color-lightness', '20%');
-        } else if(bg === 'bg-3') {
-            document.documentElement.style.setProperty('--light-color-lightness', '0%');
-            document.documentElement.style.setProperty('--dark-color-lightness', '95%');
-            document.documentElement.style.setProperty('--white-color-lightness', '10%');
-        }
 
-    }, [Font, bg, color]);
+
+    }, [Font, User?.result?.theme.background, bg, color]);
 
 
     return (

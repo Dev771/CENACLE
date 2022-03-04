@@ -92,6 +92,8 @@ const Right = () => {
                 by &nbsp;
                    <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
                    <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
+                   <a href="https://www.linkedin.com/search/results/all/?keywords=manthan%20chaudhary&origin=RICH_QUERY_SUGGESTION&position=2&searchId=6e78a7ac-0b8c-4030-81a9-a853fac9a6bd&sid=WST" className='linkden'>Manthan</a> &nbsp;| &nbsp;
+
                    <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
                    </div>
                 </div>   
