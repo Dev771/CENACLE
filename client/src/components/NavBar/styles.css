@@ -39,4 +39,21 @@
     font-family: 'Pacifico', cursive !important;
     font-size: xx-large;
     color: var(--color-primary);
+    display: flex;
+    gap: 1px;
+}
+
+.loggo {
+    width: 50px;
+    height: 50px;
+    color: var(--color-primary) !important;
+    fill: var(--color-primary) !important;
+    background-color: var(--color-primary) !important;
+}
+
+svg{
+    fill: var(--color-primary);
+    width: 50px;
+    height: 50px;
+    /* enable-background:new 0 0 1080 1080; */
 }
