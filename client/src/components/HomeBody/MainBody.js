@@ -21,7 +21,7 @@ const MainBody = () => {
 
     return (
         <div>
-            <div className="middle">
+            <div className="middle middlee">
                 {User ? (
                     <form className="create-post" onClick={() => {!User ? window.location.reload() : navigate('/Form')}}>
                         <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
