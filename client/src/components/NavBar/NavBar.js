@@ -50,7 +50,7 @@ const NavBar = () => {
                 <h2 className='headingg'>
                 <span className="logo" onClick={handleWhy}>
                 {/* <img src={logo} className="loggo" alt='' /> */}
-                <svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                <svg className="loggo"version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                     viewBox="0 0 1080 1080" >
                 <polygon points="709.94,834.34 767.67,934.34 312.33,934.34 84.65,540 312.33,145.66 767.67,145.66 709.94,245.66 370.06,245.66 
                     200.12,540 370.06,834.34 "/>
