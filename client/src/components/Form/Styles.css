@@ -180,7 +180,8 @@
 .createForm > .Rules {
     display: grid;
     gap: 10px;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    width: 100%;
 }
 
 .createForm > .Rules > .Instr {
@@ -192,28 +193,34 @@
     border-radius: var(--card-border-radius);
     box-shadow: 0 0 10px #0003;
     gap: 10px;
+    padding: 0px !important;
 }
 
-.createForm > .Rules > .Instr > ul {
+.createForm > .Rules > .Instr > ol {
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 1em 1em;
+    padding: 1em 0;
     gap: 10px;
+    width: 100%;
 }
 
-.createForm > .Rules > .Instr > ul > li {
+.createForm > .Rules > .Instr > ol > li {
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: small;
 }
 
-.createForm > .Rules > .Instr > ul > lh {
+.createForm > .Rules > .Instr > ol > lh {
     padding: 0;
     margin: 0;
     font-weight: 900;
-    font-size: 1.5em;
+    font-size: large;
 }
 
 .createForm > form > .cP > .ButtonGroup > *:first-child {
@@ -244,6 +251,13 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  .contactUs{
+      display: flex;
+      font-size: smaller;
+      justify-content: center;
+      width: 100%;
   }
 
 @media screen and (max-width : 1200px)

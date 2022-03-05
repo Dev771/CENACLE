@@ -1,16 +1,24 @@
 import React, { useState , useEffect} from 'react'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { Badge, Avatar, Button } from '@material-ui/core';
+import { Badge, Avatar, TextField } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
-
+import { getPostsBySearch } from '../../actions/post';
 import './styles.css';
+
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
 
 const NavBar = () => {
     
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const query = useQuery();
+    const [search, setSearch] = useState('');
+    const searchQuery = query.get('searchQuery');
     const [SignInUser, setSignInUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     const logout = () => {
@@ -30,6 +38,23 @@ const NavBar = () => {
         navigate('/');
         window.location.reload();
     }
+    
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+          searchPost();
+          setSearch('');
+        }
+      };
+      const searchPost = () => {
+        if (search.trim() && (search.length > 0 )) {
+            dispatch(getPostsBySearch({ search}));
+            navigate(`/posts/search?searchQuery=${search || 'none'}`);
+            setSearch('');
+        } else {
+            navigate('/');
+        }
+        };
+      
 
     useEffect(() => {
         const token = SignInUser?.token;
@@ -60,9 +85,18 @@ const NavBar = () => {
                     Cenacle
                 </span>
                 </h2>
-                <div className="search-bar">
+                <div className="search-bar why">
                     <i className="uil uil-search"></i>
-                    <input type="search" placeholder="Search for Creators, Ispiration, and people" />
+                    {/* <input type="search" placeholder="Search for Creators, Ispiration, and people" /> */}
+                    <TextField 
+                    id="messages-search"
+                    name="search" 
+                    placeholder='Search for Creators, Ispiration, and people'
+                    onKeyPress={handleKeyPress}
+                    fullWidth 
+                    value={search} 
+                    onChange={(e) => setSearch(e.target.value)}
+                    />
                 </div>
                 <div className='left-nav'>
                 {!SignInUser ? (<></>):

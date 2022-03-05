@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Theme from '../Theme/Theme';
 import { Avatar, colors } from '@material-ui/core';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate ,useLocation } from 'react-router-dom';
 
 const Left = () => {
 
@@ -13,6 +13,9 @@ const Left = () => {
     const [ bg, setBg ] = useState("bg-1");
     console.log(bg);
     const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
+    console.log(location.pathname);
     
     const OpenTheme = (click) => {
         setactive(click);
@@ -126,8 +129,18 @@ const Left = () => {
                 {/* <!--*****************Sidebar******************--> */}
                 <div className="sidebar">
                     <span href='/' className="menu-item active">
-                        <i className="uil uil-home"></i>
-                    <h3>Home</h3>
+                        {location.pathname.split("/")[1] === "" ? (
+                            <>
+                            <i className="uil uil-home"></i>
+                            <h3>Home</h3>
+                            </>
+                        ):
+                        (
+                            <>
+                            <i className="uil uil-user"></i>
+                            <h3>Profile</h3>  
+                            </>
+                        )}
                     </span>
                     
                     <span href='/' className="menu-item " id="notifications"><i className="uil uil-bell"><small className="notification-count">9+</small></i>

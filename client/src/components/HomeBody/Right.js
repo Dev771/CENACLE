@@ -26,7 +26,7 @@ const Right = () => {
 
 
     const handleKeyPress = (e) => {
-        if (e.keyCode === 13) {
+        if (e.key === 'Enter') {
           searchPost();
           setSearch('');
         }
@@ -34,7 +34,7 @@ const Right = () => {
       
     const searchPost = () => {
     if (search.trim() || tags && (search.length>0 || tags.length>0)) {
-        dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+        dispatch(getPostsBySearch({ search, tags: tags.join(',') }, history));
         history(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
         setSearch('');
     } else {

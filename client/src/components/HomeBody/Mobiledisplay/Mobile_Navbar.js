@@ -1,12 +1,13 @@
 import React , {useEffect, useState} from 'react'
 import './Mobile.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useLocation} from 'react-router-dom';
 import Theme from '../../Theme/Theme';
 import Msearch from './Mobilesearch'
 
 const Mobile_Navbar = () => {
-
-  const [active , setactive] = useState("home");
+  
+  const location = useLocation();
+  const [active , setactive] = useState(location.pathname.split("/")[1] === "" ? "home" : "profile"   );
   const [ThemeM , setThemeM ] = useState(false);
   const [rightS , setrightS ] = useState(false);
   const navigate = useNavigate();

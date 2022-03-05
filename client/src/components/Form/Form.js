@@ -90,12 +90,11 @@ const Form = () => {
                     <TextField 
                         required 
                         className={classes.textfield} 
-                        style={{fontSize: '10px'}}  
+                        style={{fontSize: '10px' , background : 'white'}}  
                         label="Tag Name"  
                         variant="outlined"
                         onChange={handleChange}
                         name="tags_type"
-                        style={{background : 'white'}} 
                     />
                 </div>
                 <div className='cP'>
@@ -145,23 +144,31 @@ const Form = () => {
             </form>
             <div className='Rules'>
                 <div style={{background: 'var(--color-white)'}} className='Instr'>
-                    <ul>
-                        <lh>Posting to Reddit</lh>
-                        <hr style={{ background: 'black', width: '80%', height: '1px' }} />
-                        <li>Posting to Reddit</li>
-                        <hr style={{ background: 'black', width: '80%', height: '1px' }} />
-                        <li>Posting to Reddit</li>
-                        <hr style={{ background: 'black', width: '80%', height: '1px' }} />
-                        <li>Posting to Reddit</li>
-                        <hr style={{ background: 'black', width: '80%', height: '1px' }} />
-                        <li>Posting to Reddit</li>
-                        <hr style={{ background: 'black', width: '80%', height: '1px' }} />
-                        <li>Posting to Reddit</li>
-                    </ul>
+                    <ol>
+                        <lh>Posting to Cenacle</lh>
+                        <hr style={{ background: 'grey', width: '80%', height: '1px' }} />
+                        <li>Remember the human</li>
+                        <hr style={{ background: 'grey', width: '80%', height: '1px' }} />
+                        <li>Behave like you would in real life</li>
+                        <hr style={{ background: 'grey', width: '80%', height: '1px' }} />
+                        <li>Look for the original source of content</li>
+                        <hr style={{ background: 'grey', width: '80%', height: '1px' }} />
+                        <li>Search for duplicates before posting</li>
+                        <hr style={{ background: 'grey', width: '80%', height: '1px' }} />
+                        <li>Read the community’s rules</li>
+                    </ol>
                 </div>
-                <div className='Instr'>
-                    
-                </div>
+                <div className="CreatorName">
+                   <div>
+                Made with Love <i class="uil uil-heart" style={{color : "red"}}></i> <br />
+                by &nbsp;
+                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
+                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
+                   <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
+                   </div>
+                   <div className='copyright' style={{padding : " 3px"}}><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
+                   <div className='contactUs'>Wanna conatct us? <br />Email: cenacletechlab@gmail.com</div>
+                </div> 
             </div>
         </div>
     )

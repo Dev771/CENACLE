@@ -47,6 +47,11 @@ main .container .right{
     margin-top: 10px;
 }
 
+.why{
+    display: flex;
+    width: 450px;
+}
+
 /*========showmore========*/
 
 .showmore{
@@ -56,3 +61,4 @@ main .container .right{
     width: 100%;
     padding: 0 0 10px;
 }
+

@@ -761,6 +761,13 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     .rightnone{
         display: none !important;
     }
+
+    .mobileview {
+        display: flex !important;
+        flex-direction: column-reverse;
+        gap : 10px !important;
+        margin-top: 10px !important ;
+    }
 }
 
 @media screen and (max-width: 630px) {
