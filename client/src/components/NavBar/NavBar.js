@@ -49,7 +49,7 @@ const NavBar = () => {
             <div className="container">
                 <h2 className='headingg'>
                 <span className="logo" onClick={handleWhy}>
-                    CENACLE
+                    Cenacle
                 </span>
                 </h2>
                 <div className="search-bar">

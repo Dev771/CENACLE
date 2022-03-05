@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Theme from '../Theme/Theme';
-import { Avatar } from '@material-ui/core';
+import { Avatar, colors } from '@material-ui/core';
 import { useNavigate } from 'react-router-dom';
 
 const Left = () => {
@@ -55,22 +55,27 @@ const Left = () => {
             }
         }
 
-        async function color(color) {
+        async function colors(color) {
             if(color === 'color-1') {
-                document.documentElement.style.setProperty('--primary-color-hue', 252);
+                await document.documentElement.style.setProperty('--primary-color-hue', 252);
+                await document.documentElement.style.setProperty('--primary-color-hue', 252);
             } else if(color === 'color-2') {
-                document.documentElement.style.setProperty('--primary-color-hue', 52);
+                await document.documentElement.style.setProperty('--primary-color-hue', 52);
+                await document.documentElement.style.setProperty('--primary-color-hue', 52);
             } else if(color === 'color-3') {
-                document.documentElement.style.setProperty('--primary-color-hue', 352);
+                await document.documentElement.style.setProperty('--primary-color-hue', 352);
+                await document.documentElement.style.setProperty('--primary-color-hue', 352);
             } else if(color === 'color-4') {
-                document.documentElement.style.setProperty('--primary-color-hue', 152);
+                await document.documentElement.style.setProperty('--primary-color-hue', 152);
+                await document.documentElement.style.setProperty('--primary-color-hue', 152);
             } else if(color === 'color-5') {
-                document.documentElement.style.setProperty('--primary-color-hue', 202);
+                await document.documentElement.style.setProperty('--primary-color-hue', 202);
+                await document.documentElement.style.setProperty('--primary-color-hue', 202);
             }
         }
 
         background(bg);
-        color(color);
+        colors(color);
 
 
 

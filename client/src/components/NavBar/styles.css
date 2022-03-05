@@ -34,3 +34,9 @@
 .Profile-1 > label {
     cursor: pointer;
 }
+
+.logo{
+    font-family: 'Pacifico', cursive !important;
+    font-size: xx-large;
+    color: var(--color-primary);
+}
