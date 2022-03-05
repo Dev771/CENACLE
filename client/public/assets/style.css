@@ -753,9 +753,13 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
     }
 
     main .container .right{
-        display: none;
+        /* display: none; */
+        width: 100%;
     }
-
+    
+    .rightnone{
+        display: none !important;
+    }
 }
 
 @media screen and (max-width: 630px) {
@@ -779,11 +783,22 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
         gap: 0;
     }
 
+    .mobileview {
+        display: flex !important;
+        flex-direction: column-reverse;
+        gap : 10px !important;
+        margin-top: 10px !important ;
+    }
+
     .BottomNav{
     display: flex !important;
     }
     
     .CreatorNameMobile{
+        display: flex !important;
+    }
+    
+    .details1{
         display: flex !important;
     }
 

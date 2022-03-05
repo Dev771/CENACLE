@@ -260,7 +260,27 @@ form.sign-up-form {
 .right-panel .image {
     transform: translateX(800px);
 }
+/*passwordcheck */
 
+.passwordcheck{
+    display: grid;
+    grid-template-columns: 1fr 1fr  1fr;
+    gap : 10px;
+    margin-left: 40px;
+}
+.passwordcheck > *{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.text-success{
+    color: green;
+}
+
+.text-danger{
+    color: red;
+}
 /* Animaton */
 
 .container-1.sign-up-button::before {
@@ -396,10 +416,19 @@ form.sign-up-form {
         bottom: 28%;
         left: 50%;
     }
+    .container-1.sign-up-button .signin-signup {
+    top : 1%
+    }
+
 }
 
 .sign-up-form > .name {
     display : flex;
-    justify-content: space-evenly;
-    gap: 5px;
+    float: right;
+    gap : 5px;
+}
+
+.sign-up-form > .name > * {
+    max-width: 185px;
+    width: 100%;
 }

@@ -30,7 +30,7 @@ const Left = () => {
                 )}
                 <div className="sidebar">
                     <a href='/' className="menu-item">
-                        <span><i className="uil uil-home"></i></span><h3>Home</h3>
+                        <span><i className="uil uil-home"></i></span><h3>Profile</h3>
                     </a>
                     <a href='/' className="menu-item " id="notifications">
                         <span><i className="uil uil-bell"><small className="notification-count">9+</small></i></span><h3>Notification</h3>

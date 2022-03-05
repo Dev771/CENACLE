@@ -7,9 +7,10 @@ import img1 from '../../img/sideimg.svg'
 import img2 from '../../img/sideimg2.svg'
 import { signIn, signUp, GoogleSignUp } from '../../actions/Auth';
 import GoogleLogin from 'react-google-login';
-import { Button } from '@material-ui/core'
 import useStyles from './Styles';
 import Icon from './icon';
+// import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+// import CancelIcon from "@mui/icons-material/Cancel";
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
@@ -25,6 +26,11 @@ const RegistrationForm = () => {
     const [formData, setFormData] = useState(initialState);
     const [showPassword, setShowPassword] = useState(false);
 
+    let hasSixChar = formData.password.length >= 6;
+	let hasLowerChar = /(.*[a-z].*)/.test(formData.password);
+	let hasUpperChar = /(.*[A-Z].*)/.test(formData.password);
+	let hasNumber = /(.*[0-9].*)/.test(formData.password);
+	let hasSpecialChar = /(.*[^a-zA-Z0-9].*)/.test(formData.password);
     
 
     const switchState = () => {
@@ -92,7 +98,6 @@ const RegistrationForm = () => {
         
     }, [action, navigate, isSignUp])
 
-
     return (
         <div>
             <div className={`container-1 ${isSignUp ? "sign-up-button" : ""}`}>
@@ -140,14 +145,14 @@ const RegistrationForm = () => {
                         <form action='' className='sign-up-form' onSubmit={handleSubmit}>
                             <h2 className='title'>Registration</h2>
                             <div className='name'>
-                            <div className='input-feild-a'>
-                                <label><FaClone /></label>
-                                <input type='text' required name='firstName' onChange={handleChange} value={formData.firstName} placeholder='First Name' className='' />
-                            </div>
-                            <div className='input-feild-a'>
-                                <label><FaClone /></label>
-                                <input type='text' required name='lastName' placeholder='Last Name' value={formData.lastName} className='' onChange={handleChange} />
-                            </div>
+                                <div className='input-feild-a'>
+                                    <label><FaClone /></label>
+                                    <input type='text' required name='firstName' onChange={handleChange} value={formData.firstName} placeholder='First Name' className='' />
+                                </div>
+                                <div className='input-feild-a'>
+                                    <label><FaClone /></label>
+                                    <input type='text' required name='lastName' placeholder='Last Name' value={formData.lastName} className='' onChange={handleChange} />
+                                </div>
                             </div>
                             <div className='input-feild'>
                                 <label><FaVoicemail /></label>
@@ -158,11 +163,128 @@ const RegistrationForm = () => {
                                 <label><FaLock /></label>
                                 <input type='Password' required name='password' placeholder='Password' className='' value={formData.password} onChange={handleChange} />
                             </div>
+                            {/* <div className='passwordcheck'>
+                            <small>at least 6 characters</small>
+                            <small>one lowercase</small>
+                            <small>one uppercase</small>
+                            <small>one number</small>
+                            <small>one special symbol</small>
+                            </div> */}
+                            {formData.password && (
+                                <div className="ml-1" style={{ columns: 2 }}>
+                                    <div>
+                                        {hasSixChar ? (
+                                            <span className="text-success">
+                                                {/* <CheckCircleIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>at least 6 characters</small>
+                                            </span>
+                                        ) : (
+                                            <span className="text-danger">
+                                                {/* <CancelIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>at least 6 characters</small>
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div>
+                                        {hasLowerChar ? (
+                                            <span className="text-success">
+                                                {/* <CheckCircleIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one lowercase</small>
+                                            </span>
+                                        ) : (
+                                            <span className="text-danger">
+                                                {/* <CancelIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one lowercase</small>
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div>
+                                        {hasUpperChar ? (
+                                            <span className="text-success">
+                                                {/* <CheckCircleIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one uppercase</small>
+                                            </span>
+                                        ) : (
+                                            <span className="text-danger">
+                                                {/* <CancelIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one uppercase</small>
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div>
+                                        {hasNumber ? (
+                                            <span className="text-success">
+                                                {/* <CheckCircleIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one number</small>
+                                            </span>
+                                        ) : (
+                                            <span className="text-danger">
+                                                {/* <CancelIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one number</small>
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div>
+                                        {hasSpecialChar ? (
+                                            <span className="text-success">
+                                                {/* <CheckCircleIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one special symbol</small>
+                                            </span>
+                                        ) : (
+                                            <span className="text-danger">
+                                                {/* <CancelIcon
+                                                    className="mr-1"
+                                                    fontSize="small"
+                                                /> */}
+                                                <small>one special symbol</small>
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
                             <div className='input-feild'>
                                 {/* <label>Password</label> */}
                                 <label><FaLock /></label>
                                 <input type='Password' required name='confirmPassword' placeholder='Confirm Password' value={formData.confirmPassword} className='' onChange={handleChange} />
                             </div>
+                            {formData.password && formData.confirmPassword && (
+                                    formData.password === formData.confirmPassword ? (
+                                        <span className="text-success">
+                                          <small>Password does match</small>  
+                                        </span>
+                                    ) : (
+                                        <span className="text-danger">
+                                           <small>Password does not match</small>  
+                                        </span>
+                                    )
+                            )}
                             <input type='submit' value='Register' className='btn-2 solid' />
                             <label className='social-text'>Or Register Using</label>
                             <div className='social-media'>

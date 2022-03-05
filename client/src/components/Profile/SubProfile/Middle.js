@@ -5,7 +5,6 @@ import { Avatar } from '@material-ui/core';
 import {useNavigate, useParams} from 'react-router-dom';
 import Loading from '../../Loading/Loading';
 
-
 import Post from '../../HomeBody/post/Post';
 
 const MainBody = () => {

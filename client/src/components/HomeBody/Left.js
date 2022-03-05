@@ -8,9 +8,9 @@ const Left = () => {
 
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive ] = useState(false);
-    const [color , setColor ] = useState(User?.result?.theme.color);
+    const [color , setColor ] = useState("color-1");
     const [ Font, setFont ] = useState('font-size-3');
-    const [ bg, setBg ] = useState(User?.result?.theme?.background);
+    const [ bg, setBg ] = useState("bg-1");
     console.log(bg);
     const navigate = useNavigate();
     
@@ -97,7 +97,7 @@ const Left = () => {
         }
 
 
-    }, [Font, User?.result?.theme.background, bg, color]);
+    }, [Font, bg, color]);
 
 
     return (

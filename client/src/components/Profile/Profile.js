@@ -10,7 +10,7 @@ const Profile = () => {
     return (
         <div>
             <main>
-                <div class="container">
+                <div class="container mobileview">
                     {/* <!--*****************Left******************--> */}
                     <BodyLeft />
                     {/* <!--*******************************End of left***************************--> */}
