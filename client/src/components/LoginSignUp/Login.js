@@ -46,7 +46,12 @@ const RegistrationForm = () => {
         e.preventDefault();
 
         if(isSignUp) {
-            dispatch(signUp(formData, navigate));
+            
+            { hasSixChar && hasLowerChar && hasUpperChar && hasNumber && hasSpecialChar ?
+                 (dispatch(signUp(formData, navigate))) : (
+                     console.log("error")
+                 )
+            }
         } else {
             dispatch(signIn(formData, navigate));
         }

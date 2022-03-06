@@ -152,7 +152,7 @@ form.sign-up-form {
     border: none;
     outline: none;
     border-radius: 49px;
-    background-color: rgb(51, 119, 223);
+    background-color: var(--color-primary);
     color: whitesmoke;
     font-size: 20px;
     font-weight: bold;
