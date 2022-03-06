@@ -30,8 +30,8 @@ const App = () => {
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />
                 <Route path="/posts/search" exact element={<Home/>} />
-                <Route path='/tag' exact element={<Tags />} />
-                <Route path='*' element={<Error />} />
+                <Route path='/tag/acbd' exact element={<Tags />} />
+                <Route path='*' element={<Navigate to='/'/> } />
             </Routes>
         </BrowserRouter>
     )
