@@ -8,6 +8,7 @@ import Auth from './components/auth/Auth';
 import Login from './components/LoginSignUp/Login';
 import Tags from './components/tags/Tags';
 import Error from './components/Error/Error';
+import Loading from './components/Loading/Loading';
 // import Postdetails from './components/Post Details/Postdetails';
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
                 <Route path="/posts/search" exact element={<Home/>} />
                 <Route path='/tag/acbd' exact element={<Tags />} />
                 <Route path='*' element={<Navigate to='/'/> } />
+                <Route path='/Loading' exact element={<Loading />}/>
             </Routes>
         </BrowserRouter>
     )

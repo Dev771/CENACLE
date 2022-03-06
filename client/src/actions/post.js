@@ -51,7 +51,7 @@ export const getPostsByCreator = (creatorid, navigate) => async (dispatch) => {
 
 export const createPost = (post, navigate) => async (dispatch) => {
     try {
-        
+        navigate('/Loading');
         const fd = new FormData();
         console.log(post);
 

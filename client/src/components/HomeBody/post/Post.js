@@ -49,7 +49,6 @@ const Post = ({post}) => {
             setIsDisLiked(false);
             setisLiked(false);
         }
-        dispatch(getUser(post?.creatorId));
     }, [dispatch, post?.creatorId, post.dislikes, post.likes, user?.result?._id, user?.result?.googleId]);
 
     // const openPost = () => navigate(`/posts/${post._id}`);
@@ -69,7 +68,7 @@ const Post = ({post}) => {
                 <div className="head">
                     <div className="user">
                         
-                            <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={Users?.User?.name} src={Users?.User?.imageURL} >{Users?.User?.name.charAt(0)}
+                            <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={post?.creator} src={post?.img} >{post?.creator.charAt(0)}
                             </Avatar>
                         
                         <div className="ingo">
@@ -86,11 +85,11 @@ const Post = ({post}) => {
                 <div className="photo">
                     <h2><b>{post.title}</b></h2>
                     {post.post_Type.split('/')[0] === 'image' ? (
-                        <img loading='lazy' src={`http://localhost:8080/posts/${post.LocImage}`} alt={post.title} />
+                        <img loading='lazy' src={`https://cenacletechlab.herokuapp.com/posts/${post.LocImage}`} alt={post.title} />
                     ) : post.post_Type.split('/')[0] === 'video' ? (
                         <>
                             <video width="100%" height='100%' autoPlay={true} muted={muted} loop>
-                                <source src={`http://localhost:8080/posts/${post.LocImage}`} type={post.post_Type} />
+                                <source src={`https://cenacletechlab.herokuapp.com/posts/${post.LocImage}`} type={post.post_Type} />
                             </video>
                             <button onClick={mutedchange} className='mute'>{!muted ? <VolumeUpRounded /> : <VolumeOff />}</button>
                         </>

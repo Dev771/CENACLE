@@ -143,7 +143,7 @@
     background-color: var(--color-primary);
     color: var(--color-white);
     font-weight: 600;
-    cursor: not-allowed;
+    cursor: pointer;
 }
 
 .createForm > form > div > .Postdata > div > .postDatabuttons > button[type=button] {

@@ -10,7 +10,7 @@ const Theme = ({ themeClose, theme, color, Font, bg }) => {
                     <h2>Customize your view</h2>
                     <p className="text muted">Manage your font size , color, and background.</p>
                     {/* <!---------------------------FONT SIZES-----------------> */}
-                    <div className="font-size">
+                    {/* <div className="font-size">
                         <h4>Font Size</h4>
                             <div>
                                 <h6>Aa</h6>
@@ -23,7 +23,7 @@ const Theme = ({ themeClose, theme, color, Font, bg }) => {
                                 </div>
                                 <h3>Aa</h3>
                             </div>
-                    </div>
+                    </div> */}
                     {/* <!----------------------PRIMARY COLORS--------------------------> */}
                     <div className="color">
                         <h4>colors</h4>

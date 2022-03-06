@@ -27,8 +27,7 @@ export const Likeuser = async (req, res) => {
         if(!req.userId) return res.status(400).json({ message: 'UnAuthenticated' });
        
         if(!mongoose.Types.ObjectId.isValid(_id)) {
-           res.status(400).json({message : "user not found" })
-
+           return res.status(400).json({message : "user not found" })
         }
 
         const User = await userSchema.findById(_id);
@@ -114,7 +113,7 @@ export const ChangeTheme = async (req, res) => {
             
             const result = await userSchema.findOne({ googleId: req.userId });
             
-            res.status(200).json(result);
+            return res.status(200).json(result);
         } else {
             const originalUser = await userSchema.findById(req.userId);
 
@@ -126,7 +125,7 @@ export const ChangeTheme = async (req, res) => {
 
             const result = await userSchema.findById(req.userId);
             
-            res.status(200).json(result);
+           return res.status(200).json(result);
         }
 
 
