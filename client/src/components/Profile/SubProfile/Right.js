@@ -79,7 +79,7 @@ const Right = () => {
                                <label>{Users?.User?.Total_Post_Like} </label>
                             </label>
                             <label className='User_likes'>
-                                NIGGA MARDA
+                                Cenacle
                             </label>
                             <label className='User_likes' onClick={() => window.location.assign('https://youtu.be/dQw4w9WgXcQ') }>
                                 RICK ROLL
