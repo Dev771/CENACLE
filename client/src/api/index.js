@@ -22,6 +22,7 @@ export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?search
 export const fetchPostsByCreatorid =(creatorid) => API.get(`/posts/searchcreator?creatorid=${creatorid}`);
 
 export const getTag = () => API.get('/tags');
+export const createTags = (NewTag) => API.post('/tags', NewTag);
 
 export const SignIn = (formData) => API.post('/auth/signIn', formData);
 export const SignUp = (formData) => API.post('/auth/signUp', formData);
@@ -29,3 +30,4 @@ export const GoogleSignUp = (formData) => API.post('/auth/GoogleAuth', formData)
 
 export const getUser = (creator) => API.get(`/user/${creator}`);
 export const Likeduser = (id , state) => API.patch(`/user/${id}/${state}`);
+export const ChangeTheme = (type, value) => API.patch(`/user/${type}/${value}`);

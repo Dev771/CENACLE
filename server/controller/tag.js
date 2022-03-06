@@ -9,3 +9,16 @@ export const getTags = async (req, res) => {
         res.status(400).json({ message: error });
     }
 }
+
+export const createTag = async (req, res) => {
+    const tagdata = req.body;
+
+    const newTag = tagSchema({...tagdata});
+    try {
+        await newTag.save();
+
+        res.status(201).json(newTag);
+    } catch (error) {
+        console.log(error);
+    }
+}

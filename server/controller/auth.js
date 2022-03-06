@@ -53,10 +53,10 @@ export const GoogleSignUp = async (req, res) => {
         if(!User) {
             const result = await userSchema.create({ email, password: '', name: name, imageURL: imageUrl, googleId: googleId });
 
-            return res.status(200).json({ message: 'Success' });
+            return res.status(200).json(result);
         }
 
-        if(User.password === "") return res.status(200).json({ message: 'Success' });
+        if(User.password === "") return res.status(200).json(User);
 
         res.status(400).json({ message: "User Already Exists With Same Id" });
 

@@ -92,3 +92,45 @@ export const DisLikeuser = async (req, res) => {
         res.status(500).json({ message: error});
     }
 }
+
+export const ChangeTheme = async (req, res) => {
+
+    const { type, value } = req.params;
+        
+    try {
+        
+        if(!req.userId) return res.status(404).json({ message: "UnAuthenticted" });
+
+
+        if(!mongoose.Types.ObjectId.isValid(req.userId)) {
+            
+            const originalUser = await userSchema.findOne({ googleId: req.userId });    
+            
+            if(type == 'background') {
+                await userSchema.findOneAndUpdate({ googleId: req.userId }, { '$set': { 'theme': { 'background' : value, 'color': originalUser.theme.color || 'color-1' }}});
+            } else {
+                await userSchema.findOneAndUpdate({ googleId: req.userId}, { '$set': { 'theme': { 'color' : value, 'background': originalUser.theme.background || 'bg-1' }}});
+            }
+            
+            const result = await userSchema.findOne({ googleId: req.userId });
+            
+            res.status(200).json(result);
+        } else {
+            const originalUser = await userSchema.findById(req.userId);
+
+            if(type == 'background') {
+                await userSchema.findByIdAndUpdate(req.userId, { '$set': { 'theme': { 'background' : value, 'color': originalUser.theme.color || 'color-1' }}});
+            } else {
+                await userSchema.findByIdAndUpdate(req.userId, { '$set': { 'theme': { 'color' : value, 'background': originalUser.theme.background || 'bg-1' }}});
+            }
+
+            const result = await userSchema.findById(req.userId);
+            
+            res.status(200).json(result);
+        }
+
+
+    } catch (error) {
+        res.status(500).json({ message: error});
+    }
+}

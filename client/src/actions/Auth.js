@@ -26,11 +26,14 @@ export const signUp = (formData, navigate) => async (dispatch) => {
 
 export const GoogleSignUp = (result, token, navigate) => async (dispatch) => {
     try {
+
         const { data } = await api.GoogleSignUp(result);
 
+        console.log(data);
 
-        if(data.message === 'Success') {
-            dispatch({ type: "AUTH", data: { result, token}});
+        if(!data.message) {
+            console.log('hello');
+            dispatch({ type: "AUTH", data: { result, data, token}});
             navigate('/')
         } else {
             console.log(data.message);
@@ -38,4 +41,14 @@ export const GoogleSignUp = (result, token, navigate) => async (dispatch) => {
     } catch (error) {
         console.log(error.response.data);
     } 
+}
+
+export const ChangeTheme = (type, value) => async (dispatch) => {
+    try {
+        const { data } = await api.ChangeTheme(type, value);
+
+        dispatch({ type: "UPDATE_AUTH", data});
+    } catch(error) {
+        console.log(error);
+    }
 }

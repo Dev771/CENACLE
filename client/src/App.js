@@ -6,6 +6,7 @@ import Form from './components/Form/Form';
 import Profile from './components/Profile/Profile';
 import Auth from './components/auth/Auth';
 import Login from './components/LoginSignUp/Login';
+import Tags from './components/tags/Tags';
 import Error from './components/Error/Error';
 // import Postdetails from './components/Post Details/Postdetails';
 
@@ -29,7 +30,7 @@ const App = () => {
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />
                 <Route path="/posts/search" exact element={<Home/>} />
-                {/* <Route path="/posts/:id" exact element={<Postdetails/>}/> */}
+                <Route path='/tag' exact element={<Tags />} />
                 <Route path='*' element={<Error />} />
             </Routes>
         </BrowserRouter>

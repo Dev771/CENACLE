@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react'
 import Theme from '../Theme/Theme';
 import { Avatar, colors } from '@material-ui/core';
 import { useNavigate ,useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { ChangeTheme } from '../../actions/Auth';
 
 const Left = () => {
 
 
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive ] = useState(false);
-    const [color , setColor ] = useState("color-1");
+    const [color , setColor ] = useState(User?.result?.theme?.color || User?.data?.theme?.color || "color-1");
     const [ Font, setFont ] = useState('font-size-3');
-    const [ bg, setBg ] = useState("bg-1");
+    const [ bg, setBg ] = useState(User?.result?.theme?.background || User?.data?.theme?.background || "bg-1");
     console.log(bg);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location);
@@ -23,10 +26,12 @@ const Left = () => {
     
     const themeEdit = (type, value) => {
         if(type === 'color') {
+            dispatch(ChangeTheme(type, value));
             setColor(value);
         } else if(type === 'font') {
             setFont(value);
         } else if(type === 'bg') {
+            dispatch(ChangeTheme("background", value));
             setBg(value);
         }
     }

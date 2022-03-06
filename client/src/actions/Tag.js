@@ -9,3 +9,13 @@ export const getTags = () => async (dispatch) => {
         console.log(error.message);
     }
 }
+
+export const createTag = (tag) => async (dispatch) => {
+    try {
+        const { data } = await api.createTags(tag);
+    
+        dispatch({type: "CREATE_TAG", payload: data});
+    } catch (error) {
+        console.log(error);
+    }
+}

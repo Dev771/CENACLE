@@ -114,7 +114,7 @@ const Post = ({post}) => {
                     <span><i className="uil uil-bookmark-full"></i></span>
                     </div>            
                 </div>
-                <div className="comments text-muted">View all {post?.comments.length} comments</div>
+                <div className="comments text-muted" onClick={() => setActive (!Active) }>View all {post?.comments.length} comments</div>
                 <Commentsection posts={post} Active={Active}/>
                 {user?.result?.name && (
                      <div className="search-bar okay" onClick={() => setActive(true) } style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
