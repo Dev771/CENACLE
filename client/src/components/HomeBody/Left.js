@@ -13,12 +13,9 @@ const Left = () => {
     const [color , setColor ] = useState(User?.result?.theme?.color || User?.data?.theme?.color || "color-1");
     const [ Font, setFont ] = useState('font-size-3');
     const [ bg, setBg ] = useState(User?.result?.theme?.background || User?.data?.theme?.background || "bg-1");
-    console.log(bg);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location);
-    console.log(location.pathname);
     
     const OpenTheme = (click) => {
         setactive(click);

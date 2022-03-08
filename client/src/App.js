@@ -7,7 +7,6 @@ import Profile from './components/Profile/Profile';
 import Auth from './components/auth/Auth';
 import Login from './components/LoginSignUp/Login';
 import Tags from './components/tags/Tags';
-import Error from './components/Error/Error';
 import Loading from './components/Loading/Loading';
 // import Postdetails from './components/Post Details/Postdetails';
 
@@ -31,9 +30,9 @@ const App = () => {
                 <Route path='/auth/:action' exact element={<Auth />} />
                 <Route path='/login/:action' exact element={<Login />} />
                 <Route path="/posts/search" exact element={<Home/>} />
-                <Route path='/tag' exact element={<Tags />} />
-                <Route path='/Loading' exact element={<Loading />} />
-                <Route path='*' element={<Error />} />
+                <Route path='/tag/acbd' exact element={<Tags />} />
+                <Route path='/Loading' exact element={<Loading />}/>
+                <Route path='*' element={<Navigate to='/'/> } />
             </Routes>
         </BrowserRouter>
     )

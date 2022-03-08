@@ -2,7 +2,11 @@ import React , {useEffect, useState} from 'react'
 import './Mobile.css'
 import { useNavigate , useLocation} from 'react-router-dom';
 import Theme from '../../Theme/Theme';
-import Msearch from './Mobilesearch'
+import Msearch from './Mobilesearch';
+import { ChangeTheme } from '../../../actions/Auth';
+import { useDispatch } from 'react-redux';
+
+
 
 const Mobile_Navbar = () => {
   
@@ -12,9 +16,11 @@ const Mobile_Navbar = () => {
   const [rightS , setrightS ] = useState(false);
   const navigate = useNavigate();
   const User =JSON.parse(localStorage.getItem('profile'));
-  const [color , setColor ] = useState('color-1');
+  const [color , setColor ] = useState(User?.result?.theme?.color || User?.data?.theme?.color || "color-1");
   const [ Font, setFont ] = useState('font-size-3');
-  const [ bg, setBg ] = useState('bg-1');
+  const [ bg, setBg ] = useState(User?.result?.theme?.background || User?.data?.theme?.background || "bg-1");
+  const dispatch = useDispatch();
+
 
   const handleclick = (name) => {
     setactive(name);
@@ -30,32 +36,73 @@ const Mobile_Navbar = () => {
   const Opensearch = () =>{
     setrightS(!rightS);
   }
+
   const OpenTheme = (click) => {
     setThemeM(click);
 }
 
 const themeEdit = (type, value) => {
     if(type === 'color') {
+        dispatch(ChangeTheme(type, value));
         setColor(value);
     } else if(type === 'font') {
         setFont(value);
     } else if(type === 'bg') {
+        dispatch(ChangeTheme("background", value));
         setBg(value);
     }
 }
 
+// useEffect(async() =>{
+// }, [User]);
+
 useEffect(() => {
-    if(color === 'color-1') {
-        document.documentElement.style.setProperty('--primary-color-hue', 252);
-    } else if(color === 'color-2') {
-        document.documentElement.style.setProperty('--primary-color-hue', 52);
-    } else if(color === 'color-3') {
-        document.documentElement.style.setProperty('--primary-color-hue', 352);
-    } else if(color === 'color-4') {
-        document.documentElement.style.setProperty('--primary-color-hue', 152);
-    } else if(color === 'color-5') {
-        document.documentElement.style.setProperty('--primary-color-hue', 202);
+
+    async function background(bg) {
+        if(bg === 'bg-1') {
+            await document.querySelector(':root').style.setProperty('--light-color-lightness', '95%');
+            await document.querySelector(':root').style.setProperty('--light-color-lightness', '95%');
+
+            await document.querySelector(':root').style.setProperty('--dark-color-lightness', '17%');
+            await document.querySelector(':root').style.setProperty('--white-color-lightness', '100%');
+        } else if(bg === 'bg-2') {
+            await document.querySelector(':root').style.setProperty('--light-color-lightness', '15%');
+            await document.querySelector(':root').style.setProperty('--light-color-lightness', '15%');
+
+            await document.querySelector(':root').style.setProperty('--dark-color-lightness', '95%');
+            await document.querySelector(':root').style.setProperty('--white-color-lightness', '20%');
+        } else if(bg === 'bg-3') {
+            await document.querySelector(':root').style.setProperty('--light-color-lightness', '0%');
+            await document.querySelector(':root').style.setProperty('--light-color-lightness', '0%');
+
+            await document.querySelector(':root').style.setProperty('--dark-color-lightness', '95%');
+            await document.querySelector(':root').style.setProperty('--white-color-lightness', '10%');
+        }
     }
+
+    async function colors(color) {
+        if(color === 'color-1') {
+            await document.documentElement.style.setProperty('--primary-color-hue', 252);
+            await document.documentElement.style.setProperty('--primary-color-hue', 252);
+        } else if(color === 'color-2') {
+            await document.documentElement.style.setProperty('--primary-color-hue', 52);
+            await document.documentElement.style.setProperty('--primary-color-hue', 52);
+        } else if(color === 'color-3') {
+            await document.documentElement.style.setProperty('--primary-color-hue', 352);
+            await document.documentElement.style.setProperty('--primary-color-hue', 352);
+        } else if(color === 'color-4') {
+            await document.documentElement.style.setProperty('--primary-color-hue', 152);
+            await document.documentElement.style.setProperty('--primary-color-hue', 152);
+        } else if(color === 'color-5') {
+            await document.documentElement.style.setProperty('--primary-color-hue', 202);
+            await document.documentElement.style.setProperty('--primary-color-hue', 202);
+        }
+    }
+
+    background(bg);
+    colors(color);
+
+
 
     if(Font === 'font-size-1') {
         document.querySelector('html').style.fontSize = '10px';
@@ -78,19 +125,7 @@ useEffect(() => {
         document.documentElement.style.setProperty('----sticky-top-left', '-12rem');
         document.documentElement.style.setProperty('----sticky-top-right', '-35rem');
     }
-    if(bg === 'bg-1') {
-        document.documentElement.style.setProperty('--light-color-lightness', '95%');
-        document.documentElement.style.setProperty('--dark-color-lightness', '17%');
-        document.documentElement.style.setProperty('--white-color-lightness', '100%');
-    } else if(bg === 'bg-2') {
-        document.documentElement.style.setProperty('--light-color-lightness', '15%');
-        document.documentElement.style.setProperty('--dark-color-lightness', '95%');
-        document.documentElement.style.setProperty('--white-color-lightness', '20%');
-    } else if(bg === 'bg-3') {
-        document.documentElement.style.setProperty('--light-color-lightness', '0%');
-        document.documentElement.style.setProperty('--dark-color-lightness', '95%');
-        document.documentElement.style.setProperty('--white-color-lightness', '10%');
-    }
+
 
 }, [Font, bg, color]);
 

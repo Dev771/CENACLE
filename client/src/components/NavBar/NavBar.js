@@ -5,6 +5,15 @@ import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 import { getPostsBySearch } from '../../actions/post';
 import './styles.css';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import Divider from '@mui/material/Divider';
+import PersonAdd from '@mui/icons-material/PersonAdd';
+import Logout from '@mui/icons-material/Logout';
+import Theme from '@mui/icons-material/Palette';
+import { ChangeTheme } from '../../actions/Auth';
+import ThemeNav from '../Theme/Theme';
 
 
 function useQuery() {
@@ -18,8 +27,15 @@ const NavBar = () => {
     const dispatch = useDispatch();
     const query = useQuery();
     const [search, setSearch] = useState('');
+    const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
     const searchQuery = query.get('searchQuery');
     const [SignInUser, setSignInUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+    const [ThemeM , setThemeM ] = useState(false);
+    const [color , setColor ] = useState(SignInUser?.result?.theme?.color || SignInUser?.data?.theme?.color || "color-1");
+    const [ Font, setFont ] = useState('font-size-3');
+    const [ bg, setBg ] = useState(SignInUser?.result?.theme?.background || SignInUser?.data?.theme?.background || "bg-1");
 
     const logout = () => {
         dispatch({ type: 'LOGOUT' });
@@ -32,6 +48,13 @@ const NavBar = () => {
         dispatch({ type : "RESET" });
         navigate("/Form");
     }
+    
+    const handlewow = (event) => {
+        setAnchorEl(event.currentTarget);
+      };
+      const handleClose = () => {
+        setAnchorEl(null);
+      };
 
     const handleWhy = () =>{
         dispatch({type : "RESET" });
@@ -54,6 +77,98 @@ const NavBar = () => {
             navigate('/');
         }
         };
+
+        const OpenTheme = (click) => {
+            setThemeM(click);
+        }
+        
+        const themeEdit = (type, value) => {
+            if(type === 'color') {
+                dispatch(ChangeTheme(type, value));
+                setColor(value);
+            } else if(type === 'font') {
+                setFont(value);
+            } else if(type === 'bg') {
+                dispatch(ChangeTheme("background", value));
+                setBg(value);
+            }
+        }
+        
+        // useEffect(async() =>{
+        // }, [User]);
+        
+        useEffect(() => {
+        
+            async function background(bg) {
+                if(bg === 'bg-1') {
+                    await document.querySelector(':root').style.setProperty('--light-color-lightness', '95%');
+                    await document.querySelector(':root').style.setProperty('--light-color-lightness', '95%');
+        
+                    await document.querySelector(':root').style.setProperty('--dark-color-lightness', '17%');
+                    await document.querySelector(':root').style.setProperty('--white-color-lightness', '100%');
+                } else if(bg === 'bg-2') {
+                    await document.querySelector(':root').style.setProperty('--light-color-lightness', '15%');
+                    await document.querySelector(':root').style.setProperty('--light-color-lightness', '15%');
+        
+                    await document.querySelector(':root').style.setProperty('--dark-color-lightness', '95%');
+                    await document.querySelector(':root').style.setProperty('--white-color-lightness', '20%');
+                } else if(bg === 'bg-3') {
+                    await document.querySelector(':root').style.setProperty('--light-color-lightness', '0%');
+                    await document.querySelector(':root').style.setProperty('--light-color-lightness', '0%');
+        
+                    await document.querySelector(':root').style.setProperty('--dark-color-lightness', '95%');
+                    await document.querySelector(':root').style.setProperty('--white-color-lightness', '10%');
+                }
+            }
+        
+            async function colors(color) {
+                if(color === 'color-1') {
+                    await document.documentElement.style.setProperty('--primary-color-hue', 252);
+                    await document.documentElement.style.setProperty('--primary-color-hue', 252);
+                } else if(color === 'color-2') {
+                    await document.documentElement.style.setProperty('--primary-color-hue', 52);
+                    await document.documentElement.style.setProperty('--primary-color-hue', 52);
+                } else if(color === 'color-3') {
+                    await document.documentElement.style.setProperty('--primary-color-hue', 352);
+                    await document.documentElement.style.setProperty('--primary-color-hue', 352);
+                } else if(color === 'color-4') {
+                    await document.documentElement.style.setProperty('--primary-color-hue', 152);
+                    await document.documentElement.style.setProperty('--primary-color-hue', 152);
+                } else if(color === 'color-5') {
+                    await document.documentElement.style.setProperty('--primary-color-hue', 202);
+                    await document.documentElement.style.setProperty('--primary-color-hue', 202);
+                }
+            }
+        
+            background(bg);
+            colors(color);
+        
+        
+        
+            if(Font === 'font-size-1') {
+                document.querySelector('html').style.fontSize = '10px';
+                document.documentElement.style.setProperty('----sticky-top-left', '5.4rem');
+                document.documentElement.style.setProperty('----sticky-top-right', '5.4rem');
+            } else if(Font === 'font-size-2') {
+                document.querySelector('html').style.fontSize = '13px';
+                document.documentElement.style.setProperty('----sticky-top-left', '5.4rem');
+                document.documentElement.style.setProperty('----sticky-top-right', '-7rem');
+            } else if(Font === 'font-size-3') {
+                document.querySelector('html').style.fontSize = '16px';
+                document.documentElement.style.setProperty('----sticky-top-left', '5.4rem');
+                document.documentElement.style.setProperty('----sticky-top-right', '-17rem');
+            } else if(Font === 'font-size-4') {
+                document.querySelector('html').style.fontSize = '19px';
+                document.documentElement.style.setProperty('----sticky-top-left', '-5rem');
+                document.documentElement.style.setProperty('----sticky-top-right', '-25rem');
+            } else if(Font === 'font-size-5') {
+                document.querySelector('html').style.fontSize = '22px';
+                document.documentElement.style.setProperty('----sticky-top-left', '-12rem');
+                document.documentElement.style.setProperty('----sticky-top-right', '-35rem');
+            }
+        
+        
+        }, [Font, bg, color]);
       
 
     useEffect(() => {
@@ -109,17 +224,91 @@ const NavBar = () => {
                            <span className="btn btn-primary" onClick={() => navigate('/login/SignUp')} >Register</span>
                         </div>
                     ) :  (
+                        <>
                             <Badge 
-                                onClick={logout}
+                                onClick={handlewow}
                                 overlap='circular' 
                                 variant='dot' 
                                 anchorOrigin={{  vertical: 'bottom', horizontal: 'right'}} 
                                 color='secondary'
+                                aria-controls={open ? 'account-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
                             >
                                 <Avatar style={{ width: '40px', height: '40px'}} alt={SignInUser?.result.name} src={SignInUser?.result.imageUrl} >{SignInUser?.result.name.charAt(0)}</Avatar>
                             </Badge>
+                            <Menu
+                                anchorEl={anchorEl}
+                                id="account-menu"
+                                open={open}
+                                onClose={handleClose}
+                                onClick={handleClose}
+                                PaperProps={{
+                                elevation: 0,
+                                sx: {
+                                    overflow: 'visible',
+                                    filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                    mt: 1.5,
+                                    '& .MuiAvatar-root': {
+                                    width: 32,
+                                    height: 32,
+                                    ml: -0.5,
+                                    mr: 1,
+                                    },
+                                    '&:before': {
+                                    content: '""',
+                                    display: 'block',
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 14,
+                                    width: 10,
+                                    height: 10,
+                                    bgcolor: 'black',
+                                    transform: 'translateY(-50%) rotate(45deg)',
+                                    zIndex: 0,
+                                    },
+                                },
+                                }}
+                                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                            >
+                                <MenuItem onClick={() => navigate(`/Profile/${SignInUser?.result?._id || SignInUser?.result?.googleId}`)}>
+                                <ListItemIcon>
+                                    <PersonAdd fontSize="small" />
+                                </ListItemIcon>
+                                Profile
+                                </MenuItem>
+                                <MenuItem onClick={() => OpenTheme(true)}>
+                                <ListItemIcon>
+                                    <Theme fontSize="small" />
+                                </ListItemIcon>
+                                 Theme
+                                </MenuItem>
+                                <Divider />
+                                <MenuItem onClick={logout}>
+                                <ListItemIcon>
+                                    <Logout fontSize="small" />
+                                </ListItemIcon>
+                                Logout
+                                </MenuItem>                               
+                            </Menu>
+                      </>
+                            
                     )}
                 </div>
+                {ThemeM ? ( 
+                <>
+                    <ThemeNav 
+                        themeClose = {OpenTheme}
+                        theme = {themeEdit}
+                        color = {color}
+                        bg = {bg}
+                        Font = {Font}
+                    />
+                </> 
+            ) : (
+                <></>
+            )} 
             </div>
         </nav>
     )

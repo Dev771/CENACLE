@@ -14,10 +14,25 @@ app.use(bodyParser.json({ extended: true, limit: '30mb'}));
 app.use(bodyParser.urlencoded({ extended: true, limit: '30mb' }));
 app.use(cors());
 
+
 app.use('/posts', postRoutes);
 app.use('/auth', authRoutes);
 app.use('/tags', tagsRoutes);
 app.use('/user', userRoutes);
+
+
+app.get('/', (req,res) => {
+    res.send('APP IS RUNNING');
+});
+
+app.use( (err, req, res, next) => {
+    console.log("error nigga what?:" + err)
+    if (res.headersSent) {
+      return next(err)
+    }
+    res.status(500)
+    res.json('error', { error: err })
+  })
 
 const PORT = process.env.PORT || 8080;
 const ConnectionURL = 'mongodb+srv://Dev771:763200%40De@cluster0.3i0ib.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
