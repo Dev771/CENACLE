@@ -51,19 +51,20 @@ export const getPostsByCreator = (creatorid, navigate) => async (dispatch) => {
 
 export const createPost = (post, navigate) => async (dispatch) => {
     try {
+      
+      navigate('/Loading'); 
         
-        const fd = new FormData();
-        console.log(post);
+      const fd = new FormData();
+      console.log(post);
 
-        buildFormData(fd, post);
+      buildFormData(fd, post);
 
-        // fd.append("LocImage", post.LocImage);
+      const { data } = await api.createPost(fd);
 
-        
-        const { data } = await api.createPost(fd);
-        
-        dispatch({ type: "CREATE_POST", payload: data});
-        navigate('/');
+      
+      dispatch({ type: "CREATE_POST", payload: data});
+      navigate('/');
+      
     } catch (error) {
         console.log(error);
     }

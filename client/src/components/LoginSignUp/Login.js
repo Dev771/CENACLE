@@ -129,7 +129,7 @@ const RegistrationForm = () => {
                                     render={(renderProps) => (
 
                                         <span className='social-icons'>
-                                        <FaGoogle onClick={renderProps.onClick} disabled={renderProps.disabled} />
+                                            <FaGoogle onClick={renderProps.onClick} disabled={renderProps.disabled} />
                                         </span>
                                     )}
                                     onSuccess={googleSuccess}

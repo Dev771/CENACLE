@@ -118,7 +118,7 @@ const Form = () => {
                                     <input name='title' type='text' required placeholder='Enter Title' onChange={handleChange} />
                                     <div style={{ position: 'relative'}}>
                                         <div {...getRootProps()} className='DragAndDrop'>
-                                            <input {...getInputProps()} />
+                                            <input {...getInputProps()} accept='image/*, video/*' />
                                             <p>{!files.length ? (
                                                 <label>Here</label>
                                             ) : (
