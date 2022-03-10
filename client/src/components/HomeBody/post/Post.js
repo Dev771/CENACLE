@@ -7,6 +7,7 @@ import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import { getUser } from '../../../actions/User';
 import Commentsection from '../../Post Details/Commentsection';
+import config from '../../../config/config.json';
 
 
 import './styles.css';
@@ -85,11 +86,11 @@ const Post = ({post}) => {
                 <div className="photo">
                     <h2><b>{post.title}</b></h2>
                     {post.post_Type.split('/')[0] === 'image' ? (
-                        <img loading='lazy' src={`https://cenacletechlab.herokuapp.com/posts/${post.LocImage}`} alt={post.title} />
+                        <img loading='lazy' src={`${config.backendLocalUrl}/posts/${post.LocImage}`} alt={post.title} />
                     ) : post.post_Type.split('/')[0] === 'video' ? (
                         <>
                             <video width="100%" height='100%' autoPlay={true} muted={muted} loop>
-                                <source src={`https://cenacletechlab.herokuapp.com/posts/${post.LocImage}`} type={post.post_Type} />
+                                <source src={`${config.backendLocalUrl}/posts/${post.LocImage}`} type={post.post_Type} />
                             </video>
                             <button onClick={mutedchange} className='mute'>{!muted ? <VolumeUpRounded /> : <VolumeOff />}</button>
                         </>

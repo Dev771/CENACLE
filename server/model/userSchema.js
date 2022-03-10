@@ -44,6 +44,13 @@ const UserSchema = mongoose.Schema({
     dislikes: {
         type: [String],
         default: [],
+    },
+    active: {
+        type: Boolean,
+        default: false
+    },
+    activation_Code: {
+        type: Number,
     }
 });
 
