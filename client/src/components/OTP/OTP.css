@@ -1,0 +1,77 @@
+
+.flexin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20rem;
+    width: 500px;
+    height: 500px;
+    margin-left: 200px;
+    padding-bottom: 300px;
+}
+
+
+.circle{
+    background-color: var(--color-primary);
+    position: absolute;
+    top: -50%;
+    left:50%;
+    z-index: -1;
+    width: 1500px;
+    height: 1500px;
+    border-radius: 50%;
+    
+}
+
+.input-feild {
+    max-width: 380px;
+    width: 100%;
+    height: 55px;
+    background-color: #ddd9d9;
+    margin: 10px 0;
+    border-radius: 55px;
+    display: grid;
+    grid-template-columns: 15% 85%;
+    padding: 0 0.4rem;
+}
+.input-feild label {
+    text-align: center;
+    line-height: 55px;
+    color: #acacac;
+    font-size: 1.1.rem;
+}
+
+.input-feild input {
+    background: none;
+    outline: none;
+    border: none;
+    line-height: 1;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+.title {
+    font-size: 2.2rem;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.waygod{
+    margin-top: 10px;
+}
+
+.imageOTP{
+
+    height: 800px;
+    width: 800px;
+    float: right;
+    margin-top: 230px;
+    margin-right: 100px;
+    z-index: 100;
+}
+
+.whaat{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
