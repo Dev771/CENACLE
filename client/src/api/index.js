@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from '../config/config.json';
 
-const API = axios.create({ baseURL: "https://cenacletechlab.herokuapp.com/" });
+const API = axios.create({ baseURL: `${config.backendLocalUrl}/` });
 
 API.interceptors.request.use((req)=> {
     if(localStorage.getItem('profile')) {

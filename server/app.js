@@ -1,7 +1,10 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import mongoose from 'mongoose'; 
+import mongoose from 'mongoose';
+import { createRequire } from "module";
+const require = createRequire(import.meta.url); // construct the require method
+const config = require("./config/config.json"); 
 
 import postRoutes from './routes/postRoutes.js';
 import tagsRoutes from './routes/tagsRoutes.js';
@@ -35,7 +38,7 @@ app.use( (err, req, res, next) => {
   })
 
 const PORT = process.env.PORT || 8080;
-const ConnectionURL = 'mongodb+srv://Dev771:763200%40De@cluster0.3i0ib.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const ConnectionURL = config.mongoose;
 
 mongoose.connect(ConnectionURL, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => {
