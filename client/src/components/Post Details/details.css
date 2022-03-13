@@ -97,6 +97,10 @@
 }
 
 .comments{
+    display: flex;
+    position: relative;
+    /* flex-direction: column; */
+    gap: 10px;
     width: 100%;
     background-color: var(--color-white);
 }
@@ -142,4 +146,11 @@
 
 .primaryC{
     color: var(--color-primary);
+}
+
+.DeleteButton{
+    position : absolute;
+    right: 10px;
+
+
 }

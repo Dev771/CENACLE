@@ -5,6 +5,7 @@ import {commentPost} from '../../actions/post';
 import Isloading from '../Loading/Loading';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {Delete} from '@material-ui/icons';
 import './details.css';
 
 const Commentsection = ({ posts,Active }) => {
@@ -27,17 +28,23 @@ const Commentsection = ({ posts,Active }) => {
   useEffect(() => {
     setComments(posts?.comments);
   }, [dispatch, posts])
-
+  
+  const handleSubmit = () => {
+    // dispatch(deleteComment(posts._id, i))
+  }
 
   return (
     <div className="commentsection" style={Active ? {display:'inherit'} : {display:'none'}}>
       <h3 className="waao">Comments</h3>
         <div class="commentbox">
           {comments?.map((c, i)=>(
-            <label key={i} class="search-bar comments" >
-              <strong className='primaryC'>{c.split(':')[0]}</strong>
-              {c.split(':')[1]}
-            </label>
+            // <form onSubmit={handleSubmit} >
+              <div key={i} class="search-bar comments" >
+                <strong className='primaryC'>{c.split(':')[0]}</strong>
+              <div>{c.split(':')[1]}</div> 
+              <button type="button" onClick={handleClick} ><i className='uil uil-plus'></i></button>
+              </div>
+            // </form>
           ))}
        </div>
     </div>
