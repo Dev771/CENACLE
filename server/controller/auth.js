@@ -19,9 +19,9 @@ export const SignIn = async ( req, res ) => {
 
         const token = jwt.sign({ email: User.email, id: User._id }, 'test', { expiresIn: '1h'});
 
-        res.status(200).json({ result: User, token});
+        return res.status(200).json({ result: User, token});
     } catch (error) {
-        res.status(500).json({ message: "something went wrong||"});
+        return res.status(500).json({ message: "something went wrong||"});
     }
 }
 
@@ -40,40 +40,64 @@ export const SignUp = async ( req, res ) => {
         const randomNumber = Math.floor(Math.random()*(999999 - 100000 + 1) + 100000)
 
         if(User && User.active === false) {
-            userSchema.findOneAndUpdate({ email }, { activation_Code: randomNumber, password: hashedPassword, name: `${firstName} ${lastName}` }, (err, result) => {
-                if(err) return res.status(404).json({ msg: err});
+            userSchema.findOneAndUpdate({ email }, { activation_Code: randomNumber, password: hashedPassword, name: `${firstName} ${lastName}`,active: false ,expiry_Date: Date.now()+1000*60*60 }, (err, result) => {
+                if(err) return res.status(404).json({ msg: err,  status: "failure"});
                 else {
                     email_Confirmation({email, randomNumber, name : `${firstName} ${lastName}`}, (cbData) => {
                         if(cbData.status == 'scc') {
-                            return res.status(200).json(result);
+                            return res.status(200).json({result, status:"Success"});
                         } else {
-                            return res.status(400).json({ msg: cbData.msg})
+                            return res.status(400).json({ msg: cbData.msg, status: "failure"})
                         }
                     });
                 }
             });
         } else {
             userSchema.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, activation_Code: randomNumber}, (err, result) => {
-                if(err) return res.status(404).json({ message: err });
+                if(err) return res.status(404).json({ message: err , status: "failure"});
                 else {
                     email_Confirmation({email, randomNumber, name: result.name}, (cbData) => {
                         if(cbData.status == 'scc') {
-                            return res.status(200).json(result);
+                            return res.status(200).json({result , status: "Success"});
                         } else {
-                            return res.status(400).json({ msg: cbData.msg})
+                            return res.status(400).json({ msg: cbData.msg , status: "failure"})
                         }
                     });
                 }
             });
         }
 
-        // const token = jwt.sign({ email: result.email, id: result._id}, 'test', { expiresIn: '1h'});
-
-        // res.status(200).json({ result, token});
+        
     } catch (error) {
         res.status(500).json({ message: "something went wrong||"});
     }
 }
+
+
+export const VerifyOTP = async(req,res) => {
+
+    const {ID, OTP}  = req.params;
+    try {
+        const user = await userSchema.findOne({email: ID});
+        
+        if(!user) return res.status(404).json({message: "User not found"});
+
+        if(user.active == false && user.activation_Code == OTP && user.expiry_Date >= Date.now() ){
+           await userSchema.findOneAndUpdate({email: ID}, {active : true})
+           const result = await userSchema.findOne({email : ID })
+
+           const token = jwt.sign({ email: result.email, id: result._id}, 'test', { expiresIn: '1h'});
+           
+           return res.status(200).json({ result, token , status: "scc"});
+        }
+        else{
+            return res.status(500).json({status: "err" , message: "Either emailid is verified or OTP is incorrect"});
+        }
+    } catch (error) {
+        res.status(500).json({ message: "something went wrong||"});
+    }
+}
+
 
 export const GoogleSignUp = async (req, res) => {
     const { email, givenName, googleId, imageUrl, name } = req.body;

@@ -33,7 +33,7 @@ const App = () => {
                 <Route path="/posts/search" exact element={<Home/>} />
                 <Route path='/tag/acbd' exact element={<Tags />} />
                 <Route path='/Loading' exact element={<Loading />}/>
-                <Route path='/OTP' exact element={<Otp/>} />
+                <Route path='/OTP/:id' exact element={<Otp/>} />
                 <Route path='*' element={<Navigate to='/'/> } />
             </Routes>
         </BrowserRouter>

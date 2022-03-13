@@ -35,7 +35,7 @@ const Commentsection = ({ posts,Active }) => {
         <div class="commentbox">
           {comments?.map((c, i)=>(
             <label key={i} class="search-bar comments" >
-              <strong>{c.split(':')[0]}</strong>
+              <strong className='primaryC'>{c.split(':')[0]}</strong>
               {c.split(':')[1]}
             </label>
           ))}

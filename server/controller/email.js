@@ -2,8 +2,8 @@ import transporter from '../config/mail.js';
 import ejs from 'ejs';
 
 export const email_Confirmation = (data, cb) => {
-    ejs.renderFile('C:\\Users\\user\\Desktop\\My Projects\\Coding Projects\\React Projects\\frontend\\server\\views\\emailconfirmtion.ejs', { randomNumber: data.randomNumber, name: data.name }, (err, done) => {
-        if (err) return cb({ status: 'err', msg: "Error While Rendering" });
+    ejs.renderFile("views/emailconfirmtion.ejs", { randomNumber: data.randomNumber, name: data.name }, (err, done) => {
+        if (err) return cb({ status: 'err', msg: "Error while rendering" });
         else {
             var mail = {
                 from:  'Cenacle TechLab cenacletechlab@gmail.com',

@@ -51,6 +51,10 @@ const UserSchema = mongoose.Schema({
     },
     activation_Code: {
         type: Number,
+    },
+    expiry_Date:{
+        type: Date,
+        default: () => Date.now()+1000*60*60
     }
 });
 
