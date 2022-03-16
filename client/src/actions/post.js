@@ -90,12 +90,12 @@ export const likePost = (id, state) => async (dispatch) => {
     }
 }
 
-export const commentPost=(value,id)=> async(dispatch) => {
+export const commentPost=(user,value,id)=> async(dispatch) => {
   try {
-     const {data}= await api.comment(value,id);
+     const {data}= await api.comment(user,value,id);
       dispatch({type: COMMENT ,payload: data});
       return data.comments;
-      // console.log(data);
+      
   } catch (error) {
       console.log(error);
   }
@@ -114,10 +114,10 @@ export const deletePost = (id) => async (dispatch) => {
 export const DeleteComment = (i, PostID) => async (dispatch) => {
   try {
     console.log(i);
-    await api.deleteComment(i, PostID);
-    // console.log(data)
+    const { data }= await api.deleteComment(i, PostID);
+    console.log(data);
     // alert("POST Deleted");
-    dispatch({ type:DELETE, payload: PostID});
+    dispatch({ type:"DELETECOMMENT", payload: data});
   } catch(error) {
     console.log(error);
   }

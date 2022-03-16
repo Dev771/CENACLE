@@ -16,7 +16,7 @@ export const getPosts = () => API.get("/posts");
 export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
 export const deletePost = (id) => API.delete(`/posts/delete/${id}`);
-export const comment = (value, id) => API.post(`/posts/${id}/commentPost`, {value});
+export const comment = (user,value, id) => API.post(`/posts/${id}/commentPost`, {user,value});
 export const deleteComment = (i, id) => API.delete(`/posts/${id}/PostComment/${i}`);
 
 

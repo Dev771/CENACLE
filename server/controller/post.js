@@ -1,5 +1,6 @@
 import postSchema from '../model/postSchema.js';
 import mongoose from 'mongoose';
+import {v4} from 'uuid';
 
 import fs from 'fs';
 import util from 'util';
@@ -140,13 +141,12 @@ export const likePost = async (req, res) => {
 
 export const commentPost= async (req, res) =>{
     const{id}=req.params;
-    const{value}= req.body;
+    const{user, value}= req.body;
     
     try{
         const post = await postSchema.findById(id);
-        post.comments.push(value);
+        post.comments.push({username : user, comment : value , id : v4(),userid : req.userId})
         const updatedPost= await postSchema.findByIdAndUpdate(id, post,{new:true});
-        // res.status(200).json(updatedPost);
         const posts = await postSchema.find();
 
         res.status(200).json(posts);
@@ -215,32 +215,24 @@ export const deletePost = async ( req, res ) => {
 
     await postSchema.findByIdAndRemove(_id);
 
-    res.json({ message: 'Post Deleted Successfully!.. '});
+    res.status(200).json({ message: 'Post Deleted Successfully!.. '});
 }
 
 export const deleteComment = async (req, res) => {
     
     const {id, i} = req.params;
 
-    // res.json(data);
     try {
         const Post = await postSchema.findById(id);
-    
-        Post.comments = Post.comments.splice(i, 1);
-    
-        // await postSchema.findByIdAndUpdate(id, { "$pull": {[`comments.${i}`]: ''} });
-
-        // await postSchema.findByIdAndUpdate(id, {$unset : {[`comments.${i}`] : 1 }}) 
-        // await postSchema.findByIdAndUpdate(id, {$pull : {[`comments.${i}`] : ""}})
-    
-        
-        await postSchema.findByIdAndUpdate(id,{$pop: {"comments": i}});
 
 
-        const updatedPost = await postSchema.findById(id);
+        await postSchema.findByIdAndUpdate(id, {$pull : {"comments" : {id : i} }}) 
+
+
+        const updatedPost = await postSchema.find();
     
-        res.json(updatedPost);
+        res.status(200).json(updatedPost);
     } catch (error) {
-        res.json({ message: error})
+        res.status(500).json({ message: error})
     }
 }

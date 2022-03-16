@@ -84,6 +84,7 @@ const Form = () => {
                             <TextField required className={classes.textfield} {...params} label="Post Type" variant="outlined" />
                         )}
                         onChange={(e) => setPostData({...postData, tagname: e.target.value})}
+                        groupBy={tags => tags.name}
                         getOptionLabel={option => option.name}
                         style={{ width: '130px', border: '1px solid #fff2', background: 'white', borderRadius: '5px' }}
                     />

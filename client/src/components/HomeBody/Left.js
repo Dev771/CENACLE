@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Theme from '../Theme/Theme';
-import { Avatar, colors } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 import { useNavigate ,useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { ChangeTheme } from '../../actions/Auth';
@@ -8,7 +8,7 @@ import { ChangeTheme } from '../../actions/Auth';
 const Left = () => {
 
 
-    const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const User = JSON.parse(localStorage.getItem('profile'));
     const [active , setactive ] = useState(false);
     const [color , setColor ] = useState(User?.result?.theme?.color || User?.data?.theme?.color || "color-1");
     const [ Font, setFont ] = useState('font-size-3');

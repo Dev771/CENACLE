@@ -1,21 +1,14 @@
 import React , {useState} from 'react'
-import { TextField } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
-import {commentPost, DeleteComment} from '../../actions/post';
-import Isloading from '../Loading/Loading';
+import { useDispatch} from 'react-redux';
+import { DeleteComment} from '../../actions/post';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {Delete} from '@material-ui/icons';
 import './details.css';
 
 const Commentsection = ({ posts,Active }) => {
 
   const [comments, setComments]=useState(posts?.comments);
-  const [comment,setComment]=useState('');
   const user= JSON.parse(localStorage.getItem('profile'));
-  const post = useSelector((state) => state.posts);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const CommentDelete = (i) => {
     // console.log(e);
@@ -26,9 +19,7 @@ const Commentsection = ({ posts,Active }) => {
     setComments(posts?.comments);
   }, [dispatch, posts])
   
-  const handleSubmit = () => {
-    // dispatch(deleteComment(posts._id, i))
-  }
+
 
   return (
     <div className="commentsection" style={Active ? {display:'inherit'} : {display:'none'}}>
@@ -36,11 +27,11 @@ const Commentsection = ({ posts,Active }) => {
         <div class="commentbox">
           {comments?.map((c, i)=>(
             // <form onSubmit={handleSubmit} >
-              <div key={i} className="search-bar comments" >
-                <strong className='primaryC'>{c.split(':')[0]}</strong>
-                <div>{c.split(':')[1]}</div> 
-                {user ? (
-                    <button type="button" onClick={() => CommentDelete(i)} className='DeleteButton'><i name={i} className='uil uil-trash-alt'></i></button>
+              <div key={c.id} className="search-bar comments" >
+                <strong className='primaryC'>{c.username}</strong>
+                <div>{c.comment}</div> 
+                {user?.result?._id === c.userid || user?.result?.googleId === c.userid ? (
+                    <button type="button" onClick={() => CommentDelete(c.id)} className='DeleteButton'><i name={i} className='uil uil-trash-alt'></i></button>
                 ) : (<></>)}
               </div>
             // </form>

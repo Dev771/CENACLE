@@ -1,24 +1,16 @@
-import React , { useState, useEffect }from 'react';
+import React , { useState }from 'react';
 import './search.css';
 import { TextField } from '@material-ui/core';
 import ChipInput from 'material-ui-chip-input';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { getPostsBySearch } from '../../actions/post';
 
 
-function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-
 const Right = () => {
 
     const dispatch = useDispatch();
-    const [currentId, setcurrentId] = useState(0);
-    const query = useQuery();
-    const page = query.get('page') || 1;
     const history = useNavigate();
-    const searchQuery = query.get('searchQuery');
 
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
@@ -33,7 +25,7 @@ const Right = () => {
       };
       
     const searchPost = () => {
-    if (search.trim() || tags && (search.length>0 || tags.length>0)) {
+    if ((search.trim() || tags) && (search.length>0 || tags.length>0)) {
         dispatch(getPostsBySearch({ search, tags: tags.join(',') }, history));
         history(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
         setSearch('');

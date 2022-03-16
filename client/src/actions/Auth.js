@@ -57,7 +57,7 @@ export const GoogleSignUp = (result, token, navigate) => async (dispatch) => {
         console.log(data);
 
         if(!data.message) {
-            console.log('hello');
+            
             dispatch({ type: "AUTH", data: { result, data, token}});
             navigate('/')
         } else {

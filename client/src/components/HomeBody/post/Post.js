@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff, Add } from '@material-ui/icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { likePost ,deletePost , getPostsByCreator , commentPost} from '../../../actions/post';
-import { Badge, Avatar, TextField} from '@material-ui/core';
+import {ArrowUpwardOutlined, ArrowDownwardOutlined, VolumeUpRounded, VolumeOff} from '@material-ui/icons';
+import { useDispatch} from 'react-redux';
+import { likePost ,deletePost  , commentPost} from '../../../actions/post';
+import { Avatar, TextField} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
-import { getUser } from '../../../actions/User';
 import Commentsection from '../../Post Details/Commentsection';
 import config from '../../../config/config.json';
 
@@ -21,7 +20,6 @@ const Post = ({post}) => {
     const [Active , setActive] = useState(false);
     const [muted, setMuted] = useState(true);
     const user = JSON.parse(localStorage.getItem('profile'));
-    const Users = useSelector((state) => state.Users);
     const [comment,setComment]=useState('');
 
 
@@ -55,10 +53,12 @@ const Post = ({post}) => {
     // const openPost = () => navigate(`/posts/${post._id}`);
 
     const handleClick= () =>{
-        const finalComment= `${user.result.name}: ${comment}`;
-        dispatch(commentPost(finalComment,post._id));
-        navigate('/');
-        setComment('');
+            if(comment != ""){
+                // const finalComment= `${user.result.name}: ${comment}`;
+                dispatch(commentPost(user.result.name,comment,post._id));
+                navigate('/');
+                setComment('');
+            };
       };
     
 
@@ -77,7 +77,7 @@ const Post = ({post}) => {
                             <small>{post.Date_Of_Creation}</small>
                         </div>
                     </div>
-                    {(user?.result?._id == post?.creatorId || user?.result?.googleId === post?.creatorId) && (
+                    {(user?.result?._id === post?.creatorId || user?.result?.googleId === post?.creatorId) && (
                     <span onClick={()=> dispatch(deletePost(post._id))} className="edit">
                     <Delete/>
                     </span>
@@ -120,6 +120,7 @@ const Post = ({post}) => {
                      <div className="search-bar okay" onClick={() => setActive(true) } style={{ display: 'flex', justifyContent: 'space-around', gap: '10px'}}>
                      <TextField 
                        fullWidth
+                       required
                        placeholder="Add a Comment"
                        value={comment}
                        onChange={(e)=> setComment(e.target.value)}
