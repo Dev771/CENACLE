@@ -110,3 +110,15 @@ export const deletePost = (id) => async (dispatch) => {
       console.log(error);
   }
 };
+
+export const DeleteComment = (i, PostID) => async (dispatch) => {
+  try {
+    console.log(i);
+    await api.deleteComment(i, PostID);
+    // console.log(data)
+    // alert("POST Deleted");
+    dispatch({ type:DELETE, payload: PostID});
+  } catch(error) {
+    console.log(error);
+  }
+}

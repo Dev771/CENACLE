@@ -99,6 +99,7 @@
 .comments{
     display: flex;
     position: relative;
+    align-items: center;
     /* flex-direction: column; */
     gap: 10px;
     width: 100%;

@@ -1,5 +1,5 @@
 import express from 'express';
-import { getPostsBySearch, fetchPost , getPost, getPosts, createPost, likePost, dislikePost , getPostsBycreator , deletePost , commentPost } from '../controller/post.js';
+import { getPostsBySearch, fetchPost , getPost, getPosts, createPost, likePost, dislikePost , getPostsBycreator , deletePost , commentPost, deleteComment } from '../controller/post.js';
 
 import multer from 'multer';
 const upload = multer({ dest : "uploads/" })
@@ -17,6 +17,7 @@ router.post('/', [ auth, upload.single('LocImage') ], createPost);
 router.patch('/:id/liked', auth, likePost);
 router.patch('/:id/disliked', auth, dislikePost);
 router.post('/:id/commentPost', auth, commentPost);
+router.delete('/:id/PostComment/:i', auth, deleteComment);
 
 
 export default router;

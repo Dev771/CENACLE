@@ -1,7 +1,7 @@
 import React , {useState} from 'react'
 import { TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import {commentPost} from '../../actions/post';
+import {commentPost, DeleteComment} from '../../actions/post';
 import Isloading from '../Loading/Loading';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,13 +17,10 @@ const Commentsection = ({ posts,Active }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
-  const handleClick= () =>{
-    const finalComment= `${user.result.name}: ${comment}`;
-    dispatch(commentPost(finalComment,posts._id));
-    navigate('/');
-    setComment('');
-  };
+  const CommentDelete = (i) => {
+    // console.log(e);
+    dispatch(DeleteComment(i, posts._id));
+  }
 
   useEffect(() => {
     setComments(posts?.comments);
@@ -39,10 +36,12 @@ const Commentsection = ({ posts,Active }) => {
         <div class="commentbox">
           {comments?.map((c, i)=>(
             // <form onSubmit={handleSubmit} >
-              <div key={i} class="search-bar comments" >
+              <div key={i} className="search-bar comments" >
                 <strong className='primaryC'>{c.split(':')[0]}</strong>
-              <div>{c.split(':')[1]}</div> 
-              <button type="button" onClick={handleClick} ><i className='uil uil-plus'></i></button>
+                <div>{c.split(':')[1]}</div> 
+                {user ? (
+                    <button type="button" onClick={() => CommentDelete(i)} className='DeleteButton'><i name={i} className='uil uil-trash-alt'></i></button>
+                ) : (<></>)}
               </div>
             // </form>
           ))}

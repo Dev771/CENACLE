@@ -217,3 +217,30 @@ export const deletePost = async ( req, res ) => {
 
     res.json({ message: 'Post Deleted Successfully!.. '});
 }
+
+export const deleteComment = async (req, res) => {
+    
+    const {id, i} = req.params;
+
+    // res.json(data);
+    try {
+        const Post = await postSchema.findById(id);
+    
+        Post.comments = Post.comments.splice(i, 1);
+    
+        // await postSchema.findByIdAndUpdate(id, { "$pull": {[`comments.${i}`]: ''} });
+
+        // await postSchema.findByIdAndUpdate(id, {$unset : {[`comments.${i}`] : 1 }}) 
+        // await postSchema.findByIdAndUpdate(id, {$pull : {[`comments.${i}`] : ""}})
+    
+        
+        await postSchema.findByIdAndUpdate(id,{$pop: {"comments": i}});
+
+
+        const updatedPost = await postSchema.findById(id);
+    
+        res.json(updatedPost);
+    } catch (error) {
+        res.json({ message: error})
+    }
+}

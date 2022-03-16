@@ -17,6 +17,7 @@ export const createPost = (formData) => API.post('/posts', formData, { headers: 
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
 export const deletePost = (id) => API.delete(`/posts/delete/${id}`);
 export const comment = (value, id) => API.post(`/posts/${id}/commentPost`, {value});
+export const deleteComment = (i, id) => API.delete(`/posts/${id}/PostComment/${i}`);
 
 
 export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
