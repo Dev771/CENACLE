@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import './styleS.css';
 import Loading from '../Loading/Loading';
 import Post from './post/Post';
+import Sharebutton from './sharebutton/Sharebutton';
 
 const MainBody = () => {
 
@@ -14,6 +15,13 @@ const MainBody = () => {
     const posts = useSelector((state) => state.posts);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [counter , setcounter] =useState(5);
+    const [share , setshare] = useState(false);
+
+
+    const OpenShareB = (click) => {
+        setshare(click);
+    }
+
 
     useEffect(() => {
         dispatch(getPosts());
@@ -35,7 +43,7 @@ const MainBody = () => {
                 {/* <!--*******************************FEEDS******************************--> */}
                 {!posts.length  ? (<Loading/>) :  (
                     posts.slice().reverse().slice(0,counter).map((post) => (
-                        <Post post={post} key={post._id} />
+                        <Post post={post} key={post._id} SbuttonClose={OpenShareB}/>
                     ))
                 )}     
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
@@ -73,6 +81,15 @@ const MainBody = () => {
                    <div className='copyright'><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
                 </div>
             </div>
+            {share ? ( 
+                <>
+                    <Sharebutton 
+                        SbuttonClose = {OpenShareB}
+                    />
+                </> 
+            ) : (
+                <></>
+            )} 
         </div>
     )
 }

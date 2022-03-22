@@ -21,7 +21,7 @@ const OTP = () => {
 
 
   return (
-    <div>
+    <div style={{overflowY : "hidden" , height : "90vh"}}>
         <div class="circle">
         </div>
         <form class="whaat" onSubmit={handleSubmit}>

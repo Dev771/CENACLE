@@ -1,0 +1,102 @@
+.Sharecrow{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 2;
+}
+
+.share-dialog {
+    display: none;
+    width: 95%;
+    max-width: 500px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.15);
+    position: absolute;
+    top:50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
+    z-index: -1;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 4px;
+    /* background-color: var(--color-white); */
+    background-image: url("https://c.tenor.com/_4YgA77ExHEAAAAC/rick-roll.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .share-dialog.is-open {
+    display: block;
+    z-index: 2;
+   
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: var(--color-dark);
+  }
+  
+  
+  .close-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+  }
+  
+  .close-button svg {
+    margin-right: 0;
+  }
+  
+  .link {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: var(--color-primary);
+  }
+  
+  .pen-url {
+    margin-right: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 900;
+    font-size: 1.2em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .closeButton {
+    position: absolute;
+    background-color: var(--color-white);
+    top: 1em;
+    right: 1.5em;
+    color: var(--color-primary);
+    font-size: larger;
+    font-weight: 700;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: .5s;
+}
+
+.closeButton:hover {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+}
+
+.copy-link{
+  padding: .5em 1em;
+    background-color: var(--color-secondary);
+    border-radius: 20px;
+    font-weight: 900;
+    font-size: 1em;
+    color: white;
+}

@@ -9,10 +9,11 @@ import Commentsection from '../../Post Details/Commentsection';
 import config from '../../../config/config.json';
 
 
+
 import './styles.css';
 
 
-const Post = ({post}) => {
+const Post = ({post,SbuttonClose}) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [isLiked, setisLiked] = useState(false);
@@ -22,7 +23,7 @@ const Post = ({post}) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     const [comment,setComment]=useState('');
 
-
+    
     const isLike = (state) => {
         if(state === 'liked') {
             dispatch(likePost(post._id, state));
@@ -108,10 +109,7 @@ const Post = ({post}) => {
                             <ArrowDownwardOutlined color={!isDisliked ? 'inherit' : 'secondary'} onClick={() => isLike('disliked')} /> 
                         </div>
                         <span onClick={() => setActive (!Active) }><i className="uil uil-comment"></i></span>
-                        <span><i className="uil uil-share"></i></span>
-                    </div>
-                    <div className="bookmark">
-                    <span><i className="uil uil-bookmark-full"></i></span>
+                        <span onClick={() => SbuttonClose (true)}><i className="uil uil-share"></i></span>
                     </div>            
                 </div>
                 <div className="comments text-muted" onClick={() => setActive (!Active) }>View all {post?.comments.length} comments</div>
