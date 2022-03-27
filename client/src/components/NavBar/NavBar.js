@@ -206,7 +206,7 @@ const NavBar = () => {
                     <TextField 
                     id="messages-search"
                     name="search" 
-                    placeholder='Search for Creators, Ispiration, and people'
+                    placeholder='Search for Ispiration , Title'
                     onKeyPress={handleKeyPress}
                     fullWidth 
                     value={search} 

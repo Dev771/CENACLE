@@ -37,7 +37,11 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
-    color: var(--color-dark);
+    color: white;
+    font-weight: bolder;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    width: 60%;
   }
   
   
