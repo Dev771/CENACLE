@@ -19,7 +19,7 @@ export const signUp = (formData, navigate) => async (dispatch) => {
         navigate("/Loading")
         const { data } = await api.SignUp(formData);
 
-        console.log(data);
+        // console.log(data);
 
         
         if(data.status === "Success"){
@@ -37,7 +37,7 @@ export const verifyOTP = (ID , OTP , navigate) => async (dispatch) => {
     try {
         navigate("/Loading")
         const { data } = await api.OTPverify(ID , OTP);
-        console.log(data);
+        // console.log(data);
         if(data.status === "scc"){
             dispatch({ type: "AUTH", data });
             navigate('/');
@@ -55,7 +55,7 @@ export const GoogleSignUp = (result, token, navigate) => async (dispatch) => {
 
         const { data } = await api.GoogleSignUp(result);
 
-        console.log(data);
+        // console.log(data);
 
         if(!data.message) {
             

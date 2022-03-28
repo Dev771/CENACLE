@@ -235,7 +235,16 @@ const NavBar = () => {
                                 aria-haspopup="true"
                                 aria-expanded={open ? 'true' : undefined}
                             >
-                                <Avatar style={{ width: '40px', height: '40px'}} alt={SignInUser?.result.name} src={SignInUser?.result.imageURL} >{SignInUser?.result.name.charAt(0)}</Avatar>
+                                {SignInUser?.result.imageURL ? 
+                                <Avatar style={{ width: '40px', height: '40px'}} alt={SignInUser?.result.name} src={SignInUser?.result?.imageURL} >
+                                {SignInUser?.result.name.charAt(0)}
+                                </Avatar>
+                                :
+                                <Avatar style={{ width: '40px', height: '40px'}} alt={SignInUser?.result.name} src={SignInUser?.result?.imageUrl} >
+                                {SignInUser?.result.name.charAt(0)}
+                                </Avatar>
+                                }
+                                
                             </Badge>
                             <Menu
                                 anchorEl={anchorEl}

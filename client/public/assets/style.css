@@ -727,6 +727,11 @@ MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS
 MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
 ====================================================================
 */
+@media screen and (max-width : 1000px){
+   .CreatorName{
+       display: none !important;
+   }
+}
 @media screen and (max-width : 992px){
     
     main .container {
@@ -771,6 +776,11 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
         gap : 10px !important;
         margin-top: 10px !important ;
     }
+
+    .CreatorNameMobile{
+        display: flex !important;
+    }
+    
 }
 
 @media screen and (max-width: 630px) {

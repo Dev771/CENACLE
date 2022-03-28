@@ -116,7 +116,15 @@ const Left = () => {
                 {User ? (
                     <span className="profile" onClick={() => navigate(`/Profile/${User?.result?._id || User?.result?.googleId}`)}>
                         <div className="profile-picture">
-                            <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageURL} >{User?.result?.name.charAt(0)}</Avatar>
+                        {User?.result.imageURL ? 
+                                <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result.name} src={User?.result?.imageURL} >
+                                {User?.result.name.charAt(0)}
+                                </Avatar>
+                                :
+                                <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result.name} src={User?.result?.imageUrl} >
+                                {User?.result.name.charAt(0)}
+                                </Avatar>
+                                }
                         </div>
                         <div className="handle">
                             <h4>{User?.result?.name}</h4>
@@ -158,7 +166,24 @@ const Left = () => {
                         <span className="menu-item NO" href='/'><i className="uil uil-setting"></i><h3>Settings</h3></span>
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
-                <label htmlFor="create-post" className="btn btn-primary">Create Post</label>
+                {User ? (
+                    <label htmlFor="create-post" className="btn btn-primary">Create Post</label>
+                ):
+                (
+                 <></>   
+                )
+                }
+                <div className="CreatorName">
+                   <div>
+                Made with Love <i class="uil uil-heart" style={{color : "red"}}></i> <br />
+                by &nbsp;
+                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
+                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
+                   <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
+                   </div>
+                   <div className='copyright'><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
+                </div> 
+                
             </div> 
             {active ? ( 
                 <>
