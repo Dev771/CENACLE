@@ -11,8 +11,9 @@ import useStyles from './Styles';
 import Icon from './icon';
 // import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 // import CancelIcon from "@mui/icons-material/Cancel";
-
-const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
+const images = ['https://i.ibb.co/192hXc5/G1.png', 'https://i.ibb.co/VJhf3mB/G2.png', 'https://i.ibb.co/0jBDP4H/G3.png', 'https://i.ibb.co/HHzjGkB/B1.png', 'https://i.ibb.co/GJ20Nw4/B2.png', 'https://i.ibb.co/HV8HR6Q/B3.png'];
+var image = images[Math.floor(Math.random() * images.length)];
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '', imageURL: image};
 
 const RegistrationForm = () => {
 
@@ -25,6 +26,7 @@ const RegistrationForm = () => {
     const [isSignUp, setisSignUp] = useState(action === 'SignUp' ? true : action === 'SignIn' ? false : 'Error');
     const [formData, setFormData] = useState(initialState);
     const [showPassword, setShowPassword] = useState(false);
+    const imageUrl= "https://i.ibb.co/192hXc5/G1.png";
 
     let hasSixChar = formData.password.length >= 6;
 	let hasLowerChar = /(.*[a-z].*)/.test(formData.password);
@@ -44,9 +46,9 @@ const RegistrationForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         if(isSignUp) {
             
+            // eslint-disable-next-line no-lone-blocks
             { hasSixChar && hasLowerChar && hasUpperChar && hasNumber && hasSpecialChar ?
                  (dispatch(signUp(formData, navigate))) : (
                      console.log("error")

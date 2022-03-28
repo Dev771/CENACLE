@@ -14,6 +14,7 @@ export const signIn = (formData, navigate) => async (dispatch) => {
 }
 
 export const signUp = (formData, navigate) => async (dispatch) => {
+    
     try {
         navigate("/Loading")
         const { data } = await api.SignUp(formData);
@@ -28,7 +29,7 @@ export const signUp = (formData, navigate) => async (dispatch) => {
             console.log(data.msg);
         }
     } catch(error) {
-        console.log(error.response.data);
+        console.log(error.response);
     }
 }
 

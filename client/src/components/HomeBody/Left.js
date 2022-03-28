@@ -116,7 +116,7 @@ const Left = () => {
                 {User ? (
                     <span className="profile" onClick={() => navigate(`/Profile/${User?.result?._id || User?.result?.googleId}`)}>
                         <div className="profile-picture">
-                            <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
+                            <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageURL} >{User?.result?.name.charAt(0)}</Avatar>
                         </div>
                         <div className="handle">
                             <h4>{User?.result?.name}</h4>

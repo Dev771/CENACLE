@@ -32,7 +32,7 @@ const MainBody = () => {
             <div className="middle middlee">
                 {User ? (
                     <form className="create-post" onClick={() => {!User ? window.location.reload() : navigate('/Form')}}>
-                        <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageUrl} >{User?.result?.name.charAt(0)}</Avatar>
+                        <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result?.name} src={User?.result?.imageURL} >{User?.result?.name.charAt(0)}</Avatar>
                             <input type="text" placeholder={`What's on your mind ${User.result.name} ?`} id="create-post" />
                         <input type="submit" value="post" className=" btn btn-primary" />
                     </form>

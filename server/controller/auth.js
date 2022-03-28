@@ -17,6 +17,26 @@ export const SignIn = async ( req, res ) => {
 
         if(!isPasswordCorrect) return res.status(400).json({messsge: 'Password Wrong!!!'});
 
+    
+        const checkUser = await userSchema.findOne({email, imageURL: { "$exists": true }});
+
+        if(!checkUser) {
+            const images = ['https://i.ibb.co/192hXc5/G1.png', 'https://i.ibb.co/VJhf3mB/G2.png', 'https://i.ibb.co/0jBDP4H/G3.png', 'https://i.ibb.co/HHzjGkB/B1.png', 'https://i.ibb.co/GJ20Nw4/B2.png', 'https://i.ibb.co/HV8HR6Q/B3.png'];
+            var image = images[Math.floor(Math.random() * images.length)];
+            
+            const updatedUser = await userSchema.updateOne({ email }, {
+                $set : {
+                    "imageURL" : image 
+                }
+            });
+
+            const token = jwt.sign({ email: User.email, id: User._id }, 'test', { expiresIn: '1h'});
+
+            const result = await userSchema.findOne({email});
+
+            return res.status(200).json({ result: result, token});
+        }
+            
         const token = jwt.sign({ email: User.email, id: User._id }, 'test', { expiresIn: '1h'});
 
         return res.status(200).json({ result: User, token});
@@ -26,7 +46,10 @@ export const SignIn = async ( req, res ) => {
 }
 
 export const SignUp = async ( req, res ) => {
-    const { email, password, confirmPassword, firstName, lastName } = req.body;
+    
+    // res.status(200).json(req.body);
+
+    const { email, password, confirmPassword, firstName, lastName, imageURL } = req.body;
 
     try{
         const User = await userSchema.findOne({ email });
@@ -40,7 +63,7 @@ export const SignUp = async ( req, res ) => {
         const randomNumber = Math.floor(Math.random()*(999999 - 100000 + 1) + 100000)
 
         if(User && User.active === false) {
-            userSchema.findOneAndUpdate({ email }, { activation_Code: randomNumber, password: hashedPassword, name: `${firstName} ${lastName}`,active: false ,expiry_Date: Date.now()+1000*60*60 }, (err, result) => {
+            userSchema.findOneAndUpdate({ email }, { activation_Code: randomNumber, password: hashedPassword, name: `${firstName} ${lastName}`,active: false ,expiry_Date: Date.now()+1000*60*60, imageURL: imageURL }, (err, result) => {
                 if(err) return res.status(404).json({ msg: err,  status: "failure"});
                 else {
                     email_Confirmation({email, randomNumber, name : `${firstName} ${lastName}`}, (cbData) => {
@@ -53,7 +76,7 @@ export const SignUp = async ( req, res ) => {
                 }
             });
         } else {
-            userSchema.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, activation_Code: randomNumber}, (err, result) => {
+            userSchema.create({ email, password: hashedPassword, name: `${firstName} ${lastName}`, imageURL: imageURL, activation_Code: randomNumber}, (err, result) => {
                 if(err) return res.status(404).json({ message: err , status: "failure"});
                 else {
                     email_Confirmation({email, randomNumber, name: result.name}, (cbData) => {
@@ -66,8 +89,6 @@ export const SignUp = async ( req, res ) => {
                 }
             });
         }
-
-        
     } catch (error) {
         res.status(500).json({ message: "something went wrong||"});
     }
