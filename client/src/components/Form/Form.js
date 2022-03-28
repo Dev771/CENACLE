@@ -78,13 +78,13 @@ const Form = () => {
                         id="Tags"
                         className={classes.Autocomplete}
                         classes={classes}
-                        options={tags}
+                        options={tags.sort()}
                         onSelect={(e) => setPostData({...postData, tags_name: e.target.value})}
                         renderInput={params => (
                             <TextField required className={classes.textfield} {...params} label="Post Type" variant="outlined" />
                         )}
                         onChange={(e) => setPostData({...postData, tagname: e.target.value})}
-                        groupBy={tags => tags.name}
+                        // groupBy={tags => tags.name}
                         getOptionLabel={option => option.name}
                         style={{ width: '130px', border: '1px solid #fff2', background: 'white', borderRadius: '5px' }}
                     />

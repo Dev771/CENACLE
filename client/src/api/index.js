@@ -31,6 +31,7 @@ export const SignUp = (formData) => API.post('/auth/signUp', formData);
 export const OTPverify = (ID , OTP) => API.post(`/auth/OTPverify/${ID}/${OTP}`);
 export const GoogleSignUp = (formData) => API.post('/auth/GoogleAuth', formData);
 
+export const TopUser = () => API.get("/user/Top");
 export const getUser = (creator) => API.get(`/user/${creator}`);
 export const Likeduser = (id , state) => API.patch(`/user/${id}/${state}`);
 export const ChangeTheme = (type, value) => API.patch(`/user/${type}/${value}`);

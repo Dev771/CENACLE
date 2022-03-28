@@ -133,3 +133,15 @@ export const ChangeTheme = async (req, res) => {
         res.status(500).json({ message: error});
     }
 }
+
+
+export const topUser = async (req, res) => {
+    try {
+        const user = await userSchema.find().sort({"Total_Post_Like" : -1}).limit(5);
+
+        res.status(200).json(user);
+
+    } catch(error) {
+        res.status(400).json({message: error});
+    }
+}

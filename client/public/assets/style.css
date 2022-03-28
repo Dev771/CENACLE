@@ -146,6 +146,9 @@ main .container{
 }
 
 /*=========================Left=====================*/
+.NO{
+cursor: not-allowed !important;
+}
 main .container .left{
     height: max-content;
     position: sticky;

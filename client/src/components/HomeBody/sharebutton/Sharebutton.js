@@ -5,7 +5,7 @@ const Sharebutton = ({SbuttonClose}) => {
 
   const Copy = (e) => {
     navigator.clipboard.writeText(e.target.name);
-    alert("link copied!!!");
+    // alert("link copied!!!");
   }
 
   return (

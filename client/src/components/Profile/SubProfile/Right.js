@@ -81,7 +81,7 @@ const Right = () => {
                             <label className='User_likes'>
                                 Cenacle
                             </label>
-                            <label className='User_likes' onClick={() => window.location.assign('https://youtu.be/dQw4w9WgXcQ') }>
+                            <label className='User_likes Nicks' onClick={() => window.location.assign('https://youtu.be/dQw4w9WgXcQ') }>
                                 RICK ROLL
                             </label>
                         </div>       

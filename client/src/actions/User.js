@@ -22,3 +22,13 @@ export const Likeduser = ( User , state ) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const Topuser =() => async (dispatch) => {
+    try {
+        const { data } =await api.TopUser();
+        console.log(data);
+        dispatch({type: "TUSER", payload : data});
+    } catch (error) {
+        console.log(error);
+    }
+}

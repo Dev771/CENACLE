@@ -145,17 +145,17 @@ const Left = () => {
                         )}
                     </span>
                     
-                    <span href='/' className="menu-item " id="notifications"><i className="uil uil-bell"><small className="notification-count">9+</small></i>
+                    <span href='/' className="menu-item NO" id="notifications"><i className="uil uil-bell"><small className="notification-count">9+</small></i>
                     <h3>Notification</h3>
                     </span>
-                    <span href='/' className="menu-item" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
+                    <span href='/' className="menu-item NO" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
                      <h3>Messages</h3>
                     </span>
                     
                     <span className='menu-item' onClick={() => OpenTheme(true)}>
                         <i className="uil uil-palette"></i><h3>Theme</h3>
                     </span>
-                        <span className="menu-item" href='/'><i className="uil uil-setting"></i><h3>Settings</h3></span>
+                        <span className="menu-item NO" href='/'><i className="uil uil-setting"></i><h3>Settings</h3></span>
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
                 <label htmlFor="create-post" className="btn btn-primary">Create Post</label>

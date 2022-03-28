@@ -102,3 +102,27 @@ main .container .right{
     justify-content: left;
     align-items: left;
 }
+
+.Userlist{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.Deetsz{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    position: relative;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 10px;
+    width: 100%;
+    /* background-color: var(--color-secondary) !important; */
+    box-shadow: 0 0 5px var(--color-primary);
+    overflow-x: hidden;
+    min-height: 25px;
+    font-size: 0.9em;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    margin-bottom: 1px !important ;
+    font-weight: bolder;
+}
