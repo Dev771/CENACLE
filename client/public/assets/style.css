@@ -736,13 +736,10 @@ MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS
 MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
 ====================================================================
 */
-@media screen and (max-width : 1200px){
+@media screen and (max-width : 1000px){
    .CreatorName{
        display: none !important;
    }
-   .CreatorNameMobile{
-    display: flex !important;
-}
 }
 @media screen and (max-width : 992px){
     
