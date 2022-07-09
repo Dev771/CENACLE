@@ -144,6 +144,11 @@ main .container{
     column-gap: 1.5em;
     position: relative;
 }
+main .message{
+    grid-template-columns: 18vw auto ;
+}
+
+
 
 /*=========================Left=====================*/
 .NO{
@@ -704,6 +709,10 @@ MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS
         grid-template-columns: 5rem auto 30vw;
         gap: 1rem;
     }
+    main .message{
+        grid-template-columns: 5rem auto ;
+        gap: 1rem;
+    }
     .left{
         top: var(--sticky-top-left);
         width: 5rem;
@@ -727,12 +736,21 @@ MEDIA QUERIES FOR SMALL LAPTOPS AND BIG TABLETS
 MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
 ====================================================================
 */
+@media screen and (max-width : 1200px){
+   .CreatorName{
+       display: none !important;
+   }
+   .CreatorNameMobile{
+    display: flex !important;
+}
+}
 @media screen and (max-width : 992px){
     
     main .container {
         grid-template-columns: 0 auto 5rem;
         gap: 0;
     }
+
     main .container .left{
         grid-column: 3/4;
         position: fixed;
@@ -771,6 +789,11 @@ MEDIA QUERIES FOR SMALL TABLETS AND MOBILE PHONES
         gap : 10px !important;
         margin-top: 10px !important ;
     }
+
+    .CreatorNameMobile{
+        display: flex !important;
+    }
+    
 }
 
 @media screen and (max-width: 630px) {

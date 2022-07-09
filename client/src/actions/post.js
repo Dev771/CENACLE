@@ -53,7 +53,7 @@ export const createPost = (post, navigate) => async (dispatch) => {
     try {
         navigate('/Loading');
         const fd = new FormData();
-        console.log(post);
+        // console.log(post);
 
       buildFormData(fd, post);
 
@@ -113,9 +113,9 @@ export const deletePost = (id) => async (dispatch) => {
 
 export const DeleteComment = (i, PostID) => async (dispatch) => {
   try {
-    console.log(i);
+    // console.log(i);
     const { data }= await api.deleteComment(i, PostID);
-    console.log(data);
+    // console.log(data);
     // alert("POST Deleted");
     dispatch({ type:"DELETECOMMENT", payload: data});
   } catch(error) {

@@ -1,0 +1,52 @@
+.chatbox{
+    /* margin-top: 10px; */
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    font-weight: bold;
+    height: 70vh;
+}
+
+.messagesection{
+    width: 100%;
+    height: calc(70vh - 70px);
+}
+
+.Mcomments {
+    display: flex;
+    position: relative;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 10px;
+    width: fit-content;
+    max-width: 70%;
+    background-color: var(--color-white);
+    overflow-x: hidden;
+    min-height: 25px;
+}
+
+.Mycomments {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 10px;
+    max-width: 70%;
+    background-color: var(--color-white);
+    overflow-x: hidden;
+    min-height: 25px;
+    left: 100%;
+    transform: translateX(-100%);
+    width: fit-content;
+}
+
+.date{
+    font-size: 0.8em;
+    color: var(--color-gray);
+    margin: 0 19px  ;
+}

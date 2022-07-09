@@ -11,7 +11,7 @@ import { Topuser } from '../../actions/User';
 const Right = () => {
 
     const dispatch = useDispatch();
-    const history = useNavigate();
+    const navigate = useNavigate();
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
     const [active , setactive] = useState(true);
@@ -27,11 +27,11 @@ const Right = () => {
       
     const searchPost = () => {
     if ((search.trim() || tags) && (search.length>0 || tags.length>0)) {
-        dispatch(getPostsBySearch({ search, tags: tags.join(',') }, history));
-        history(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+        dispatch(getPostsBySearch({ search, tags: tags.join(',') }, navigate));
+        navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
         setSearch('');
     } else {
-        history('/');
+        navigate('/');
     }
     };
 
@@ -53,7 +53,7 @@ const Right = () => {
                     </div> 
                     {!users.length  ? (<></>) :  (
                         users.map((user) => (
-                            <div className="search1 Userlist Deetsz">
+                            <div className="search1 Userlist Deetsz" onClick={() => navigate(`/Profile/${user?._id}`)}>
                             <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={user?.name} src={user?.imageURL} >{user?.name.charAt(0)}
                             </Avatar>
                             <strong className='primaryC'>{user?.name}</strong>
@@ -61,20 +61,6 @@ const Right = () => {
                            </div>
                         ))
                     )}     
-                    
-                    {/* <div className="search1 Userlist Deetsz">
-                     <strong className='primaryC'>Manthan nakli rajput</strong>
-                     <div>: 69CP </div> 
-                    </div><div className="search1 Userlist Deetsz">
-                     <strong className='primaryC'>Tushar sundriyal</strong>
-                     <div>: 25CP </div> 
-                    </div><div className="search1 Userlist Deetsz">
-                     <strong className='primaryC'>Dev Garg</strong>
-                     <div>: 6.9CP </div> 
-                    </div><div className="search1 Userlist Deetsz">
-                     <strong className='primaryC'>Toshiet Daksh</strong>
-                     <div>: 69CP </div> 
-                    </div> */}
                    </div>
                 
                 <div className="search1">
@@ -115,16 +101,7 @@ const Right = () => {
                         </button>
                     </div>  
                 </div>
-                <div className="CreatorName">
-                   <div>
-                Made with Love <i class="uil uil-heart" style={{color : "red"}}></i> <br />
-                by &nbsp;
-                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
-                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
-                   <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
-                   </div>
-                   <div className='copyright'><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
-                </div>   
+                  
             </div> 
         </div>
     )

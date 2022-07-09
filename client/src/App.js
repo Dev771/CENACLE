@@ -10,6 +10,7 @@ import Tags from './components/tags/Tags';
 import Loading from './components/Loading/Loading';
 // import Postdetails from './components/Post Details/Postdetails';
 import Otp from './components/OTP/OTP';
+import Messenger from './components/Messenger/Messenger';
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
                 <Route path='/tag/acbd' exact element={<Tags />} />
                 <Route path='/Loading' exact element={<Loading />}/>
                 <Route path='/OTP/:id' exact element={<Otp/>} />
+                <Route path='/Messsages' exact element={<Messenger/>} />
                 <Route path='*' element={<Navigate to='/'/> } />
             </Routes>
         </BrowserRouter>
