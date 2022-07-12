@@ -5,7 +5,7 @@ import ChipInput from 'material-ui-chip-input';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch ,useSelector } from 'react-redux';
 import { getPostsBySearch } from '../../../actions/post';
-import { Topuser } from '../../../actions/User';
+import { AllUser } from '../../../actions/User';
 
 
 
@@ -19,31 +19,41 @@ const Mleft = () => {
     const [tags, setTags] = useState([]);
     const [active , setactive] = useState(true);
     const users = useSelector((state) => state.Users);
-
+    console.log(User)
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
           searchPost();
           setSearch('');
         }
-      };
-      
-    const searchPost = () => {
-    if ((search.trim() || tags) && (search.length>0 || tags.length>0)) {
-        dispatch(getPostsBySearch({ search, tags: tags.join(',') }, navigate));
-        navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
-        setSearch('');
-    } else {
-        navigate('/');
-    }
     };
 
-      const handleAddChip = (tag) => setTags([...tags, tag]);
+    const handleClick = (user) => {
+        user?.messages.find(obj => {
+            if(obj._id === User?.data?._id) {
+                return dispatch({ type : "New_User", payload: obj.mess });
+            } else {
+                return dispatch({ type: "New_User", payload: []});
+            }
+        })
+    }
 
-      const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
+    const searchPost = () => {
+        if ((search.trim() || tags) && (search.length>0 || tags.length>0)) {
+            dispatch(getPostsBySearch({ search, tags: tags.join(',') }, navigate));
+            navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
+            setSearch('');
+        } else {
+            navigate('/');
+        }
+    };
+
+    const handleAddChip = (tag) => setTags([...tags, tag]);
+
+    const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
     useEffect( () => {
-        dispatch(Topuser());
+        dispatch(AllUser());
     },[]);
 
   return (
@@ -90,20 +100,19 @@ const Mleft = () => {
                                 value={search} 
                                 onChange={(e) => setSearch(e.target.value)}
                                 />
-
                         ):(
                             <ChipInput
-                            id="messages-search"
-                            value={tags}
-                            onAdd={handleAddChip}
-                            onDelete={handleDeleteChip}
-                            placeholder="Search tags"
+                                id="messages-search"
+                                value={tags}
+                                onAdd={handleAddChip}
+                                onDelete={handleDeleteChip}
+                                placeholder="Search tags"
                             />
                         )}
                     </div>
                 {!users.length  ? (<></>) :  (
                     users.map((user) => (
-                        <div className="search1 Userlist Deetsz" onClick={() => navigate(`/Profile/${user?._id}`)}>
+                        <div className="search1 Userlist Deetsz" onClick={() => handleClick(user)}>
                         <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={user?.name} src={user?.imageURL} >{user?.name.charAt(0)}
                         </Avatar>
                         <strong className='primaryC'>{user?.name}</strong>

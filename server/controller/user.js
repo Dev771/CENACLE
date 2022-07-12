@@ -145,3 +145,13 @@ export const topUser = async (req, res) => {
         res.status(400).json({message: error});
     }
 }
+
+export const upUser = async (req, res) => {
+    console.log(1);
+    try {
+        const update_User = await userSchema.find();
+        return res.status(200).json(update_User);
+    } catch(error) {
+        return res.json({message: "error"})
+    }
+}

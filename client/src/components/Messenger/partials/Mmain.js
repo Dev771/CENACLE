@@ -10,6 +10,8 @@ const Mmain = () => {
     
     const user = JSON.parse(localStorage.getItem('profile'));
     const navigate = useNavigate();
+    const messages = useSelector((state) => state.messages);
+    console.log(messages);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
   return (
@@ -45,14 +47,14 @@ const Mmain = () => {
                     <h3 className="waao">Comments</h3>
                     <div class="commentbox" style={{maxHeight : "85%"}}>
                         <div>
-                        <div className="search-bar Mcomments" >
-                            <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result.name} src={User?.result?.imageURL} >
-                            {User?.result.name.charAt(0)}
-                            </Avatar>
-                            {/* <strong className='primaryC'>{User?.result?.name}</strong> */}
-                            <div>comment skjghujghskhjggjhuklsjghks sjghssgsguls slkghsslibkjhsjshskbjslbkjsljkhslkhslukshyvjsslh vvhlksslvjhsljvhsvlhs svlkhlvkhss slvkhsvhlk skvjsvkhkgs</div> 
-                        </div>
-                        <div className="date">date and time</div>
+                            <div className="search-bar Mcomments" >
+                                <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result.name} src={User?.result?.imageURL} >
+                                {User?.result.name.charAt(0)}
+                                </Avatar>
+                                {/* <strong className='primaryC'>{User?.result?.name}</strong> */}
+                                <div>comment skjghujghskhjggjhuklsjghks sjghssgsguls slkghsslibkjhsjshskbjslbkjsljkhslkhslukshyvjsslh vvhlksslvjhsljvhsvlhs svlkhlvkhss slvkhsvhlk skvjsvkhkgs</div> 
+                            </div>
+                            <div className="date">date and time</div>
                         </div>
                         <div>
                             <div className="search-bar Mycomments" >
@@ -94,6 +96,10 @@ const Mmain = () => {
                             </div>
                             <div style={{float: "right"}}className="date">date and time</div>
                         </div>
+
+                        
+                        
+
                     </div>
                 </div>
                 {user?.result?.name && (

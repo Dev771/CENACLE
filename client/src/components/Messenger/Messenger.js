@@ -20,8 +20,8 @@ const Messenger = () => {
     <div>
       <main >
         <div className='container message'>
-        <Mleft/>
-        <Mmain />
+          <Mleft/>
+          <Mmain />
         </div>
       </main>
     </div>
