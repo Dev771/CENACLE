@@ -6,15 +6,15 @@ import './partials/Mstyle.css'
 import {io} from 'socket.io-client'
 
 const Messenger = () => {
-  const [socket , setsocket] = useState(null);
+  // const [socket , setsocket] = useState(null);
 
-  useEffect(() =>{
-      setsocket(io("ws://localhost:8900"))
-  },[])
+  // useEffect(() =>{
+  //     setsocket(io("ws://localhost:8900"))
+  // },[])
 
-  useEffect(() => {
-    socket?.on("welcome",message=> console.log(message))
-  },[socket])
+  // useEffect(() => {
+  //   socket?.on("welcome",message=> console.log(message))
+  // },[socket])
 
   return (
     <div>

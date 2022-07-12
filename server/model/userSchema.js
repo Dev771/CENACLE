@@ -55,6 +55,10 @@ const UserSchema = mongoose.Schema({
     expiry_Date:{
         type: Date,
         default: () => Date.now()+1000*60*60
+    },
+    messages: {
+        type: Array,
+        default: []
     }
 });
 
