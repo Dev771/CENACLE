@@ -1,4 +1,4 @@
 {
-    "backendUrl": "https://cenacletechlab.herokuapp.com",
-    "backendLocalUrl": "http://localhost:8080"
+    "backendLocalUrl": "http://localhost:8080",
+    "backendUrl": "https://cenacletechlab.herokuapp.com"
 }

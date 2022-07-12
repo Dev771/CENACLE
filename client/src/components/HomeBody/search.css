@@ -125,4 +125,5 @@ main .container .right{
     padding-bottom: 6px !important;
     margin-bottom: 1px !important ;
     font-weight: bolder;
+    cursor: pointer;
 }
