@@ -156,7 +156,7 @@ const Left = () => {
                     <span href='/' className="menu-item NO" id="notifications"><i className="uil uil-bell"><small className="notification-count">9+</small></i>
                     <h3>Notification</h3>
                     </span>
-                    <span href='/' className="menu-item NO" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
+                    <span onClick={() => navigate("/Messsages")} className="menu-item" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
                      <h3>Messages</h3>
                     </span>
                     
