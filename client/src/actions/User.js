@@ -34,7 +34,7 @@ export const Topuser =() => async (dispatch) => {
 export const AllUser = () => async (dispatch) => {
     try {
         const { data } = await api.AllUser();
-        dispatch({ type: "TUSER", payload: data });
+        dispatch({ type: "AllUSER", payload: data });
     } catch(error) {
         console.log(error)
     }

@@ -4,6 +4,8 @@ export default (Users=[], actions) => {
         case "USER_PROFILE": 
             return actions.payload;
         case "TUSER":
+            return actions.payload;
+        case "AllUSER":
             return actions.payload;            
         default:
             return Users;

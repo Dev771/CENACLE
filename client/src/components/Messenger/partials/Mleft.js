@@ -29,13 +29,19 @@ const Mleft = () => {
     };
 
     const handleClick = (user) => {
-        user?.messages.find(obj => {
-            if(obj._id === User?.data?._id) {
-                return dispatch({ type : "New_User", payload: obj.mess });
+        console.log("Hello")
+        console.log(user)
+        for(let i = 0; i < user?.messages.length; i++) {
+            if(User?.data?._id === user?.messages[i].User) {
+                console.log(user?.messages[i]);
+                dispatch({type: "New_User", payload: user?.messages[i]});
+                break;
             } else {
-                return dispatch({ type: "New_User", payload: []});
+                dispatch({type: "New_User", payload: []});
             }
-        })
+        }
+        
+
     }
 
     const searchPost = () => {
@@ -112,7 +118,7 @@ const Mleft = () => {
                     </div>
                 {!users.length  ? (<></>) :  (
                     users.map((user) => (
-                        <div className="search1 Userlist Deetsz" onClick={() => handleClick(user)}>
+                        <div className="search1 Userlist Deetsz" onClick={()=>handleClick(user)}>
                         <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={user?.name} src={user?.imageURL} >{user?.name.charAt(0)}
                         </Avatar>
                         <strong className='primaryC'>{user?.name}</strong>

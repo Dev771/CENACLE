@@ -24,7 +24,6 @@ export default (posts = [], actions) => {
         case "RESET":
             return [];
         default: 
-
             return posts;
     }
 }

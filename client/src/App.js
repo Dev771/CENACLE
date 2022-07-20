@@ -35,7 +35,7 @@ const App = () => {
                 <Route path='/tag/acbd' exact element={<Tags />} />
                 <Route path='/Loading' exact element={<Loading />}/>
                 <Route path='/OTP/:id' exact element={<Otp/>} />
-                <Route path='/Messsages' exact element={<Messenger/>} />
+                <Route path='/Messsages' exact element={<Messenger />} />
                 <Route path='*' element={<Navigate to='/'/> } />
             </Routes>
         </BrowserRouter>
