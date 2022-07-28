@@ -6,61 +6,30 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch ,useSelector } from 'react-redux';
 import { getPostsBySearch } from '../../../actions/post';
 import { AllUser } from '../../../actions/User';
+import { converId } from '../../../actions/Message';
 
 
 
 
-const Mleft = () => {
+const Mleft = ({nuser}) => {
     
     const User = JSON.parse(localStorage.getItem('profile'));
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [search, setSearch] = useState('');
-    const [tags, setTags] = useState([]);
+    const [Users, setUsers] = useState(JSON.parse(localStorage.getItem('profile')));
     const [active , setactive] = useState(true);
     const users = useSelector((state) => state.Users);
-    console.log(User)
-
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-          searchPost();
-          setSearch('');
-        }
-    };
+    // console.log(User)
 
     const handleClick = (user) => {
-        console.log("Hello")
         console.log(user)
-        for(let i = 0; i < user?.messages.length; i++) {
-            if(User?.data?._id === user?.messages[i].User) {
-                console.log(user?.messages[i]);
-                dispatch({type: "New_User", payload: user?.messages[i]});
-                break;
-            } else {
-                dispatch({type: "New_User", payload: []});
-            }
-        }
-        
-
+        dispatch(converId(Users?.data?._id, user?._id));
+        nuser(user)
     }
 
-    const searchPost = () => {
-        if ((search.trim() || tags) && (search.length>0 || tags.length>0)) {
-            dispatch(getPostsBySearch({ search, tags: tags.join(',') }, navigate));
-            navigate(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
-            setSearch('');
-        } else {
-            navigate('/');
-        }
-    };
-
-    const handleAddChip = (tag) => setTags([...tags, tag]);
-
-    const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
-
-    useEffect( () => {
+    useEffect(() => {
         dispatch(AllUser());
-    },[]);
+    }, [])
 
   return (
     <div style={{gap: "10px"}}>
@@ -74,7 +43,7 @@ const Mleft = () => {
                                 </Avatar>
                                 :
                                 <Avatar style={{ width: '40px', height: '40px'}} alt={User?.result.name} src={User?.result?.imageUrl} >
-                                {User?.result.name.charAt(0)}
+                            ;    {User?.result.name.charAt(0)}
                                 </Avatar>
                                 }
                         </div>
@@ -94,28 +63,18 @@ const Mleft = () => {
                 <div className="headings">
                     <h4>Nalle User</h4><i className="uil uil-user-plus"></i>
                 </div> 
-                <div className="search-bar">
+                {/* <div className="search-bar">
                         <i className="uil uil-search"></i>
-                        {active ? (
-                                <TextField 
-                                id="messages-search"
-                                name="search" 
-                                placeholder='Search users'
-                                onKeyPress={handleKeyPress}
-                                fullWidth 
-                                value={search} 
-                                onChange={(e) => setSearch(e.target.value)}
-                                />
-                        ):(
-                            <ChipInput
-                                id="messages-search"
-                                value={tags}
-                                onAdd={handleAddChip}
-                                onDelete={handleDeleteChip}
-                                placeholder="Search tags"
-                            />
-                        )}
-                    </div>
+                        <TextField 
+                            id="messages-search"
+                            name="search" 
+                            placeholder='Search users'
+                            onKeyPress={() => {}}
+                            fullWidth 
+                            value={()=> {}} 
+                            onChange={() => {}}
+                        />
+                    </div> */}
                 {!users.length  ? (<></>) :  (
                     users.map((user) => (
                         <div className="search1 Userlist Deetsz" onClick={()=>handleClick(user)}>

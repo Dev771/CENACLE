@@ -10,6 +10,7 @@ import postRoutes from './routes/postRoutes.js';
 import tagsRoutes from './routes/tagsRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import messageRoutes from './routes/messageRoutes.js';
  
 const app = express();
 
@@ -22,6 +23,7 @@ app.use('/posts', postRoutes);
 app.use('/auth', authRoutes);
 app.use('/tags', tagsRoutes);
 app.use('/user', userRoutes);
+app.use('/message', messageRoutes);
 
 
 app.get('/', (req,res) => {

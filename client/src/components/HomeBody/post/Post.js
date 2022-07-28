@@ -7,6 +7,7 @@ import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import Commentsection from '../../Post Details/Commentsection';
 import config from '../../../config/config.json';
+import moment from 'moment';
 
 
 
@@ -75,7 +76,7 @@ const Post = ({post,SbuttonClose}) => {
                         
                         <div className="ingo">
                             <h3>{post.tags_name}/{post.tags_type} || <label onClick={() => navigate(`/Profile/${post?.creatorId}`)}>{post.creator}</label></h3>
-                            <small>{post.Date_Of_Creation}</small>
+                            <small>{moment(post.Date_Of_Creation).format("L LTS")}</small>
                         </div>
                     </div>
                     {(user?.result?._id === post?.creatorId || user?.result?.googleId === post?.creatorId) && (

@@ -36,3 +36,6 @@ export const AllUser = () => API.get("/user/All");
 export const getUser = (creator) => API.get(`/user/${creator}`);
 export const Likeduser = (id , state) => API.patch(`/user/${id}/${state}`);
 export const ChangeTheme = (type, value) => API.patch(`/user/${type}/${value}`);
+
+export const message = (convoId, user, text) => API.patch(`/message/add/${convoId}/${user}`, {text});
+export const getconvo = (user1, user2) => API.patch(`/message/getconvo/${user1}/${user2}`);
