@@ -6,6 +6,7 @@ import { Avatar, TextField} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import { useNavigate } from 'react-router-dom';
 import Commentsection from '../../Post Details/Commentsection';
+import postImage from '../../../img/Zoro.jpg'
 import config from '../../../config/config.json';
 import moment from 'moment';
 
@@ -88,7 +89,9 @@ const Post = ({post,SbuttonClose}) => {
                 <div className="photo">
                     <h2><b>{post.title}</b></h2>
                     {post.post_Type.split('/')[0] === 'image' ? (
-                        <img loading='lazy' src={`${config.backendLocalUrl}/posts/${post.LocImage}`} alt={post.title} />
+                        <img loading='lazy' src={postImage} alt={post.title} />
+                        //Image from AWS S3 Bucket Code ---->
+                        // <img loading='lazy' src={`${config.backendLocalUrl}/posts/${post.LocImage}`} alt={post.title} />
                     ) : post.post_Type.split('/')[0] === 'video' ? (
                         <>
                             <video width="100%" height='100%' autoPlay={true} muted={muted} loop>

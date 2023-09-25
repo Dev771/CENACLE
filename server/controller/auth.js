@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import userSchema from "../model/userSchema.js";
 import {email_Confirmation} from './email.js';
