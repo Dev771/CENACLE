@@ -1,7 +1,7 @@
-> Cenacle
-Cenacle is not just another social media application; it's a vibrant digital canvas for users to express themselves through images and videos while connecting with a global audience. In Cenacle, creativity knows no bounds, and users can customize their experience to reflect their unique style and personality. This dynamic platform boasts an array of features, including profiles, likes, comments, and real-time interaction, all seamlessly integrated with cutting-edge technology.
+# Cenacle
+> Cenacle is not just another social media application; it's a vibrant digital canvas for users to express themselves through images and videos while connecting with a global audience. In Cenacle, creativity knows no bounds, and users can customize their experience to reflect their unique style and personality. This dynamic platform boasts an array of features, including profiles, likes, comments, and real-time interaction, all seamlessly integrated with cutting-edge technology.
 
-🎨 Key Features:
+## 🎨 Key Features:
 
 ✅ Creative Customization: At the heart of Cenacle is the ability for users to craft their own digital haven. With a plethora of theme options, users can design their profiles, posts, and overall aesthetic to align with their personal style.
 
