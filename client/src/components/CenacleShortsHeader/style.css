@@ -1,0 +1,7 @@
+.cenacleHeaderView {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    overflow-x: scroll;
+    position: relative;
+}

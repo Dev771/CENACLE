@@ -54,9 +54,9 @@ const Right = () => {
                     {!users.length  ? (<></>) :  (
                         users.map((user) => (
                             <div className="search1 Userlist Deetsz" onClick={() => navigate(`/Profile/${user?._id}`)}>
-                            <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={user?.name} src={user?.imageURL} >{user?.name.charAt(0)}
-                            </Avatar>
-                            <strong className='primaryC'>{user?.name}</strong>
+                                <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={user?.name} src={user?.imageURL} >{user?.name.charAt(0)}
+                                </Avatar>
+                                <strong className='primaryC'>{user?.name}</strong>
                             <div>:{user?.Total_Post_Like}CP </div> 
                            </div>
                         ))

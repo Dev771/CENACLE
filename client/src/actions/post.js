@@ -14,9 +14,13 @@ export const getPost = (id) => async (dispatch) => {
   }
 };
 
-export const getPosts = () => async (dispatch) => {
+export const getPosts = (currentPost) => async (dispatch) => {
     try {
-        const { data } = await api.getPosts();
+        const { data } = await api.getPosts(currentPost);
+        if(currentPost === 0) {
+          dispatch({ type: 'RESET' });
+        }
+        console.log(data);
 
         dispatch({ type: 'FETCH_ALL', payload: data });
     } catch (error) {

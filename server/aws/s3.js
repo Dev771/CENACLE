@@ -17,6 +17,7 @@ const s3 = new AWS.S3({
 });
 
 export const upload = (file) => {
+    console.log('inside upload');
     const fileStream = fs.createReadStream(file.path);
 
     const uploadParams = ({

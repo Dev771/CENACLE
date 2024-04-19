@@ -1,5 +1,5 @@
 import express from 'express';
-import { getOneUser , Likeuser , DisLikeuser, ChangeTheme , topUser, upUser} from '../controller/user.js';
+import { getOneUser , Likeuser , DisLikeuser, ChangeTheme , topUser, upUser, getUserAvatar} from '../controller/user.js';
 
 import auth from '../middleware/auth.js';
 
@@ -13,5 +13,6 @@ router.patch('/:_id/Liked', auth , Likeuser);
 router.patch('/:_id/DisLiked', auth , DisLikeuser);
 router.patch('/:type/:value', auth, ChangeTheme);
 router.get('/1/update_User', upUser);
+router.get("/Avatar/:id", getUserAvatar);
 
 export default router;

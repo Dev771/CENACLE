@@ -13,6 +13,7 @@ import moment from 'moment';
 
 
 import './styles.css';
+import { getAvatar } from '../../../actions/User';
 
 
 const Post = ({post,SbuttonClose}) => {
@@ -21,11 +22,12 @@ const Post = ({post,SbuttonClose}) => {
     const [isLiked, setisLiked] = useState(false);
     const [isDisliked, setIsDisLiked] = useState(false);
     const [Active , setActive] = useState(false);
+    const [imageLoaded, setImageLoaded] = useState(false);
     const [muted, setMuted] = useState(true);
     const user = JSON.parse(localStorage.getItem('profile'));
     const [comment,setComment]=useState('');
+    const [avatar, setAvatar] = useState(null);
 
-    
     const isLike = (state) => {
         if(state === 'liked') {
             dispatch(likePost(post._id, state));
@@ -38,6 +40,14 @@ const Post = ({post,SbuttonClose}) => {
         setMuted(!muted);
     }
 
+    useEffect(() => {
+        (async function() {
+            const avatar1 = await getAvatar(post?.creatorId);
+            console.log(avatar1);
+            setAvatar(avatar1);
+        })();
+
+    }, [dispatch, post]);
     
     
     useEffect(() => {
@@ -71,10 +81,8 @@ const Post = ({post,SbuttonClose}) => {
             <div className="feed">
                 <div className="head">
                     <div className="user">
-                        
-                            <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={post?.creator} src={post?.img} >{post?.creator.charAt(0)}
-                            </Avatar>
-                        
+                        <Avatar style={{ width: '40px', height: '40px', boxShadow : '0 0 5px black'}} alt={post?.creator} src={avatar} >{post?.creator.charAt(0)}
+                        </Avatar>
                         <div className="ingo">
                             <h3>{post.tags_name}/{post.tags_type} || <label onClick={() => navigate(`/Profile/${post?.creatorId}`)}>{post.creator}</label></h3>
                             <small>{moment(post.Date_Of_Creation).format("L LTS")}</small>
@@ -89,13 +97,14 @@ const Post = ({post,SbuttonClose}) => {
                 <div className="photo">
                     <h2><b>{post.title}</b></h2>
                     {post.post_Type.split('/')[0] === 'image' ? (
-                        <img loading='lazy' src={postImage} alt={post.title} />
+                        // <img loading='lazy' src={postImage} alt={post.title} />
                         //Image from AWS S3 Bucket Code ---->
-                        // <img loading='lazy' src={`${config.backendLocalUrl}/posts/${post.LocImage}`} alt={post.title} />
+                        
+                        <img loading='lazy' className={`PostImage ${ imageLoaded ? "" : "skeleton minHeight"}`} onLoad={() => setImageLoaded(true)} src={`${config.backendLocalUrl}/posts/${post.LocImage}`} onError={(e) => e.target.src = postImage} alt={post.title} />
                     ) : post.post_Type.split('/')[0] === 'video' ? (
                         <>
                             <video width="100%" height='100%' autoPlay={true} muted={muted} loop>
-                                <source src={`${config.backendLocalUrl}/posts/${post.LocImage}`} type={post.post_Type} />
+                                <source src={`${config.backendLocalUrl}/posts/${post.LocImage}`} onError={(e) => e.target.src = postImage} type={post.post_Type} />
                             </video>
                             <button onClick={mutedchange} className='mute'>{!muted ? <VolumeUpRounded /> : <VolumeOff />}</button>
                         </>

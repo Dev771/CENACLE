@@ -10,6 +10,7 @@ main .container .right{
     border-radius:var(--card-border-radius) ;
     padding: var(--card-padding);
 }
+
 .right .search1 .headings{
     display: flex;
     align-items: center;
@@ -62,3 +63,9 @@ main .container .right{
     padding: 0 0 10px;
 }
 
+.postPageLoading {
+    height: 100px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -39,3 +39,16 @@ export const AllUser = () => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const getAvatar = async (id) => {
+    try {
+        const { data } = await api.getAvatar(id);
+        if(data.status === "Success") {
+            return data.data;
+        }
+        return null;
+    } catch(error) {
+        return null;
+    }
+
+}

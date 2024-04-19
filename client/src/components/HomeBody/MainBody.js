@@ -7,6 +7,8 @@ import './styleS.css';
 import Loading from '../Loading/Loading';
 import Post from './post/Post';
 import Sharebutton from './sharebutton/Sharebutton';
+import CenacleShortsHeader from '../CenacleShortsHeader/CenacleShortsHeader';
+import WindowSizing from '../WindowSizing/WindowSizing';
 
 const MainBody = () => {
 
@@ -14,22 +16,34 @@ const MainBody = () => {
     const navigate = useNavigate();
     const posts = useSelector((state) => state.posts);
     const [User, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-    const [counter , setcounter] =useState(5);
     const [share , setshare] = useState(false);
+    const loader = WindowSizing();
+    const [fetch, setFetching] = useState(false);
+
+    const [middleWidth, setMiddleWidth] = useState(0);
 
 
     const OpenShareB = (click) => {
         setshare(click);
     }
 
+    useEffect(() => {
+        if(loader && !fetch) {
+            setFetching(true);
+            dispatch(getPosts(posts.length))
+                .then(() => setFetching(false)
+            );
+        }
+    }, [loader, dispatch])
 
     useEffect(() => {
-        dispatch(getPosts());
-    }, []);
+        dispatch(getPosts(0));
+    }, [dispatch]);
 
     return (
-        <div>
-            <div className="middle middlee">
+        <div id="main">
+            <div className="middle middlee" id="middle" onLoad={() => setMiddleWidth(document.getElementById("middle").offsetWidth)}>
+                {/* <CenacleShortsHeader width={middleWidth} /> */}
                 {User ? (
                     <form className="create-post" onClick={() => {!User ? window.location.reload() : navigate('/Form')}}>
                         {User?.result.imageURL ? 
@@ -50,12 +64,22 @@ const MainBody = () => {
 
                 {/* <!--*******************************FEEDS******************************--> */}
                 {!posts.length  ? (<Loading/>) :  (
-                    posts.slice().reverse().slice(0,counter).map((post) => (
+                    posts.slice().map((post, i) => (
                         <Post post={post} key={post._id} SbuttonClose={OpenShareB}/>
                     ))
                 )}     
+                {loader ? (<div className='postPageLoading'>
+                    <div className='wave' ></div>
+                    <div className='wave' ></div>
+                    <div className='wave' ></div>
+                    <div className='wave' ></div>
+                    <div className='wave' ></div>
+                    <div className='wave' ></div>
+                </div>) : (null)}
+
+
                 {/* <!--***********************************END OF FEEDS*******************************--> */}
-                <div className="showmore">
+                {/* <div className="showmore">
                 { counter>=posts.length && posts.length > 5 ? (
                        <button className="btn btn-primary" type="button" onClick={() => setcounter(counter - 5)}>
                        Show Less <i class="uil uil-angle-up"></i>
@@ -77,17 +101,7 @@ const MainBody = () => {
                    ) : (
                        <></>
                    )}
-                </div>
-                <div className="CreatorNameMobile">
-                   <div>
-                Made with Love <i class="uil uil-heart" style={{color : "red"}}></i> <br />
-                by &nbsp;
-                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" target="_blank" className='linkden'>Dev G </a> &nbsp; | &nbsp;
-                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" target="_blank" className='linkden'>Naman B </a> &nbsp;| &nbsp;
-                   <a href="https://www.linkedin.com/in/heygaurav07/" target="_blank" className='linkden'>Gaurav S </a>   
-                   </div>
-                   <div className='copyright'><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
-                </div>
+                </div> */}
             </div>
             {share ? ( 
                 <>

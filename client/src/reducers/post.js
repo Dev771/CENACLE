@@ -5,8 +5,8 @@ export default (posts = [], actions) => {
         case "CREATE_POST": 
             return [ ...posts, actions.payload ];
         case "FETCH_ALL": 
-            console.log(actions.payload)
-            return actions.payload;
+            const post = [...posts, ...actions.payload]
+            return post;
         case FETCH_BY_SEARCH:
             posts = actions.payload;
             console.log(actions.payload)

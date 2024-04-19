@@ -147,11 +147,26 @@ export const topUser = async (req, res) => {
 }
 
 export const upUser = async (req, res) => {
-    console.log(1);
     try {
         const update_User = await userSchema.find();
         return res.status(200).json(update_User);
     } catch(error) {
         return res.json({message: "error"})
+    }
+}
+
+export const getUserAvatar = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const User = await userSchema.findById(id);
+
+        return res.status(200).json({ status: 'Success', data: User.imageURL })
+    } catch(error) {
+        try {
+            const User = await userSchema.findOne({ googleId: id });
+            return res.status(200).json({ status: 'Success', data: User.imageURL });
+        } catch(error) {
+            return res.json({ status: "error", message: "Error Occured!!" })
+        }
     }
 }

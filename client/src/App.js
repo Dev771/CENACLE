@@ -11,6 +11,7 @@ import Loading from './components/Loading/Loading';
 // import Postdetails from './components/Post Details/Postdetails';
 import Otp from './components/OTP/OTP';
 import Messenger from './components/Messenger/Messenger';
+import AdminHome from './components/Admin/Home/AdminHome';
 
 const App = () => {
 
@@ -36,10 +37,11 @@ const App = () => {
                 <Route path='/Loading' exact element={<Loading />}/>
                 <Route path='/OTP/:id' exact element={<Otp/>} />
                 <Route path='/Messsages' exact element={<Messenger />} />
+                <Route path='/Admin' exact element={<AdminHome />} />
                 <Route path='*' element={<Navigate to='/'/> } />
             </Routes>
         </BrowserRouter>
     )
 }
 
-export default App
+export default App;

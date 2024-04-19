@@ -2,9 +2,6 @@
     position: relative;
 }
 
-.middle > .feeds > .feed > .photo > label {
-}
-
 .middle > .feeds > .feed > .photo > .mute {
     position: absolute;
     bottom: 15px;
@@ -57,4 +54,27 @@
 }
 .okay{
     margin: 10px;
+}
+
+.PostImage {
+    max-height: 600px;
+    object-fit: contain;
+}
+
+.skeleton {
+    animation: loading 1s linear infinite alternate;
+    width: 100%;
+}
+
+.minHeight {
+    min-height: 400px;
+}
+
+@keyframes loading {
+    0% {
+        background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
 }

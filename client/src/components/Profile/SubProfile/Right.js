@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import Cam from '@material-ui/icons/CameraAlt'
+import EditIcon from '@mui/icons-material/Edit';
 import { Avatar } from '@material-ui/core';
 import { useParams , useNavigate} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUser , Likeduser} from '../../../actions/User';
 import './right.css';
 import {ArrowUpwardOutlined, ArrowDownwardOutlined} from '@material-ui/icons';
+import Loading from '../../Loading/Loading';
 
 const Right = () => {
 
@@ -15,7 +16,8 @@ const Right = () => {
     const Users = useSelector((state) => state.Users);
     const User = useState(JSON.parse(localStorage.getItem('profile')));
     const { creatorId } = useParams();
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+
 
     const Userlike = (state) => {
         if (state === 'Liked'){
@@ -26,28 +28,13 @@ const Right = () => {
     }
 
     useEffect(() => {
-        dispatch(getUser(creatorId));
-    }, [creatorId, User, dispatch]);
+        dispatch(getUser(creatorId))
+            .then(() => {
+                setLoading(false);
+            });
+    }, [creatorId, dispatch]);
 
-    // useEffect(() => {
-        
-    //     dispatch(getUser(creatorId));
-
-    //     if(Users?.User?.likes.find((like) => like === (User?.result?.googleId || User?.result?._id))) {
-    //         setUserdislked(false);
-    //         setUserliked(true);
-    //         alert(1);
-    //     } else if(Users?.User?.dislikes.find((dislike) => dislike === (User?.result?.googleId || User?.result?._id))) {
-    //         setUserdislked(true);
-    //         setUserliked(false);
-    //     } else if(!Users?.User?.likes.find((like) => like === (User?.result?._id || User?.result?.googleId)) && !Users?.User?.dislikes.find((dislike) => dislike === (User?.result?.googleId || User?.result?._id))) {
-    //         setUserdislked(false);
-    //         setUserliked(false);
-    //     }
-    // }, [dispatch, creatorId, User , Users?.User?.dislikes, Users?.User?.likes, User?.result?._id, User?.result?.googleId]);
-
-
-    return (
+    return loading ? (<Loading />) : (
         <div>
             <div class="right">
                 <div className='Profile'>
@@ -57,9 +44,11 @@ const Right = () => {
                             </Avatar>
                             {/* <button className='cameraButton'><Cam style={{ color: 'white' }} /></button>   */}
                         </span>
-                        {/* <button className='cameraButton'>
-                            <Cam style={{ color: 'white' }} />
-                        </button> */}
+                        {Users?.User?._id === User[0]?.result?._id  ? (
+                            <button>
+                                <EditIcon />
+                            </button>
+                        ) : (null)}
                     </div>
                     <div className='details'>
                         <label className='name'>

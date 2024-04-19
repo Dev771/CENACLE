@@ -153,17 +153,23 @@ const Left = () => {
                         )}
                     </span>
                     
-                    <span href='/' className="menu-item NO" id="notifications"><i className="uil uil-bell"><small className="notification-count">9+</small></i>
-                    <h3>Notification</h3>
+                    <span href='/' className="menu-item NO" id="notifications">
+                        <i className="uil uil-bell"><small className="notification-count">9+</small></i>
+                        <h3>Notification</h3>
                     </span>
-                    <span onClick={() => navigate("/Messsages")} className="menu-item" id="messages-notification"><i className="uil uil-envelopes"><small className="notification-count">6</small></i>
-                     <h3>Messages</h3>
+                    <span aria-disabled={User ? 'true' : "false"} onClick={() => User ? navigate("/Messsages") : null} className="menu-item" id="messages-notification">
+                        <i className="uil uil-envelopes"><small className="notification-count">6</small></i>
+                        <h3>Messages</h3>
                     </span>
                     
                     <span className='menu-item' onClick={() => OpenTheme(true)}>
-                        <i className="uil uil-palette"></i><h3>Theme</h3>
+                        <i className="uil uil-palette"></i>
+                        <h3>Theme</h3>
                     </span>
-                        <span className="menu-item NO" href='/'><i className="uil uil-setting"></i><h3>Settings</h3></span>
+                    <span className="menu-item NO" href='/'>
+                        <i className="uil uil-setting"></i>
+                        <h3>Settings</h3>
+                    </span>
                 </div>
                 {/* <!--*******************End of Sidebar********************--> */}
                 {User ? (
@@ -174,14 +180,13 @@ const Left = () => {
                 )
                 }
                 <div className="CreatorName">
-                   <div>
-                Made with Love <i class="uil uil-heart" style={{color : "red"}}></i> <br />
-                by &nbsp;
-                   <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
-                   <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> &nbsp;| &nbsp;
-                   <a href="https://www.linkedin.com/in/heygaurav07/" className='linkden'>Gaurav S </a>   
-                   </div>
-                   <div className='copyright'><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
+                    <div>
+                    Made with Love <i class="uil uil-heart" style={{color : "red"}}></i> <br />
+                    by &nbsp;
+                        <a href="https://www.linkedin.com/in/dev-garg-a5b012182/" className='linkden'>Dev G </a> &nbsp; | &nbsp;
+                        <a href="https://www.linkedin.com/in/naman-bhateja-018392171/" className='linkden'>Naman B </a> 
+                    </div>
+                    <div className='copyright'><i class="uil uil-copyright"></i>Copyright: Cenacle Tech Lab</div>
                 </div> 
                 
             </div> 

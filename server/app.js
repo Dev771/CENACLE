@@ -2,16 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import { createRequire } from "module";
-const require = createRequire(import.meta.url); // construct the require method
-const config = require("./config/config.json"); 
+import dotenv from 'dotenv';
 
 import postRoutes from './routes/postRoutes.js';
 import tagsRoutes from './routes/tagsRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
- 
+
+dotenv.config();
+
 const app = express();
 
 app.use(bodyParser.json({ extended: true, limit: '30mb'}));
@@ -40,7 +40,7 @@ app.use( (err, req, res, next) => {
   })
 
 const PORT = process.env.PORT || 8080;
-const ConnectionURL = config.mongoose;
+const ConnectionURL = process.env.MONGOOSE_URI;
 
 mongoose.connect(ConnectionURL, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => {

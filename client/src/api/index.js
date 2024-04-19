@@ -12,7 +12,7 @@ API.interceptors.request.use((req)=> {
 })
 
 export const fetchPost = (id) => API.get(`/posts/postdeets/${id}`);
-export const getPosts = () => API.get("/posts");
+export const getPosts = (currentPost) => API.get(`/posts/getPost/${currentPost}`);
 export const createPost = (formData) => API.post('/posts', formData, { headers: {'Content-Type': 'multipart/form-data'}});
 export const likePost = (id, state) => API.patch(`/posts/${id}/${state}`);
 export const deletePost = (id) => API.delete(`/posts/delete/${id}`);
@@ -36,6 +36,7 @@ export const AllUser = () => API.get("/user/All");
 export const getUser = (creator) => API.get(`/user/${creator}`);
 export const Likeduser = (id , state) => API.patch(`/user/${id}/${state}`);
 export const ChangeTheme = (type, value) => API.patch(`/user/${type}/${value}`);
+export const getAvatar = (id) => API.get(`/user/Avatar/${id}`);
 
 export const message = (convoId, user, text) => API.patch(`/message/add/${convoId}/${user}`, {text});
 export const getconvo = (user1, user2) => API.patch(`/message/getconvo/${user1}/${user2}`);

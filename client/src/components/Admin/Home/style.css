@@ -1,0 +1,12 @@
+.AdminHome {
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    margin-top: 16vh;
+
+    background-color: var(--color-white);
+}

@@ -9,10 +9,15 @@ const unlink = util.promisify(fs.unlink);
 
 import { upload, getFile } from '../aws/s3.js';
 import userSchema from '../model/userSchema.js';
+import { updateTagData } from './tag.js';
 
 export const getPost = (req, res) => {
     const Key = req.path.split('/')[1];
     const readStream = getFile(Key);
+
+    readStream.on("error", (err) => {
+        return res.status(200).json(null);
+    })
 
     readStream.pipe(res);
 }
@@ -31,9 +36,10 @@ export const fetchPost = async (req, res) => {
 
 export const getPosts = async (req, res) => {
     try {
-        const posts = await postSchema.find();
-
-        res.status(200).json(posts);
+        const currentPost = req.params.currentPost;
+        const posts = (await postSchema.find()).reverse();
+        const newPost = posts.slice(currentPost, currentPost+5);
+        res.status(200).json(newPost);
 
     } catch(error) {
         res.status(400).json({message: error});
@@ -70,14 +76,19 @@ export const createPost = async (req, res) => {
     const File = req.file;
     const Post = req.body;
     
+    console.log("Started");
+
     try {
 
         const result = await upload(File);
+        console.log("File Uploaded!!!")
         await unlink(File.path)
         
         const newPost = postSchema({ ...Post, LocImage: result.Key, creatorId: req.userId, post_Type: File.mimetype });
         
         await newPost.save();
+
+        await updateTagData(newPost._id, req.userId, Post.tags_name);
 
         res.status(200).json(newPost);
 

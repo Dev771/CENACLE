@@ -1,0 +1,50 @@
+.shortViewHomePage {
+    width: 120px !important;
+    height: 200px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.skeleton {
+    animation: loading 1s linear infinite alternate;
+}
+
+.AddCSS {
+    position: sticky;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.AddCSS::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    background-image: var(--rick-roll);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(2px);
+}
+
+.shortViewHomePage > .text {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 200px;
+    display: grid;
+    place-items: center;
+}
+
+.shortViewHomePage > .text > img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid black;
+}
