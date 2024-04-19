@@ -5,7 +5,8 @@ export default (posts = [], actions) => {
         case "CREATE_POST": 
             return [ ...posts, actions.payload ];
         case "FETCH_ALL": 
-            const post = [...posts, ...actions.payload]
+            const revAction = actions.payload.reverse();
+            const post = [...posts, ...revAction]
             return post;
         case FETCH_BY_SEARCH:
             posts = actions.payload;
@@ -18,9 +19,9 @@ export default (posts = [], actions) => {
         case FETCH_POST:
             return actions.payload;  
         case COMMENT:
-            return actions.payload;
+            return actions.payload.reverse();
         case "DELETECOMMENT":
-            return actions.payload;
+            return actions.payload.reverse();
         case "RESET":
             return [];
         default: 

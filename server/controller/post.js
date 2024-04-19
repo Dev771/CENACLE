@@ -38,7 +38,7 @@ export const getPosts = async (req, res) => {
     try {
         const currentPost = req.params.currentPost;
         const posts = (await postSchema.find()).reverse();
-        const newPost = posts.slice(currentPost, currentPost+5);
+        const newPost = posts.slice(currentPost, currentPost+5).reverse();
         res.status(200).json(newPost);
 
     } catch(error) {
@@ -187,7 +187,7 @@ export const dislikePost = async (req, res) => {
                 const User = await userSchema.findOne({ googleId: POST.creatorId });
                  await userSchema.findOneAndUpdate({ googleId: POST.creatorId }, {Total_Post_Like: User.Total_Post_Like-1});
             } else {
-                const User = await userSchema.findById(Post.creatorId);
+                const User = await userSchema.findById(POST.creatorId);
                  await userSchema.findByIdAndUpdate( POST.creatorId, { Total_Post_Like: User.Total_Post_Like-1 });
             }
         } else if(dislikeindex === -1 && likeindex !== -1) {
