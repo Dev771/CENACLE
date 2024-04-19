@@ -100,11 +100,11 @@ const Post = ({post,SbuttonClose}) => {
                         // <img loading='lazy' src={postImage} alt={post.title} />
                         //Image from AWS S3 Bucket Code ---->
                         
-                        <img loading='lazy' className={`PostImage ${ imageLoaded ? "" : "skeleton minHeight"}`} onLoad={() => setImageLoaded(true)} src={`${config.backendLocalUrl}/posts/${post.LocImage}`} onError={(e) => e.target.src = postImage} alt={post.title} />
+                        <img loading='lazy' className={`PostImage ${ imageLoaded ? "" : "skeleton minHeight"}`} onLoad={() => setImageLoaded(true)} src={`${config.backendUrl}/posts/${post.LocImage}`} onError={(e) => e.target.src = postImage} alt={post.title} />
                     ) : post.post_Type.split('/')[0] === 'video' ? (
                         <>
                             <video width="100%" height='100%' autoPlay={true} muted={muted} loop>
-                                <source src={`${config.backendLocalUrl}/posts/${post.LocImage}`} onError={(e) => e.target.src = postImage} type={post.post_Type} />
+                                <source src={`${config.backendUrl}/posts/${post.LocImage}`} onError={(e) => e.target.src = postImage} type={post.post_Type} />
                             </video>
                             <button onClick={mutedchange} className='mute'>{!muted ? <VolumeUpRounded /> : <VolumeOff />}</button>
                         </>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../config/config.json';
 
-const API = axios.create({ baseURL: `${config.backendLocalUrl}/` });
+const API = axios.create({ baseURL: `${config.backendUrl}/` });
 
 API.interceptors.request.use((req)=> {
     if(localStorage.getItem('profile')) {
