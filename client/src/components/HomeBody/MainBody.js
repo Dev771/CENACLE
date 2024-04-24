@@ -37,6 +37,9 @@ const MainBody = () => {
     }, [loader, dispatch])
 
     useEffect(() => {
+        setTimeout(() => {
+            dispatch({ type: "REMOVE_ERROR" });
+        }, 3000);
         dispatch(getPosts(0));
     }, [dispatch]);
 

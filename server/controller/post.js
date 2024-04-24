@@ -11,15 +11,40 @@ import { upload, getFile } from '../aws/s3.js';
 import userSchema from '../model/userSchema.js';
 import { updateTagData } from './tag.js';
 
+let readStreams = {};
+
 export const getPost = (req, res) => {
     const Key = req.path.split('/')[1];
-    const readStream = getFile(Key);
 
-    readStream.on("error", (err) => {
-        return res.status(200).json(null);
-    })
+    // If there is a read stream in progress for this key, destroy it
+    if (readStreams[Key]) {
+        readStreams[Key].destroy();
+    }
 
-    readStream.pipe(res);
+    readStreams[Key] = getFile(Key);
+
+    // Flag to check if response has been sent
+    let responseSent = false;
+
+    // Handle errors
+    readStreams[Key].on("error", (err) => {
+        if (!responseSent) {
+            res.json({ error: "An error occurred while reading the stream" });
+            responseSent = true;
+        }
+    });
+
+    // Pipe the stream to the response
+    readStreams[Key].pipe(res);
+
+    // Close the stream after it's finished processing
+    readStreams[Key].on("end", () => {
+        if (!responseSent) {
+            readStreams[Key].destroy();
+            responseSent = true;
+        }
+        delete readStreams[Key]; // Remove the read stream once finished
+    });
 }
 
 export const fetchPost = async (req, res) => { 

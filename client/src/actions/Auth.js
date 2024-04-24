@@ -4,11 +4,12 @@ export const signIn = (formData, navigate) => async (dispatch) => {
     try {
         navigate("/Loading")
         const { data } = await api.SignIn(formData);
-
+        dispatch({ type: "ADD_SUCCESS", payload: "User Logged Successfully!!" })
         dispatch({ type: "AUTH", data });
         navigate('/');
     } catch(error) {
-        console.log(error);
+        console.log(error.response.data);
+        dispatch({ type: "ADD_ERROR", payload: error.response.data.messsge })
         navigate('/login/SignIn')
     }
 }
@@ -19,9 +20,6 @@ export const signUp = (formData, navigate) => async (dispatch) => {
         navigate("/Loading")
         const { data } = await api.SignUp(formData);
 
-        // console.log(data);
-
-        
         if(data.status === "Success"){
             navigate(`/OTP/${data.result.email}`);
         }
@@ -60,11 +58,14 @@ export const GoogleSignUp = (result, token, navigate) => async (dispatch) => {
         if(!data.message) {
             
             dispatch({ type: "AUTH", data: { result, data, token}});
+            dispatch({ type: "ADD_SUCCESS", payload: "Login Successfull!!" })
             navigate('/')
         } else {
+            dispatch({ type: "ADD_ERROR", payload: "Error While Login" });
             console.log(data.message);
         }
     } catch (error) {
+        dispatch({ type: "ADD_ERROR", payload: "Error While Login" });
         console.log(error.response.data);
     } 
 }

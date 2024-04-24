@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-pascal-case */
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import BodyLeft from '../components/HomeBody/Left';
 import MainBody from '../components/HomeBody/MainBody';
@@ -7,8 +7,6 @@ import Mobile_Navbar from '../components/HomeBody/Mobiledisplay/Mobile_Navbar';
 import BodyRight from '../components/HomeBody/Right';
 
 const Home = () => {
-
-    
 
     return (
         <div>                    

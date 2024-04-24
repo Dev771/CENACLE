@@ -16,7 +16,7 @@ const s3 = new AWS.S3({
     secretAccessKey
 });
 
-export const upload = (file) => {
+export const upload = async (file) => {
     console.log('inside upload');
     const fileStream = fs.createReadStream(file.path);
 
@@ -26,7 +26,7 @@ export const upload = (file) => {
         Key: file.filename
     })
 
-    return s3.upload(uploadParams).promise();
+    return await s3.upload(uploadParams).promise();
 }
 
 export const getFile = (FileKey) => {

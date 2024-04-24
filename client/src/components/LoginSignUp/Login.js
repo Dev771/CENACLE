@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { FaUser, FaVoicemail, FaLock, FaFacebook, FaGooglePlus, FaLinkedin, FaClone, FaGoogle } from 'react-icons/fa'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './styles.css';
 import { useNavigate, useParams } from 'react-router-dom'
 import img1 from '../../img/sideimg.svg'
@@ -8,9 +8,8 @@ import img2 from '../../img/sideimg2.svg'
 import { signIn, signUp, GoogleSignUp } from '../../actions/Auth';
 import GoogleLogin from 'react-google-login';
 import useStyles from './Styles';
-import Icon from './icon';
-// import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-// import CancelIcon from "@mui/icons-material/Cancel";
+import Error from '../Error/Error';
+
 const images = ['https://i.ibb.co/192hXc5/G1.png', 'https://i.ibb.co/VJhf3mB/G2.png', 'https://i.ibb.co/0jBDP4H/G3.png', 'https://i.ibb.co/HHzjGkB/B1.png', 'https://i.ibb.co/GJ20Nw4/B2.png', 'https://i.ibb.co/HV8HR6Q/B3.png'];
 var image = images[Math.floor(Math.random() * images.length)];
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '', imageURL: image};
@@ -25,8 +24,7 @@ const RegistrationForm = () => {
     const dispatch = useDispatch();
     const [isSignUp, setisSignUp] = useState(action === 'SignUp' ? true : action === 'SignIn' ? false : 'Error');
     const [formData, setFormData] = useState(initialState);
-    const [showPassword, setShowPassword] = useState(false);
-    const imageUrl= "https://i.ibb.co/192hXc5/G1.png";
+    const error =  useSelector((state) => state.error);
 
     let hasSixChar = formData.password.length >= 6;
 	let hasLowerChar = /(.*[a-z].*)/.test(formData.password);
@@ -34,16 +32,6 @@ const RegistrationForm = () => {
 	let hasNumber = /(.*[0-9].*)/.test(formData.password);
 	let hasSpecialChar = /(.*[^a-zA-Z0-9].*)/.test(formData.password);
     
-
-    const switchState = () => {
-        setisSignUp(!isSignUp);
-        if(!isSignUp) {
-            navigate('/auth/SignUp');
-        } else {
-            navigate('/auth/SignIn');
-        }
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if(isSignUp) {
@@ -63,10 +51,6 @@ const RegistrationForm = () => {
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
-
-    const handleShowPassword = () => {
-        setShowPassword(!showPassword);
-    }
     
 
     const googleSuccess = (res) => {
@@ -74,13 +58,14 @@ const RegistrationForm = () => {
         const token  = res?.tokenId;
         try {
             dispatch(GoogleSignUp(result, token, navigate));
-
         } catch (error) {
+            dispatch({ type: "ADD_ERROR", payload: error });
             console.log(error);
         }
     }
 
     const googleFailure = () => {
+        dispatch({ type: "ADD_ERROR", payload: "Google Sign In Was A Failure Just Like U!!!!, Try Again Dumb Ass" })
         console.log("Google Sign In Was A Failure Just Like U!!!!, Try Again Dumb Ass");
     }
 
@@ -93,6 +78,12 @@ const RegistrationForm = () => {
         setisSignUp(false);
         navigate('/login/SignIn');
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            dispatch({ type: "REMOVE_ERROR" });
+        }, 3000)
+    }, [dispatch, error]);
 
     useEffect(() => {
         setisSignUp(action === 'SignUp' ? true : action === 'SignIn' ? false : "Error");

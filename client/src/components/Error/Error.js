@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Error = () => {
+import "./style.css";
+
+const Error = ({ message, is_Success }) => {
   return (
-    <div>Error</div>
+    <div className='errorMessage' style={{ background: is_Success ? 'Green' : 'red' }} >{message}</div>
   )
 }
 
